@@ -5,7 +5,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self):
         return f"{{Name: {self.name}, " \
@@ -25,4 +25,4 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and other.hidden is not True:
             other.health -= 50
         if other.health <= 0:
-            self.alive.remove(other)
+            Animal.alive.remove(other)
