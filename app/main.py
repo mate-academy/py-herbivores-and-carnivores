@@ -15,11 +15,11 @@ class Animal:
 
 
 class Carnivore(Animal):
-    def bite(self, other):
-        if isinstance(other, Herbivore) and not other.hidden:
-            other.health -= 50
-            if other.health == 0:
-                Animal.alive.remove(other)
+    def bite(self, animal):
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
+            if animal.health == 0:
+                Animal.alive.remove(animal)
 
 
 class Herbivore(Animal):
