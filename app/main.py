@@ -17,7 +17,7 @@ class Animal:
     def check_if_dead(self):
 
         if self in self.alive and self.health <= 0:
-            self.alive.remove(self)
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
