@@ -68,7 +68,7 @@ def test_carnivore_bite_not_hidden():
     Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
-    lion.bite(rabbit)
+    bite(rabbit)
     assert rabbit.health == 50, (
         "If initial health of rabbit equals 100 and rabbit is not hidden "
         "health should equal to 50 after bite."
@@ -80,7 +80,7 @@ def test_carnivore_bite_hidden():
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
     rabbit.hide()
-    lion.bite(rabbit)
+    bite(rabbit)
     assert rabbit.health == 100, (
         "Carnivore cannot bite hidden herbivore"
     )
@@ -91,8 +91,8 @@ def test_carnivore_bite_to_death():
     lion = Carnivore("King Lion")
     pantera = Carnivore("Bagira")
     rabbit = Herbivore("Susan")
-    lion.bite(rabbit)
-    pantera.bite(rabbit)
+    bite(rabbit)
+    bite(rabbit)
     assert len(Animal.alive) == 2, (
         f"It shouldn't be dead animals in Animals.alive"
     )
@@ -101,7 +101,7 @@ def test_carnivore_bite_to_death():
 def test_carnivore_bite_carnivore():
     lion = Carnivore("Simba")
     pantera = Carnivore("Bagire")
-    lion.bite(pantera)
+    bite(pantera)
     assert pantera.health == 100
 
 
