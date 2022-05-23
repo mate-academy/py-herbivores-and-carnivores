@@ -12,6 +12,7 @@ class Animal:
                f"Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
+
 class Herbivore(Animal):
 
     def hide(self):
@@ -24,11 +25,12 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     def bite(self, other_animal):
-        if isinstance(other_animal, Herbivore) and other_animal.hidden == False:
+        if isinstance(other_animal, Herbivore)\
+                and other_animal.hidden is False:
             print('bited')
             other_animal.health = other_animal.health - 50
-            if other_animal.health <= 0:
-                print(f"{other_animal.name} is dead")
-                Animal.alive.remove(other_animal)
+        if other_animal.health <= 0:
+            print(f"{other_animal.name} is dead")
+            Animal.alive.remove(other_animal)
         if other_animal.hidden:
             print(f"{self.name} cannot bite hidden {other_animal.name}")
