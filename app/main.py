@@ -5,13 +5,14 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.check_alive()
+        self.check_alive(self)
 
-    def check_alive(self):
-        if self.health <= 0 and self in Animal.alive:
-            Animal.alive.remove(self)
-        elif self.health > 0 and self not in Animal.alive:
-            Animal.alive.append(self)
+    @classmethod
+    def check_alive(cls, self):
+        if self.health <= 0 and self in cls.alive:
+            cls.alive.remove(self)
+        elif self.health > 0 and self not in cls.alive:
+            cls.alive.append(self)
 
     def __repr__(self):
         return f"{{Name: {self.name}, "\
