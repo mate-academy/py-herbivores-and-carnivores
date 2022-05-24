@@ -24,5 +24,5 @@ class Carnivore(Animal):
     def bite(target: Herbivore):
         if not target.hidden and isinstance(target, Herbivore):
             target.health -= 50
-            if target.health == 0:
+            if target.health <= 0:
                 Animal.alive.remove(target)
