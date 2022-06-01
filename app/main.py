@@ -8,9 +8,9 @@ class Animal:
         self.hidden = hidden
 
     def __repr__(self):
-        feature = '{Name: ' + self.name + ', Health: ' + str(self.health) + \
-                  ', Hidden: ' + str(self.hidden) + '}'
-        return feature
+        return f"{{Name: {self.name}," \
+               f" Health: {self.health}," \
+               f" Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
