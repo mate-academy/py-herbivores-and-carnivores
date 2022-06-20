@@ -19,7 +19,7 @@ class Herbivore(Animal):
         if self.hidden is False:
             self.hidden = True
         else:
-            self.hidden = False
+            self.hidden = not self.hidden
         return self.hidden
 
 
