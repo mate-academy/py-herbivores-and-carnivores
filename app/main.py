@@ -9,14 +9,14 @@ class Animal:
         self.__class__.alive.append(self)
 
     def __repr__(self):
-        return f"{'{'}Name: {self.name}, Health: {self.health}, " \
-               f"Hidden: {self.hidden}{'}'}"
+        return f"{{Name: {self.name}, Health: {self.health}, " \
+               f"Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
 
     def hide(self):
-        self.hidden = self.hidden is False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
