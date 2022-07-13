@@ -17,7 +17,7 @@ class Herbivore(Animal):
 
     def hide(self):
         self.hidden = not self.hidden
-        return self.hidden if self.hidden is True else self.hidden
+        return self.hidden
 
     def alive(self):
         if self.health <= 0:
