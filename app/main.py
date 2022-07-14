@@ -8,7 +8,11 @@ class Animal:
         Animal.alive.append(self) if self.health > 0 else None
 
     def __repr__(self):
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+        return f"{{" \
+               f"Name: {self.name}, " \
+               f"Health: {self.health}, " \
+               f"Hidden: {self.hidden}" \
+               f"}}"
 
 
 class Herbivore(Animal):
@@ -25,5 +29,3 @@ class Carnivore(Animal):
             target.health -= 50
             if target.health <= 0:
                 Animal.alive.remove(target)
-
-
