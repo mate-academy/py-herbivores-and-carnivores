@@ -26,28 +26,4 @@ class Carnivore(Animal):
 class Herbivore(Animal):
 
     def hide(self):
-        # if self.hidden is True:
-        #     self.hidden = False
-        # else:
-        #     self.hidden = True
         self.hidden = not self.hidden
-
-# pantera = Carnivore("Bagira")
-# snake = Carnivore("Kaa")
-# print(Animal.alive)
-
-# lion = Carnivore("Lion King")
-# rabbit = Herbivore("Susan")
-# rabbit.health == 100
-# print(lion.bite(rabbit))
-# rabbit.health == 50
-# print(Animal.alive)
-
-
-# pantera.__dict__
-# snake.__dict__
-
-
-# lion = Carnivore("Simba")
-# len(Animal.alive[0]) == 1
-# isinstance(Animal.alive, Carnivore) is True
