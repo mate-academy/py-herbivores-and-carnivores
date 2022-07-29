@@ -8,8 +8,10 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self):
-        return '{' + 'Name: {}, Health: {}, Hidden: {}'.\
-               format(self.name, self.health, self.hidden) + '}'
+        name = f'Name: {self.name}'
+        health = f'Health: {self.health}'
+        hidden = f'Hidden: {self.hidden}'
+        return '{' + f'{name}, {health}, {hidden}' + '}'
 
 
 class Herbivore(Animal):
