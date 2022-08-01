@@ -25,9 +25,9 @@ class Carnivore(Animal):
     @staticmethod
     def bite(animal):
         if isinstance(animal, Carnivore):
-            print("Carnivore can't bite carnivore")
+            print(f"Carnivore can't bite {animal.name}")
         elif animal.hidden:
-            print("lion cannot bite hidden rabbit")
+            print(f"lion cannot bite hidden {animal.name}")
         else:
             animal.health -= 50
             if animal.health <= 0:
