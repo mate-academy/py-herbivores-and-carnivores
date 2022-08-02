@@ -16,8 +16,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self):
-        self.hidden = not self.hidden  # Исправил сразу по ошибкам других,
-        # вначале написал через if
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
