@@ -20,8 +20,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     def bite(self, herbivore):
         for index, animal in enumerate(Animal.alive):
-            if isinstance(animal, Carnivore) is False \
-                    and herbivore.hidden is False:
+            if not isinstance(animal, Carnivore) and herbivore.hidden is False:
                 herbivore.health -= 50
                 if herbivore.health <= 0:
                     Animal.alive.pop(index)
