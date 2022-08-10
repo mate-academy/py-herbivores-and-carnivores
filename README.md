@@ -57,4 +57,3 @@ print(Animal.alive)
 # [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
 ```
 Hint: Use magic method.
-
