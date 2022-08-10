@@ -79,7 +79,7 @@ def test_carnivore_bite_hidden():
     Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
-    rabbit.hide()
+    rabbit.hide
     lion.bite(rabbit)
     assert rabbit.health == 100, (
         "Carnivore cannot bite hidden herbivore"
@@ -108,11 +108,11 @@ def test_carnivore_bite_carnivore():
 def test_herbivore_hide():
     Animal.alive = []
     rabbit = Herbivore("Susan")
-    rabbit.hide()
+    rabbit.hide
     assert rabbit.hidden is True, (
         "Method 'hide' should change animal attribute 'hidden'"
     )
-    rabbit.hide()
+    rabbit.hide
     assert rabbit.hidden is False, (
         "Method 'hide' should change animal attribute 'hidden'"
     )
