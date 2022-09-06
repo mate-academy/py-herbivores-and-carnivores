@@ -9,19 +9,15 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self):
-        return "{" + f"Name: {self.name}," \
-                     f" Health: {self.health}," \
-                     f" Hidden: {self.hidden}" + "}"
+        return f"\u007bName: {self.name}," \
+               f" Health: {self.health}," \
+               f" Hidden: {self.hidden}\u007d"
 
 
 class Herbivore(Animal):
 
     def hide(self):
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            if self.hidden is True:
-                self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
