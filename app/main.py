@@ -10,15 +10,12 @@ class Animal:
 
     def __repr__(self):
         return f"{{Name: {self.name}, Health: {self.health}," \
-            f" Hidden: {self.hidden}}}"
+               f" Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
     def hide(self):
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
         return self.hidden
 
 
