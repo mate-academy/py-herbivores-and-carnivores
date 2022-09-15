@@ -1,10 +1,10 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100):
+    def __init__(self, name: str, health: int = 100, hidden: bool = False):
         self.name = name
         self.health = health
-        self.hidden = False
+        self.hidden = hidden
         Animal.alive.append(self)
 
     def __repr__(self):
