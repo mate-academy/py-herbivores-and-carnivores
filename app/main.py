@@ -5,25 +5,27 @@ class Animal:
         Animal.alive.append(obj := object.__new__(cls))
         return obj
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False):
+    def __init__(self, name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.__repr__()
 
     @property
-    def health(self):
+    def health(self) -> int:
         return self.__health
 
     @health.setter
-    def health(self, health):
+    def health(self, health: int) -> None:
         if health > 0:
             self.__health = health
         else:
