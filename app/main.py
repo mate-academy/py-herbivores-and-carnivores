@@ -2,7 +2,7 @@ class Animal:
     alive = []
 
     def __new__(cls, *args, **kwargs):
-        Animal.alive.append(obj := object.__new__(cls))
+        cls.alive.append(obj := object.__new__(cls))
         return obj
 
     def __init__(self, name: str,
@@ -30,7 +30,7 @@ class Animal:
             self.__health = health
         else:
             self.__health = 0
-            Animal.alive.remove(self)
+            self.alive.remove(self)
 
 
 class Herbivore(Animal):
