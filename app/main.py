@@ -11,10 +11,8 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}," \
-               f"Health:" \
-               f"{self.health}," \
-               f"Hidden: {self.hidden}}}"
+        name, health, hidden = self.name, self.health, self.hidden
+        return f"{{Name: {name}, Health: {health}, Hidden: {hidden}}}"
 
     def death(self) -> None:
         if self.health <= 0:
