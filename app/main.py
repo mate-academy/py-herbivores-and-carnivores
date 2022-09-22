@@ -9,7 +9,6 @@ class Animal:
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
-        print(Animal.alive)
 
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, "\
