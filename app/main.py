@@ -7,7 +7,7 @@ class Animal:
                f'Health: {self.health}, ' \
                f'Hidden: {self.hidden}}}'
 
-    def __init__(self, name, health=100, hidden=False):
+    def __init__(self, name: str, health=100, hidden=False):
         self.health = health
         self.name = name
         self.hidden = hidden
@@ -15,7 +15,7 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
