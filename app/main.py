@@ -8,10 +8,10 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def died(self):
+    def died(self) -> None:
         Animal.alive.remove(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         name = f"Name: {self.name}"
         health = f"Health: {self.health}"
         hidden = f"Hidden: {self.hidden}"
@@ -19,7 +19,7 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
