@@ -16,12 +16,6 @@ class Animal:
         return f"{{Name: {self.name}, Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
-    @classmethod
-    def viability(cls) -> None:
-        for animal in cls.alive:
-            if animal.health <= 0:
-                cls.alive.remove(animal)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -33,4 +27,5 @@ class Carnivore(Animal):
         if isinstance(herbivore, Herbivore):
             if not herbivore.hidden:
                 herbivore.health -= 50
-            self.viability()
+                if herbivore.health <= 0:
+                    Animal.alive.remove(herbivore)
