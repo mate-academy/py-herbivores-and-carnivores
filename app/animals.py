@@ -24,7 +24,7 @@ class Animal:
     def remove_dead(animal: Animal) -> None:
         for index in range(len(Animal.alive)):
             if animal is Animal.alive[index]:
-                Animal.alive.pop(index)
+                Animal.alive.remove(animal)
 
 
 class Carnivore(Animal):
