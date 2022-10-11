@@ -22,9 +22,8 @@ class Animal:
 
     @staticmethod
     def remove_dead(animal: Animal) -> None:
-        for index in range(len(Animal.alive)):
-            if animal is Animal.alive[index]:
-                Animal.alive.remove(animal)
+        if animal in Animal.alive:
+            Animal.alive.remove(animal)
 
 
 class Carnivore(Animal):
