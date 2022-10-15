@@ -1,7 +1,10 @@
 class Animal:
     live = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
+    def __init__(self,
+                 name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
         self.health = health
         self.hidden = hidden
         self.name = name
@@ -14,6 +17,7 @@ class Animal:
 
 
 class Herbivore(Animal):
+    
 
     def hide(self) -> None:
         self.hidden = not self.hidden
