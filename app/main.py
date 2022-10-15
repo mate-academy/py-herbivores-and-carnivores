@@ -1,7 +1,7 @@
 class Animal:
     live = []
 
-    def __init__(self, name, health = 100, hidden = False) -> None:
+    def __init__(self, name: str, health: int=100, hidden: bool=False) -> None:
         self.health = health
         self.hidden = hidden
         self.name = name
@@ -13,12 +13,12 @@ class Animal:
                f"Hidden: {self.hidden}}}"
 
 
-class Herbivore(Animal):
-    
-    def hide(self):
+class Herbivore(Animal):    
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 class Carnivore(Animal):
+    
 
     @staticmethod
     def bite(herbivore: Herbivore) -> None:
