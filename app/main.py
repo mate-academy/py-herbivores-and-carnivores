@@ -3,12 +3,11 @@ class Animal:
 
     def __init__(self,
                  name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+                 health: int = 100) -> None:
         self.health = health
-        self.hidden = hidden
+        self.hidden = False
         self.name = name
-        self.__class__.live.append(self)
+        Animal.live.append(self)
 
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, " \
