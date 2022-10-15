@@ -4,9 +4,9 @@ class Animal:
     def __init__(self,
                  name: str,
                  health: int = 100) -> None:
+        self.name = name
         self.health = health
         self.hidden = False
-        self.name = name
         Animal.live.append(self)
 
     def __repr__(self) -> str:
