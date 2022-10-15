@@ -1,5 +1,5 @@
 class Animal:
-    live = []
+    alive = []
 
     def __init__(self,
                  name: str,
@@ -7,7 +7,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.live.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, " \
@@ -28,5 +28,5 @@ class Carnivore(Animal):
                 and isinstance(herbivore, Herbivore) \
                 and herbivore.health > 0:
             herbivore.health -= 50
-            if herbivore.health <= 0 and herbivore in Animal.live:
-                Animal.live.remove(herbivore)
+            if herbivore.health <= 0 and herbivore in Animal.alive:
+                Animal.alive.remove(herbivore)
