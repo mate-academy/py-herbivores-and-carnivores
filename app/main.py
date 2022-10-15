@@ -17,12 +17,13 @@ class Animal:
 
 
 class Herbivore(Animal):
-    
+   
 
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 class Carnivore(Animal):
+    
 
     @staticmethod
     def bite(herbivore: Herbivore) -> None:
