@@ -3,13 +3,13 @@ class Animal:
 
     def __init__(self, name: str, health=100, hidden=False) -> None:
         self.name = name
-        self.health = 100
-        self.hidden = False
+        self.health = health
+        self.hidden = hidden
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        alive_animal = f'{{Name: {self.name}, Health: {self.health},' \
-                       f' Hidden: {self.hidden}}}'
+        alive_animal = f"{{Name: {self.name}, Health: {self.health}," \
+                       f"Hidden: {self.hidden}}}"
         return alive_animal
 
 
@@ -23,7 +23,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(herbivore):
+    def bite(herbivore: None) -> None:
         if herbivore.hidden or isinstance(herbivore, Carnivore):
             herbivore.health = herbivore.health
         else:
