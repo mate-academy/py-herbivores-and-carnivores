@@ -15,25 +15,22 @@ class Animal:
                f"Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
-    @classmethod
-    def health_control(cls, alive: list) -> object:
+    @staticmethod
+    def health_control(alive: list) -> None:
         for animal in alive:
             if animal.health <= 0:
                 alive.remove(animal)
-        return cls
 
 
 class Herbivore(Animal):
 
-    def hide(self) -> object:
-        self.hidden = True if self.hidden is False else False
-        return self
+    def hide(self) -> None:
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
 
-    def bite(self, animal: "Herbivore") -> object:
+    def bite(self, animal: Herbivore) -> None:
         if animal.hidden is False and isinstance(animal, Herbivore):
             animal.health -= 50
         self.health_control(alive=self.alive)
-        return self
