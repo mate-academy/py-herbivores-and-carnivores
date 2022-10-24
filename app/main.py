@@ -23,16 +23,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(biter: Herbivore) -> None:
-        if isinstance(biter, Herbivore):
-            if not biter.hidden:
-                biter.health -= 50
-                if biter.health <= 0:
-                    biter.alive.remove(biter)
-
-
-# pantera = Carnivore("Bagira")
-# snake = Carnivore("Kaa")
-# print(Animal.alive)
-# lion = Animal("Lion King")
-# print(len(Animal.alive) == 1)
-# print(Animal.alive[0].name == "Lion King")
+        if isinstance(biter, Herbivore) and not biter.hidden:
+            biter.health -= 50
+        if biter.health <= 0:
+            biter.alive.remove(biter)
