@@ -30,22 +30,3 @@ class Carnivore(Animal):
             animal.health -= 50
             if animal.health <= 0:
                 animals.pop(animals.index(animal))
-
-
-# lion = Carnivore("Lion King")
-# rabbit = Herbivore("Susan")
-# rabbit.health == 100
-# lion.bite(rabbit)
-# print(rabbit.health == 50)
-#
-# rabbit.hide()
-# lion.bite(rabbit)
-# print(rabbit.health == 50)
-#
-# rabbit.hide()
-# lion.bite(rabbit)
-# print(rabbit.health == 0)
-
-pantera = Carnivore("Bagira")
-snake = Carnivore("Kaa")
-print(Animal.alive)
