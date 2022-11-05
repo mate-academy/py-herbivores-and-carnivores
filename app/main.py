@@ -1,7 +1,7 @@
 class Animal:
     alive = []
 
-    # {"Name": self.name, "Health": self.health, "Hidden": self.hidden}
+    # {"Name": self.name, "Health": self.health, "Hidden": self.hidden} ----------------------------
     def __init__(self, name: str,
                  health: int = 100, hidden: bool = False) -> None:
         self.name = name
