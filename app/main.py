@@ -1,7 +1,6 @@
 class Animal:
     alive = []
 
-    # {"Name": self.name, "Health": self.health, "Hidden": self.hidden} ----------------------------
     def __init__(self, name: str,
                  health: int = 100, hidden: bool = False) -> None:
         self.name = name
@@ -9,10 +8,10 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __str__(self) -> None:
-        print([{"Name": animal.name,
-                "Health": animal.health, "Hidden": animal.hidden}
-               for animal in Animal.alive])
+    def __repr__(self) -> str:
+        result = f"Name: {self.name}, Health: {self.health}, " \
+                 f"Hidden: {self.hidden}"
+        return "{" + result + "}"
 
 
 class Herbivore(Animal):
