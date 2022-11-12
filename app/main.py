@@ -19,10 +19,7 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        elif self.hidden is True:
-            self.hidden = False
+        self.hidden = True if self.hidden is False else False
 
 
 class Carnivore(Animal):
