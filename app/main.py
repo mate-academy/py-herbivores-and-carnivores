@@ -12,22 +12,22 @@ class Animal:
         Animal.alive.append(self)
 
     def __str__(self) -> str:
-        return "Name: {name}, Health: {health}, Hidden: {hidden}".format(
-            name=self.name, health=self.health, hidden=self.hidden
-        )
+        return f"Name: {self.name}," \
+               f" Health: {self.health}," \
+               f" Hidden: {self.hidden}"
 
     def __repr__(self) -> str:
-        return "{{Name: {name}, Health: {health}, Hidden: {hidden}}}".format(
-            name=self.name, health=self.health, hidden=self.hidden
-        )
+        return f"{{Name: {self.name}," \
+               f" Health: {self.health}," \
+               f" Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
         if self.hidden is True:
-            self.hidden = False
+            self.hidden = not self.hidden
         else:
-            self.hidden = True
+            self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
