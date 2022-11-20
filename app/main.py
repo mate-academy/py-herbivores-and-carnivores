@@ -27,10 +27,7 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
@@ -39,7 +36,6 @@ class Carnivore(Animal):
     def bite(animal: Union[Herbivore, Carnivore]) -> None:
         if animal.hidden is False and isinstance(animal, Herbivore):
             animal.health -= 50
-            if animal.health <= 0:
-                for index, beast in enumerate(Animal.alive):
-                    if beast.name == animal.name:
-                        del Animal.alive[index]
+        for index, beast in enumerate(Animal.alive):
+            if beast.health <= 0:
+                del Animal.alive[index]
