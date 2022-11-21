@@ -33,7 +33,6 @@ class Carnivore(Animal):
             Animal.alive.remove(victim)
 
 
-
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
