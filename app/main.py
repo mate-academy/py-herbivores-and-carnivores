@@ -10,17 +10,18 @@ class Animal:
         self.name = name
         if len(args) == 1:
             self.health = args[0]
-        elif len(args) == 2:
+        elif self.health == 2:
             self.health = args[0]
             self.hidden = args[1]
+        else:
+            self.health = 100
+            self.hidden = False
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return "{"\
-               + f"Name: {self.name}," \
-                 f" Health: {self.health}," \
-                 f" Hidden: {self.hidden}"\
-               + "}"
+        return f"{{Name: {self.name}," \
+               f" Health: {self.health}," \
+               f" Hidden: {self.hidden}}}"
 
 
 class Carnivore(Animal):
