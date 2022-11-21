@@ -6,7 +6,7 @@ class Animal:
     health = 100
     hidden = False
 
-    def __init__(self, name: str, *args, **kwargs) -> None:
+    def __init__(self, name: str, *args) -> None:
         self.name = name
         if len(args) == 1:
             self.health = args[0]
