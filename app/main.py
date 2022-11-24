@@ -2,20 +2,14 @@ from __future__ import annotations
 
 
 class Animal:
-    health = 100
-    hidden = False
     alive = []
 
-    def __init__(self, name: str, *args, **kwargs) -> None:
+    def __init__(self, name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
         self.name = name
-        if len(args) == 1:
-            self.health = args[0]
-        elif self.health == 2:
-            self.health = args[0]
-            self.hidden = args[1]
-        else:
-            self.health = 100
-            self.hidden = False
+        self.health = health
+        self.hidden = hidden
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
