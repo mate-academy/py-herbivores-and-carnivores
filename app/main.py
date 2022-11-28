@@ -12,7 +12,7 @@ class Animal:
         Animal.alive.append(self)
 
     @classmethod
-    def del_from_alive_if_0_hp(cls, herbivore: Herbivore) -> None:
+    def del_alive_herbivore(cls, herbivore: Herbivore) -> None:
         if herbivore.health <= 0:
             cls.alive.remove(herbivore)
 
@@ -34,4 +34,4 @@ class Carnivore(Animal):
         if not herbivore.hidden and isinstance(herbivore, Herbivore):
             herbivore.health -= 50
 
-        Animal.del_from_alive_if_0_hp(herbivore)
+        Animal.del_alive_herbivore(herbivore)
