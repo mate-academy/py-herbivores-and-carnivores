@@ -2,7 +2,9 @@ class Animal:
     alive = []
 
     def __init__(self, name: str,
+
                  health: int = 100,
+
                  hidden: bool = False) -> None:
         self.name = name
         self.health = health
@@ -10,18 +12,14 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        return "{Name: " + self.name + ", Health: " \
-               + str(self.health) + ", Hidden: " + str(self.hidden) + "}"
+        return f"{{Name: {self.name}, " \
+               f"Health: {self.health}, Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
 
     def hide(self) -> bool:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
-        return self.hidden
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):

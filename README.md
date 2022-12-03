@@ -23,7 +23,7 @@ from carnivores.
 
 ```python
 rabbit = Herbivore("Susan")
-rabbit.hide(,
+rabbit.hide()
 rabbit.hidden is True  
 ```
 
@@ -39,11 +39,11 @@ rabbit.health == 100
 lion.bite(rabbit)
 rabbit.health == 50  # bited
 
-rabbit.hide(,
+rabbit.hide()
 lion.bite(rabbit)
 rabbit.health == 50  # lion cannot bite hidden rabbit
 
-rabbit.hide(,
+rabbit.hide()
 lion.bite(rabbit)
 rabbit.health == 0  # rabbit is dead
 
