@@ -5,7 +5,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+        self.alive.append(self)
 
     def __repr__(self) -> str:
         return "{" + f"Name: {self.name}, " \
@@ -15,10 +15,10 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is True:
-            self.hidden = False
-        else:
+        if not self.hidden:
             self.hidden = True
+        else:
+            self.hidden = False
 
 
 class Carnivore(Animal):
@@ -27,7 +27,10 @@ class Carnivore(Animal):
                 isinstance(herb_is_bite, Herbivore):
             herb_is_bite.health -= 50
         if herb_is_bite.health <= 0:
-            for index in range(len(self.alive)):
-                if self.alive[index] == herb_is_bite:
-                    self.alive.pop(index)
+            Animal.alive = [
+                alive
+                for alive in self.alive
+                if alive is not herb_is_bite
+            ]
+
         return herb_is_bite
