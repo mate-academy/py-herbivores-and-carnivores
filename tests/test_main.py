@@ -5,17 +5,17 @@ import io
 
 from contextlib import redirect_stdout
 
-from app.main import Animals, Herbivore, Carnivore
+from app.main import Animal, Herbivore, Carnivore
 
 
 def test_animal_class():
-    assert hasattr(Animals, "alive"), (
+    assert hasattr(Animal, "alive"), (
         f"Animal class should have attribute 'alive'"
     )
 
 
 def test_animal_constructor():
-    lion = Animals("Lion King")
+    lion = Animal("Lion King")
     assert hasattr(lion, "name"), (
         "Animal instance should have attribute 'name'"
     )
@@ -37,10 +37,10 @@ def test_animal_constructor():
         f"'lion.hidden' should equal to False when "
         f"'lion' created by 'Animal('Lion King')'"
     )
-    assert len(Animals.alive) == 1, (
+    assert len(Animal.alive) == 1, (
         "Constructor should add created animal to 'Animal.alive'"
     )
-    assert Animals.alive[0].name == "Lion King", (
+    assert Animal.alive[0].name == "Lion King", (
         "Constructor should add created animal to 'Animal.alive'"
     )
 
@@ -55,7 +55,7 @@ def test_animal_constructor():
 def test_only_one_method_should_be_declared_in_each_of_children_classes(
     class_, method
 ):
-    assert Animals in class_.__bases__, (
+    assert Animal in class_.__bases__, (
         f"'{class_.__name__}' should be inherited from 'Animal'"
     )
     assert (
@@ -67,7 +67,7 @@ def test_only_one_method_should_be_declared_in_each_of_children_classes(
 
 
 def test_carnivore_bite_not_hidden():
-    Animals.alive = []
+    Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
     lion.bite(rabbit)
@@ -78,7 +78,7 @@ def test_carnivore_bite_not_hidden():
 
 
 def test_carnivore_bite_hidden():
-    Animals.alive = []
+    Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
     rabbit.hide()
@@ -89,13 +89,13 @@ def test_carnivore_bite_hidden():
 
 
 def test_carnivore_bite_to_death():
-    Animals.alive = []
+    Animal.alive = []
     lion = Carnivore("King Lion")
     pantera = Carnivore("Bagira")
     rabbit = Herbivore("Susan")
     lion.bite(rabbit)
     pantera.bite(rabbit)
-    assert len(Animals.alive) == 2, (
+    assert len(Animal.alive) == 2, (
         f"It shouldn't be dead animals in Animals.alive"
     )
 
@@ -108,7 +108,7 @@ def test_carnivore_bite_carnivore():
 
 
 def test_herbivore_hide():
-    Animals.alive = []
+    Animal.alive = []
     rabbit = Herbivore("Susan")
     rabbit.hide()
     assert rabbit.hidden is True, (
@@ -121,7 +121,7 @@ def test_herbivore_hide():
 
 
 def test_print_animal_alive():
-    Animals.alive = []
+    Animal.alive = []
 
     lion = Carnivore("King Lion")
     pantera = Carnivore("Bagira")
@@ -130,7 +130,7 @@ def test_print_animal_alive():
     f = io.StringIO()
 
     with redirect_stdout(f):
-        print(Animals.alive)
+        print(Animal.alive)
 
     out = f.getvalue()
     output = "[{Name: King Lion, Health: 100, Hidden: False}, " \
@@ -143,14 +143,14 @@ def test_print_animal_alive():
 
 
 def test_when_health_less_than_zero():
-    Animals.alive = []
+    Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan", 25)
     lion.bite(rabbit)
-    assert len(Animals.alive) == 1, (
+    assert len(Animal.alive) == 1, (
         "Herbivore should die if health less than zero"
     )
-    assert Animals.alive[0].name == "King Lion"
+    assert Animal.alive[0].name == "King Lion"
 
 
 def test_unnecessary_comment():

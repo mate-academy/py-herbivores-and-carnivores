@@ -1,4 +1,4 @@
-class Animals:
+class Animal:
     alive = []
 
     def __init__(
@@ -9,30 +9,26 @@ class Animals:
         self.health = health
         self.name = name
         self.hidden = hidden
-        Animals.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, " \
                f"Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
+class Herbivore(Animal):
 
-class Herbivore(Animals):
-
-    def hide(self) -> Animals:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+    def hide(self) -> Animal:
+        self.hidden = not self.hidden
         return self
 
 
-class Carnivore(Animals):
+class Carnivore(Animal):
 
-    def bite(self, animal: Animals) -> Animals:
+    def bite(self, animal: Animal) -> Animal:
         if isinstance(animal, Carnivore) or animal.hidden is True:
             return animal
         animal.health -= 50
         if animal.health <= 0:
-            Animals.alive.remove(animal)
+            Animal.alive.remove(animal)
         return animal
