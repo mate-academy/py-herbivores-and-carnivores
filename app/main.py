@@ -21,9 +21,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        for beast in Animal.alive:
-            if beast.name == self.name:
-                self.hidden = not self.hidden
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
