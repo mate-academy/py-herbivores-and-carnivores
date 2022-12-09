@@ -15,10 +15,6 @@ class Animal:
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {False}}}"
 
-    def __sub__(self, other: Animal) -> Animal:
-        self.health -= other.health
-        return Animal(self.name, self.health, self.hidden)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
