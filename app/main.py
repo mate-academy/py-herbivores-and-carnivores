@@ -7,7 +7,7 @@ class Animal:
                f"Hidden: {self.hidden}}}"
 
     def __init__(
-        self,
+            self,
             name: str,
             health: int = 100,
             hidden: bool = False
