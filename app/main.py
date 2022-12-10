@@ -6,10 +6,12 @@ class Animal:
                f"Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+        self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
