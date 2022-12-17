@@ -10,8 +10,8 @@ class Animal:
 
     def __repr__(self) -> str:
         info_anim = f"Name: {self.name}," \
-                      f" Health: {self.health}," \
-                      f" Hidden: {self.hidden}"
+                    f" Health: {self.health}," \
+                    f" Hidden: {self.hidden}"
         return "{" + f"{info_anim}" + "}"
 
 
