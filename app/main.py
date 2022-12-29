@@ -12,11 +12,8 @@ class Animal:
         self.__class__.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{" \
-               f"Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}" \
-               f"}}"
+        return f"{{Name: {self.name}, Health: {self.health}, " \
+               f"Hidden: {self.hidden}}}"
 
     def check_health(self) -> None:
         if self.health <= 0:
@@ -25,10 +22,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is True:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
