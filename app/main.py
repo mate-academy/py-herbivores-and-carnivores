@@ -14,7 +14,7 @@ class Animal:
                f"Hidden: {self.hidden}}}"
 
     def __getattr__(self, item: list) -> list:
-        return [x for x in self.alive]
+        return [alive_animal for alive_animal in self.alive]
 
 
 class Herbivore(Animal):
