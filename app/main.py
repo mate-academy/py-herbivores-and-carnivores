@@ -1,49 +1,31 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(
+            self, name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
-        self.health = 100
-        self.hidden = False
-        self.alive.append(self)
+        self.health = health
+        self.hidden = hidden
+        self.__class__.alive.append(self)
 
-    def __repr__(self):
-        for animal in self.alive:
-            dictionary = f"'Name': {self.name}, 'Health': {self.health}, 'Hidden': {self.hidden}"
-            return dictionary
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, " \
+               f"Health: {self.health}, " \
+               f"Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
-
     @staticmethod
-    def bite(instance) -> None:
-        if instance.hidden is False:
-            instance.health -= 50
-        if instance.health == 0:
-            Animal.alive.remove(instance)
-
-
-rabbit = Herbivore("Susan")
-lion = Carnivore("Lion King")
-print(rabbit.health)
-lion.bite(rabbit)
-print(rabbit.health)
-rabbit.hide()
-lion.bite(rabbit)
-print(rabbit.health)
-rabbit.hide()
-lion.bite(rabbit)
-print(rabbit.health)
-print(rabbit in Animal.alive)
-snake = Carnivore("Kaa")
-print(Animal.alive)
+    def bite(animal: Animal) -> None:
+        if animal.hidden is False and isinstance(animal, Herbivore):
+            animal.health -= 50
+        if animal.health <= 0:
+            Animal.alive.remove(animal)
