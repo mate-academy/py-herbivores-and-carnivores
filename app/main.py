@@ -7,8 +7,10 @@ class Animal:
         self.hidden = False
         self.alive.append(self)
 
-    # def alive(self):
-    #     return Animal.alive.__dict__
+    def __repr__(self):
+        for animal in self.alive:
+            dictionary = f"'Name': {self.name}, 'Health': {self.health}, 'Hidden': {self.hidden}"
+            return dictionary
 
 
 class Herbivore(Animal):
@@ -23,9 +25,12 @@ class Carnivore(Animal):
     def __init__(self, name: str) -> None:
         super().__init__(name)
 
-    def bite(self) -> None:
-        if self.hidden is False:
-            self.health -= 50
+    @staticmethod
+    def bite(instance) -> None:
+        if instance.hidden is False:
+            instance.health -= 50
+        if instance.health == 0:
+            Animal.alive.remove(instance)
 
 
 rabbit = Herbivore("Susan")
@@ -33,9 +38,12 @@ lion = Carnivore("Lion King")
 print(rabbit.health)
 lion.bite(rabbit)
 print(rabbit.health)
-print(Animal.alive)
+rabbit.hide()
+lion.bite(rabbit)
+print(rabbit.health)
+rabbit.hide()
+lion.bite(rabbit)
+print(rabbit.health)
 print(rabbit in Animal.alive)
-
-# # rabbit.hide()
-# print(rabbit.hidden) #is True
-# class Carnivore(Animal):
+snake = Carnivore("Kaa")
+print(Animal.alive)
