@@ -7,7 +7,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.__class__.alive.append(self)
+        Animal.alive.append(self)
 
     @staticmethod
     def check_is_alive() -> None:
