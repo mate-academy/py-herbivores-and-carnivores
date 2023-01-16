@@ -14,9 +14,8 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        return str(
-            {"Name": self.name, "Health": self.health, "Hidden": self.hidden}
-        ).replace("'", "")
+        return f"{{Name: {self.name}, " \
+               f"Health: {self.health}, Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
