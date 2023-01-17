@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list = []
 
     def __init__(
             self, name: str, health: int = 100, hidden: bool = False
