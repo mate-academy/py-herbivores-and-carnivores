@@ -1,5 +1,8 @@
+from __future__ import annotations
+
+
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(self,
                  name: str,
@@ -11,8 +14,8 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: " \
-               f"{self.health}, Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, Health: "
+                f"{self.health}, Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
