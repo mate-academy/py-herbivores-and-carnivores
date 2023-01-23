@@ -1,8 +1,8 @@
-from typing import Any
+from __future__ import annotations
 
 
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(self, name: str,
                  health: int = 100,
@@ -20,14 +20,14 @@ class Animal:
 
 class Herbivore(Animal):
 
-    def hide(self) -> Any:
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(herb: Herbivore) -> Any:
-        if not herb.hidden and isinstance(herb, Herbivore):
-            herb.health -= 50
-        if herb.health <= 0:
-            Animal.alive.remove(herb)
+    def bite(herbivore: Herbivore) -> None:
+        if not herbivore.hidden and isinstance(herbivore, Herbivore):
+            herbivore.health -= 50
+        if herbivore.health <= 0:
+            Animal.alive.remove(herbivore)
