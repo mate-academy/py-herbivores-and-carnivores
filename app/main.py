@@ -29,4 +29,4 @@ class Carnivore(Animal):
             animal.health -= 50
 
         if animal.health <= 0:
-            del Animal.alive[Animal.alive.index(animal)]
+            Animal.alive.remove(animal)
