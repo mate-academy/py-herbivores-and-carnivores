@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
 
     alive = []
@@ -26,11 +29,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal_herbivore: Herbivore) -> Herbivore:
-        if animal_herbivore.hidden is False\
-                and isinstance(animal_herbivore, Herbivore) is True:
-            animal_herbivore.health -= 50
-        for i in Animal.alive:
-            if i.health <= 0:
-                Animal.alive.remove(i)
-        return animal_herbivore
+    def bite(self, animal: Herbivore) -> Herbivore:
+        if animal.hidden is False\
+                and isinstance(animal, Herbivore) is True:
+            animal.health -= 50
+        if animal.health <= 0:
+            Animal.alive.remove(animal)
+        return animal
