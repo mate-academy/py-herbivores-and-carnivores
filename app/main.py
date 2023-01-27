@@ -27,8 +27,8 @@ class Herbivore(Animal):
 
 
 class Carnivore (Animal):
-    def bite(self, animal: Union[Carnivore, Herbivore]) -> None:
-        if not animal.hidden and isinstance(animal, Herbivore) is True:
+    def bite(self, animal: Union[Carnivoregi, Herbivore]) -> None:
+        if not animal.hidden and isinstance(animal, Herbivore):
             animal.health -= 50
             if animal.health <= 0:
                 self.alive.remove(animal)
