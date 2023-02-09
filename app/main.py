@@ -27,7 +27,3 @@ class Carnivore(Animal):
             other.health -= 50
             if other.health <= 0:
                 Animal.alive.remove(other)
-
-# lion = Carnivore("Simba")
-# len(Animal.alive) == 1
-# isinstance(Animal.alive[0], Carnivore) is True
