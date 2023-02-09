@@ -30,7 +30,8 @@ class Herbivore(Animal):
     @staticmethod
     def hide() -> None:
         for animal in Animal.alive:
-            animal.hidden = not animal.hidden
+            if not isinstance(animal, Carnivore):
+                animal.hidden = not animal.hidden
 
 
 class Carnivore(Animal):
