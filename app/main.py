@@ -7,31 +7,25 @@ class Animal:
     def __init__(self,
                  name: str,
                  health: int = 100,
-                 hidden: bool = False
-                 ) -> None:
+                 hidden: bool = False) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
         Animal.alive.append(self)
-        self.check_alive(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
-    @staticmethod
-    def check_alive(animal: Animal) -> None:
-        if animal.health <= 0:
-            Animal.alive.remove(animal)
+    def check_alive(self) -> None:
+        if self.health <= 0:
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
-    @staticmethod
-    def hide() -> None:
-        for animal in Animal.alive:
-            if not isinstance(animal, Carnivore):
-                animal.hidden = not animal.hidden
+    def hide(self) -> None:
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
