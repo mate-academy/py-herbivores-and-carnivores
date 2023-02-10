@@ -37,3 +37,4 @@ class Carnivore(Animal):
             animal.health -= 50
         if animal.health < 1:
             Animal.alive.remove(animal)
+
