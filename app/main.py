@@ -16,14 +16,14 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        me = f"Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}"
-        return "{" + me + "}"
+        return f"{{Name: {self.name}, Health: {self.health}," \
+               f" Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        self.hidden = bool(int(self.hidden) - 1)
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
