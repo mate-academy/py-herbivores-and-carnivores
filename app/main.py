@@ -14,8 +14,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        if health > 0:
-            Animal.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
