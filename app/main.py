@@ -11,22 +11,20 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return "{{Name: {}, Health: {}, Hidden: {}}}".\
-            format(self.name, self.health, self.hidden)
+        return f"{{Name: {self.name}, " \
+               f"Health: {self.health}, " \
+               f"Hidden: {self.hidden}}}"
 
     @staticmethod
     def is_dead(lunch_name: str) -> None:
         if lunch_name.health <= 0:
-            Animal.alive.pop()
+            Animal.alive.remove(lunch_name)
 
 
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
