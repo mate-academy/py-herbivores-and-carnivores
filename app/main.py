@@ -20,9 +20,6 @@ class Animal:
 
 class Carnivore(Animal):
 
-    def carnivore(self, name: str) -> None:
-        pass
-
     @staticmethod
     def bite(beast: Animal) -> None:
         if isinstance(beast, Herbivore) and beast.hidden is False:
@@ -33,11 +30,5 @@ class Carnivore(Animal):
 
 class Herbivore(Animal):
 
-    def herbivore(self, name: str) -> None:
-        pass
-
     def hide(self) -> None:
-        if not self.hidden:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
