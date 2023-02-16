@@ -17,9 +17,9 @@ class Animal:
                 f"Hidden: {self.hidden}}}")
 
     @staticmethod
-    def is_dead(lunch_name: str) -> None:
-        if lunch_name.health <= 0:
-            Animal.alive.remove(lunch_name)
+    def is_dead(name: str) -> None:
+        if name.health <= 0:
+            Animal.alive.remove(name)
 
 
 class Herbivore(Animal):
@@ -30,7 +30,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, lunch_name: str) -> None:
-        if isinstance(lunch_name, Herbivore) and lunch_name.hidden is False:
-            lunch_name.health -= 50
-            self.is_dead(lunch_name)
+    @staticmethod
+    def bite(name: Herbivore) -> None:
+        if isinstance(name, Herbivore) and not name.hidden:
+            name.health -= 50
+            name.is_dead(name)
