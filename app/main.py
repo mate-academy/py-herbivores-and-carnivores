@@ -17,10 +17,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @classmethod
-    def die(cls, animal: str) -> None:
-        cls.alive.remove(animal)
-
 
 class Carnivore(Animal):
     def bite(self, herbivore: Animal) -> None:
@@ -37,4 +33,4 @@ class Herbivore(Animal):
         self.hidden = not self.hidden
 
     def die(self) -> None:
-        self.__class__.alive.remove(self)
+        Animal.alive.remove(self)
