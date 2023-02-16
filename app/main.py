@@ -1,8 +1,12 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) \
-            -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
@@ -16,18 +20,14 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if not self.hidden:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(herbivore_object: [Herbivore]) -> None:
-        if isinstance(herbivore_object, Herbivore):
-            if not herbivore_object.hidden:
-                herbivore_object.health -= 50
-                if herbivore_object.health <= 0:
-                    herbivore_object.alive.remove(herbivore_object)
+    def bite(herbivore_obj: [Herbivore]) -> None:
+        if isinstance(herbivore_obj, Herbivore) and not herbivore_obj.hidden:
+            herbivore_obj.health -= 50
+            if herbivore_obj.health <= 0:
+                herbivore_obj.alive.remove(herbivore_obj)
