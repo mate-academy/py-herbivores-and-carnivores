@@ -4,16 +4,19 @@ from __future__ import annotations
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False)\
-            -> None:
+    def __init__(
+            self, name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return "{" + "Name: " + self.name + ", Health: " + \
-            str(self.health) + ", Hidden: " + str(self.hidden) + "}"
+        return ("{Name: " + self.name + ", Health: "
+                + str(self.health) + ", Hidden: " + str(self.hidden) + "}")
 
     def dead(self) -> None:
         self.alive.remove(self)
