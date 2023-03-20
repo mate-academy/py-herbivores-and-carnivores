@@ -22,18 +22,15 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is True:
-            self.hidden = False
+        if self.hidden:
+            self.hidden = not self.hidden
         else:
             self.hidden = True
 
 
 class Carnivore(Animal):
     def bite(self, victim: Herbivore) -> None:
-        if isinstance(victim, Carnivore):
+        if isinstance(victim, Carnivore) or victim.hidden:
             return
-        if victim.hidden is True:
-            return
-        else:
-            victim.health -= 50
-            victim.remove_from_alive()
+        victim.health -= 50
+        victim.remove_from_alive()
