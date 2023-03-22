@@ -32,6 +32,3 @@ class Carnivore(Animal):
             victim.health -= 50
         if victim.health <= 0:
             Animal.alive.remove(victim)
-            # for animal in range(len(Animal.alive)):
-            #     if Animal.alive[animal] is victim:
-            #         del Animal.alive[animal]
