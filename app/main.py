@@ -1,17 +1,20 @@
 class Animal:
-    def __init__(self, health: int = 100, name: str, hidden_attribute: bool = False) -> None:
+    
+    alive = []
+    
+    def __init__(self, name: str, health: int = 100,
+                 hidden_attribute: bool = False) -> None:
         self.health = health
         self.name = name
         self.hidden_attribute = hidden_attribute
         Animal.alive.append(self)
         
     def __repr__(self) -> str:
-        reutrn f"{{Name: {self.name},"
+        return print( f"{{Name: {self.name},"
                f"Health: {self.health},"
-               f"Hidden_atribute: {self.hidden_attribute}}}"
-        
-        
-class Herbivor(Animal):
+               f"Hidden_atribute: {self.hidden_attribute}}}")
+          
+class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden_attribute = not self.hidden_attribute
 
