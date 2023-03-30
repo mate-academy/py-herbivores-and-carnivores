@@ -1,7 +1,7 @@
 class Animal:
 
     alive = []
-    
+
     def __init__(self, name: str, health: int = 100,
                  hidden_attribute: bool = False) -> None:
         self.health = health
