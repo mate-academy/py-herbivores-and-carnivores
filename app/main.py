@@ -19,6 +19,9 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
+    def dead_animal(self) -> None:
+        Animal.alive.remove(self)
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -26,9 +29,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(other: Herbivore) -> None:
-        if isinstance(other, Herbivore) and other.hidden is False:
-            other.health -= 50
-            if other.health <= 0:
-                Animal.alive.pop(Animal.alive.index(other))
+    def bite(self, herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Carnivore) or herbivore.hidden:
+            return
+        herbivore.health -= 50
+        if herbivore.health <= 0:
+            herbivore.dead_animal()
