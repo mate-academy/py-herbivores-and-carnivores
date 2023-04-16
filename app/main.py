@@ -1,3 +1,5 @@
+
+
 class Animal:
     alive = []
 
@@ -5,8 +7,7 @@ class Animal:
             self,
             name: str,
             health: int = 100,
-            hidden: bool = False,
-    ) -> None:
+            hidden: bool = False,) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
@@ -16,8 +17,7 @@ class Animal:
         return (
             f"{{Name: {self.name},"
             f" Health: {self.health},"
-            f" Hidden: {self.hidden}}}"
-        )
+            f" Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
@@ -30,6 +30,5 @@ class Carnivore(Animal):
     def bite(herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
-
         if herbivore.health <= 0:
             Animal.alive.remove(herbivore)
