@@ -1,50 +1,39 @@
 class Animal(object):
     alive = []
 
-    def __init__(self, name: str, *args, **kwargs) -> None:
+    def __init__(self, name: str, *args: int) -> None:
         self.name = name
-        if len(args)!= 0:
+        self.hidden = False
+        if len(args) != 0:
             self.health = args[0]
         else:
             self.health = 100
-        self.hidden = False
-        Animal.alive.append(
-            {"Name": self.name,
-             "Health": self.health,
-             "Hidden": self.hidden}
-        )
+        Animal.alive.append(self)
 
     def __str__(self) -> str:
         return f"\nName = {self.name},\n" \
                f"Current hp = {self.health},\n" \
-               f"Hiding? = {'yes' if self.hidden == True else 'no'}\n"
+               f"Hiding? = {'Yes' if self.hidden == True else 'No'}\n"
+
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, Health: {self.health}," \
+               f" Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
 
-    def hide(self):
-        self.hidden = True
+    def hide(self) -> None:
+        self.hidden = not self.hidden
 
-    def __isub__(self, damage):
+    def __isub__(self, damage: int) -> int:
         self.health -= damage
+        if self.health <= 0:
+            Animal.alive.remove(self)
         return self.health
 
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target: "Herbivore"):
+    def bite(target: Herbivore) -> None:
         if isinstance(target, Herbivore) and target.hidden is False:
             target.__isub__(50)
-        if target.health < 1:
-            dead = 0
-            for animal in Animal.alive:
-                if animal.get("Name") == target.name:
-                    Animal.alive.remove(Animal.alive[dead])
-                else:
-                    dead += 1
-
-
-lion = Carnivore("King Lion")
-rabbit = Herbivore("Susan", 25)
-lion.bite(rabbit)
-
