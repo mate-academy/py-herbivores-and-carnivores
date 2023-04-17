@@ -1,9 +1,12 @@
 class Animal(object):
     alive = []
 
-    def __init__(self, name: str, ) -> None:
+    def __init__(self, name: str, *args, **kwargs) -> None:
         self.name = name
-        self.health = 100
+        if len(args)!= 0:
+            self.health = args[0]
+        else:
+            self.health = 100
         self.hidden = False
         Animal.alive.append(
             {"Name": self.name,
@@ -39,3 +42,9 @@ class Carnivore(Animal):
                     Animal.alive.remove(Animal.alive[dead])
                 else:
                     dead += 1
+
+
+lion = Carnivore("King Lion")
+rabbit = Herbivore("Susan", 25)
+lion.bite(rabbit)
+
