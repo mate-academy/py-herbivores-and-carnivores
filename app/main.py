@@ -4,6 +4,7 @@ class Animal:
     alive = []
 
     def __init__(
+
             self,
             name: str,
             health: int = 100,
