@@ -6,8 +6,8 @@ class Animal(object):
                  health: int = 100,
                  hidden: bool = False
                  ) -> None:
-        self.health = health
         self.name = name
+        self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
 
@@ -26,8 +26,8 @@ class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
 
-    def __isub__(self, damage: int = 50) -> Animal:
-        self.health -= damage
+    def __isub__(self) -> Animal:
+        self.health -= 50
         if self.health <= 0:
             Animal.alive.remove(self)
         return self
