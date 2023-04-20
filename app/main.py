@@ -11,18 +11,18 @@ class Animal:
         self.hidden = hidden
         self.alive.append(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{{Name: {self.name}, " \
                f"Health: {self.health}, " \
                f"Hidden: {self.hidden}}}"
 
-    def die(self):
+    def die(self) -> None:
         self.alive.remove(self)
         print(f"{self.name} has died.")
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
