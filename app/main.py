@@ -4,8 +4,6 @@ class Animal:
     alive = []
 
     def __init__(
-
-
             self,
             name: str,
             health: int = 100,
@@ -19,7 +17,8 @@ class Animal:
         return (
             f"{{Name: {self.name},"
             f" Health: {self.health},"
-            f" Hidden: {self.hidden}}}")
+            f" Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
@@ -32,5 +31,5 @@ class Carnivore(Animal):
     def bite(herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
-        if herbivore.health <= 0:
-            Animal.alive.remove(herbivore)
+            if herbivore.health <= 0:
+                Animal.alive.remove(herbivore)
