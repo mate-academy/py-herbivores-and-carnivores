@@ -12,9 +12,6 @@ class Animal:
         return f"{{Name: {self.name}, Health: {self.health}, Hidden:" \
                f" {self.hidden}}}"
 
-    def remove_from_alive(self) -> None:
-        Animal.alive.remove(self)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
