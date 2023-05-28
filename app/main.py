@@ -1,5 +1,4 @@
 class Animal:
-
     alive = []
 
     def __init__(self, name: str, health: int = 100) -> None:
@@ -9,9 +8,9 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}," \
-               f" Health: {self.health}," \
-               f" Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name},"
+                f" Health: {self.health},"
+                f" Hidden: {self.hidden}}}")
 
     def decrease_health(self, amount: int) -> None:
         self.health -= amount
@@ -24,13 +23,11 @@ class Animal:
 
 
 class Herbivore(Animal):
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-
     def bite(self, animal: Animal) -> None:
         if isinstance(animal, Herbivore) and animal.hidden is False:
             animal.decrease_health(50)
