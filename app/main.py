@@ -30,13 +30,17 @@ class Animal:
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
+    @property
+    def is_alive(self) -> bool:
+        return self in Animal.alive
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
         self._hidden = not self._hidden
 
     def recieve_damage(self, value: int) -> None:
-        if self._health < 1:
+        if not self.is_alive:
             return
         self._health -= value
         if self._health < 1:
@@ -45,6 +49,5 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, prey: Herbivore) -> None:
-        if not isinstance(prey, Herbivore) or prey.hidden:
-            return
-        prey.recieve_damage(50)
+        if isinstance(prey, Herbivore) and not prey.hidden:
+            prey.recieve_damage(50)
