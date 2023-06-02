@@ -14,14 +14,14 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     @staticmethod
     def still_alive(animal: Animal) -> None:
         if animal.health <= 0:
-            animal.alive.pop(animal.alive.index(animal))
+            animal.alive.remove(animal)
 
 
 class Herbivore(Animal):
