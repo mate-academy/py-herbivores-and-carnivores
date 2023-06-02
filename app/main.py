@@ -31,7 +31,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(herbivore: Herbivore) -> None:
+    def bite(herbivore: Herbivore | Carnivore) -> None:
         if not herbivore.hidden and isinstance(herbivore, Herbivore):
             herbivore.health -= 50
 
