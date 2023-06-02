@@ -4,19 +4,19 @@ from __future__ import annotations
 class Animal:
     alive = []
 
-    def __init__(self, name: str, *args, **kwargs) -> None:
-        if args:
-            self.health = args[0]
-        else:
-            self.health = 100
+    def __init__(self,
+                 name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
+        self.health = health
         self.name = name
-        self.hidden = False
+        self.hidden = hidden
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def decrease_health(self, amount: int) -> None:
         self.health -= amount
@@ -34,8 +34,6 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target: Herbivore | Carnivore) -> None:
-        if isinstance(target, Carnivore) or target.hidden:
-            return
-
-        target.decrease_health(50)
+    def bite(target: Animal) -> None:
+        if isinstance(target, Herbivore) and not target.hidden:
+            target.decrease_health(50)
