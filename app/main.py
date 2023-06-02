@@ -1,5 +1,4 @@
 from __future__ import annotations
-from typing import Union
 
 
 class Animal:
@@ -16,9 +15,9 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
@@ -30,7 +29,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(animal: Union[Herbivore, Carnivore]) -> None:
+    def bite(animal: Animal) -> None:
         if isinstance(animal, Herbivore) and animal.hidden is False:
             animal.health -= 50
         if animal.health <= 0:
