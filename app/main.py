@@ -34,4 +34,4 @@ class Carnivore(Animal):
             herbivore.health -= 50
 
         if herbivore.health <= 0:
-            Animal.alive.pop(Animal.alive.index(herbivore))
+            Animal.alive.remove(herbivore)
