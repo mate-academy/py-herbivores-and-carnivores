@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
     alive = []
 
@@ -12,10 +15,10 @@ class Animal:
         Animal.alive.append(self)
 
     @classmethod
-    def is_alive(cls) -> None:
-        for element in cls.alive:
-            if element.health <= 0:
-                cls.alive.remove(element)
+    def is_alive(cls, animal: annotations) -> None:
+        if animal in cls.alive:
+            if animal.health <= 0:
+                cls.alive.remove(animal)
 
     def __repr__(self) -> str:
         return f"{{Name: {self.name}," \
@@ -36,4 +39,4 @@ class Carnivore(Animal):
     def bite(other: Herbivore) -> None:
         if isinstance(other, Herbivore) and other.hidden is False:
             other.health -= 50
-            Animal.is_alive()
+            Animal.is_alive(other)
