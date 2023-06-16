@@ -5,11 +5,13 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+        self.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, Hidden: {self.hidden}}}"
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, Hidden: {self.hidden}}}"
+        )
 
     def decrease_health(self, amount: int) -> None:
         self.health -= amount
