@@ -8,13 +8,15 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     @classmethod
-    def checking_in_alive(cls) -> dict:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
+    def checking_in_alive(cls) -> None:
+        for animal in cls.alive:
+            if animal.health <= 0:
+                cls.alive.remove(animal)
 
 
 class Herbivore(Animal):
