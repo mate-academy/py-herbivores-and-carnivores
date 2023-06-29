@@ -10,16 +10,13 @@ class Animal:
         self.health = health
         self.name = name
         self.hidden = hidden
-        self.animal_birth(self)
+        self.__animal_birth__()
 
-    @classmethod
-    def animal_birth(cls, birth_animal: "Animal") -> None:
-        cls.alive.append(birth_animal)
+    def __animal_birth__(self) -> None:
+        self.alive.append(self)
 
-    @classmethod
-    def animal_dead(cls, dead_animal: "Animal") -> None:
-        alive_index = cls.alive.index(dead_animal)
-        cls.alive.pop(alive_index)
+    def __animal_dead__(self) -> None:
+        self.alive.remove(self)
 
     def __repr__(self) -> str:
         return ("{" + f"Name: {self.name}, "
@@ -28,22 +25,17 @@ class Animal:
 
 
 class Carnivore(Animal):
-    @classmethod
-    def bite(cls, bite_animal: Animal) -> None:
+    def bite(self, bite_animal: Animal) -> None:
         if bite_animal.__class__ != Carnivore:
-            if bite_animal.health != 0:
-                if not bite_animal.hidden:
-                    if bite_animal.health >= 50:
-                        bite_animal.health = bite_animal.health - 50
-                    else:
-                        bite_animal.health = 0
-                    if bite_animal.health == 0:
-                        cls.animal_dead(bite_animal)
+            if not bite_animal.hidden:
+                if bite_animal.health >= 50:
+                    bite_animal.health = bite_animal.health - 50
+                else:
+                    bite_animal.health = 0
+        if bite_animal.health == 0:
+            bite_animal.__animal_dead__()
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if not self.hidden:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
