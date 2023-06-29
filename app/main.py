@@ -26,14 +26,10 @@ class Animal:
 
 class Carnivore(Animal):
     def bite(self, bite_animal: Animal) -> None:
-        if bite_animal.__class__ != Carnivore:
-            if not bite_animal.hidden:
-                if bite_animal.health >= 50:
-                    bite_animal.health = bite_animal.health - 50
-                else:
-                    bite_animal.health = 0
-        if bite_animal.health == 0:
-            bite_animal.__animal_dead__()
+        if bite_animal.__class__ != Carnivore and not bite_animal.hidden:
+            bite_animal.health -= 50
+            if bite_animal.health <= 0:
+                bite_animal.__animal_dead__()
 
 
 class Herbivore(Animal):
