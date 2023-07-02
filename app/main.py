@@ -1,6 +1,5 @@
 class Animal:
     alive = []
-    num_tracker = [1, 2, 3, 4, 5]
 
     def __init__(self, name: str,
                  health: int = 100,
