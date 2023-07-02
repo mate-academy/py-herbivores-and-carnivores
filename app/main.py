@@ -15,9 +15,9 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
@@ -32,6 +32,4 @@ class Carnivore(Animal):
             herbivore.health -= 50
 
         if herbivore.health <= 0:
-            for elem in herbivore.alive:
-                if elem.name == herbivore.name:
-                    herbivore.alive.pop(herbivore.alive.index(elem))
+            Animal.alive.remove(herbivore)
