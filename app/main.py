@@ -11,10 +11,10 @@ class Animal:
     def __repr__(self) -> str:
         for animal in self.alive:
             return "{" \
-                   + f"Name: {self.name}, " \
-                     f"Health: {self.health}, " \
-                     f"Hidden: {self.hidden}" \
-                   + "}"
+                f"Name: {self.name}, " \
+                f"Health: {self.health}, " \
+                f"Hidden: {self.hidden}" \
+                "}"
 
 
 class Herbivore(Animal):
@@ -25,10 +25,13 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(other: "Animal") -> None:
-        if other.hidden is not True \
-                and isinstance(other, Carnivore) is not True:
-            other.health = other.health - 50
+        if isinstance(other, Carnivore):
+            return
 
-            if other.health <= 0:
-                index = Animal.alive.index(other)
-                Animal.alive.pop(index)
+        if other.hidden:
+            return
+
+        other.health -= 50
+
+        if other.health <= 0:
+            Animal.alive.remove(other)
