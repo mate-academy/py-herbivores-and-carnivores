@@ -1,8 +1,6 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
+    num_tracker = [1, 2, 3, 4, 5]
 
     def __init__(self, name: str,
                  health: int = 100,
@@ -32,3 +30,6 @@ class Carnivore(Animal):
             herbivore.health -= 50
             if herbivore.health < 1:
                 Animal.alive.remove(herbivore)
+
+
+print(Animal)
