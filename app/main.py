@@ -10,11 +10,9 @@ class Animal:
 
     def __repr__(self) -> str:
         for animal in self.alive:
-            return "{" \
-                f"Name: {self.name}, " \
-                f"Health: {self.health}, " \
-                f"Hidden: {self.hidden}" \
-                "}"
+            return ("{"f"Name: {self.name}, "
+                    f"Health: {self.health}, "
+                    f"Hidden: {self.hidden}""}")
 
 
 class Herbivore(Animal):
@@ -25,10 +23,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(other: "Animal") -> None:
-        if isinstance(other, Carnivore):
-            return
-
-        if other.hidden:
+        if isinstance(other, Carnivore) or other.hidden:
             return
 
         other.health -= 50
