@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 from typing import List
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive: List[Animal] = []
 
     def __init__(
             self,
@@ -16,15 +18,17 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (
+            f"{{Name: {self.name}, Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
     def die(self) -> None:
         self.health = 0
         self.hidden = True
         self.alive.remove(self)
 
-    def bite(self, animal: object) -> None:
+    def bite(self, animal: Animal) -> None:
         pass
 
 
