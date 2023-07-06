@@ -24,17 +24,14 @@ class Animal:
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(other: Herbivore) -> int:
-        if isinstance(other, Carnivore):
-            return other.health
-        if not other.hidden:
+    def bite(other: Herbivore) -> None:
+        if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
+
         other.health = max(0, other.health)
 
         if other.health == 0:
             Animal.alive.remove(other)
-
-        return other.health
 
 
 class Herbivore(Animal):
