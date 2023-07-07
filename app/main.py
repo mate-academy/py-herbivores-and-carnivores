@@ -33,4 +33,3 @@ class Carnivore(Animal):
             if animal.health <= 0:
                 animal.health = 0
                 self.alive.remove(animal)
-
