@@ -1,7 +1,8 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str,
+    def __init__(self,
+                 name: str,
                  health: int = 100,
                  hidden: bool = False) -> None:
         self.name = name
@@ -10,9 +11,9 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{" f"Name: {self.name}, "\
-               f"Health: {self.health}, "\
-               f"Hidden: {self.hidden}" f"}}"
+        return (f"{{" f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}" f"}}")
 
 
 class Herbivore(Animal):
@@ -22,8 +23,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
-        if isinstance(herbivore, Herbivore) is True\
-                and herbivore.hidden is False:
+        if (isinstance(herbivore, Herbivore) is True
+                and herbivore.hidden is False):
             herbivore.health -= 50
         if herbivore.health <= 0:
             Animal.alive.remove(herbivore)
