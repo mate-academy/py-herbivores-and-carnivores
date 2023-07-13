@@ -18,8 +18,8 @@ class Animal:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        text = ("{{Name: {name}, Health: {health}, Hidden: {hidden}}}".
-                format(name=self.name, health=self.health, hidden=self.hidden))
+        text = (f"{{Name: {self.name}, "
+                f"Health: {self.health}, Hidden: {self.hidden}}}")
 
         return text
 
