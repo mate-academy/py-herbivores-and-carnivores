@@ -33,6 +33,6 @@ class Carnivore(Animal):
         if prey.hidden:
             pass
         else:
-            prey.hp -= 50
-            if prey.hp <= 0:
+            prey.health -= 50
+            if prey.health <= 0:
                 prey.die
