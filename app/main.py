@@ -2,14 +2,14 @@ class Animal:
     alive = []
 
     def __init__(self, name: str,
-               health: int = 100,
-               hidden: bool = False
-               ) -> None:
+                 health: int = 100,
+                 hidden: bool = False
+                 ) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
         self.alive.append(self)
-    
+
     def die(self) -> None:
         Animal.alive.remove(self)
 
@@ -19,7 +19,7 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         if self.hidden:
             self.hidden = False
         else:
