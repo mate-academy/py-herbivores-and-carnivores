@@ -11,15 +11,15 @@ class Animal:
     def print_info(self) -> None:
         for item in self.alive:
             print(
-                f"Name: {self.name}, "
-                f"Health: {self.health}, "
-                f"Hidden: {self.hidden}"
+                f"Name: {item.name}, "
+                f"Health: {item.health}, "
+                f"Hidden: {item.hidden}"
             )
 
 
 class Herbivore(Animal):
     def __init__(self, name: str, health: int) -> None:
-        super().__init__(self, name, health, hidden)
+        super().__init__(name, health, hidden)
 
     @classmethod
     def hide(cls) -> None:
@@ -27,8 +27,8 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def __init__(self, name: str, health: int) -> None:
-        super().__init__(self, name, health, hidden)
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
 
     @classmethod
     def bite(cls, herbivore: Herbivore) -> None:
