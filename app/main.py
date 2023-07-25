@@ -1,38 +1,39 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100) -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
+
         self.name = name
         self.health = health
-        self.hidden = False
-        self.alive.append(self)
-        # where to add instances to Animal.alive?
+        self.hidden = hidden
+        Animal.alive.append(self)
 
-    def print_info(self) -> None:
-        for item in self.alive:
-            print(
-                f"Name: {item.name}, "
-                f"Health: {item.health}, "
-                f"Hidden: {item.hidden}"
-            )
+    def die(self) -> None:
+        Animal.alive.remove(self)
+
+    def __repr__(self) -> str:
+        return f"{{" \
+               f"Name: {self.name}, " \
+               f"Health: {self.health}, " \
+               f"Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
-    def __init__(self, name: str, health: int) -> None:
-        super().__init__(name, health, hidden)
 
-    @classmethod
-    def hide(cls) -> None:
-        cls.hidden = True
+    def hide(self) -> None:
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
 
-    @classmethod
-    def bite(cls, herbivore: Herbivore) -> None:
-        if Herbivore and Herbivore.hidden is False:
+    @staticmethod
+    def bite(herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
             if herbivore.health <= 0:
-                Animal.alive.remove(herbivore)
+                herbivore.die()
