@@ -11,9 +11,9 @@ class Animal:
 
     def __repr__(self) -> str:
         return (
-    f"{{Name: {self.name}, Health: {self.health}, "
-    f"Hidden: {self.hidden}}}"
-)
+            f"{{Name: {self.name}, Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
         
     def die(self) -> None:
@@ -23,10 +23,8 @@ class Animal:
     def take_damage(self, damage: int) -> None:
         if not self.hidden:
             self.health = max(self.health - damage, 0)
-            if self.health == 0:
+            if self.health <= 0:
                 self.die()
-            elif self.health < 0:
-                self.health = 0
 
 
 class Herbivore(Animal):
