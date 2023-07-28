@@ -1,4 +1,3 @@
-
 class Animal:
     alive = []
 
@@ -15,7 +14,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-        
     def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
@@ -34,6 +32,5 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, target: Herbivore, hide: int = 50) -> None:
-        if not self.hidden and isinstance(target, Herbivore)\
-                and not target.hidden:
+        if not self.hidden and isinstance(target, Herbivore) and not target.hidden:
             target.take_damage(hide)
