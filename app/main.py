@@ -25,10 +25,6 @@ class Animal:
     def __die(self) -> None:
         self.alive.remove(self)
 
-    @classmethod
-    def get_all_alive(cls) -> List["Animal"]:
-        return cls.alive
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
