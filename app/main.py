@@ -11,9 +11,11 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}," \
-               f" Health: {self.health}," \
-               f" Hidden: {self.hidden}}}"
+        return (
+            f"{{Name: {self.name},"
+            f" Health: {self.health},"
+            f" Hidden: {self.hidden}}}"
+        )
 
     def set_health(self, new_health: int) -> None:
         self.health = max(new_health, 0)
