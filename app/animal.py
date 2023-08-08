@@ -15,6 +15,6 @@ class Animal:
     def already_died(self) -> None:
         Animal.alive.remove(self)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{{Name: {self.name}, " \
                f"Health: {self.health}, Hidden: {self.hidden}}}"
