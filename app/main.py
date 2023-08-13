@@ -5,26 +5,25 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+        self.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{" \
-            f"Name: {self.name}," \
-            f" Health: {self.health}," \
-            f" Hidden: {self.hidden}" \
+        return (
+            f"{{"
+            f"Name: {self.name},"
+            f" Health: {self.health},"
+            f" Hidden: {self.hidden}"
             f"}}"
+        )
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, other: str) -> int:
+    def bite(self, other: Herbivore) -> None:
         if isinstance(other, Carnivore):
             self.health = 100
         else:
