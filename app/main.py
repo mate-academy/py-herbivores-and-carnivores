@@ -11,9 +11,9 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        result = f"{symbol[0]}Name: {self.name},"\
-                 f" Health: {self.health}, "\
-                 f"Hidden: {self.hidden}{symbol[1]}"
+        result = (f"{symbol[0]}Name: {self.name},"
+                  f" Health: {self.health},"
+                  f" Hidden: {self.hidden}{symbol[1]}")
         return result
 
 
@@ -24,7 +24,7 @@ class Carnivore(Animal):
             if herbivore.health <= 0:
                 Animal.alive.remove(herbivore)
         else:
-            print("lion cannot bite hidden rabbit")
+            print(f"{self.name} cannot bite hidden rabbit")
 
 
 class Herbivore(Animal):
