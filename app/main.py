@@ -34,4 +34,4 @@ class Carnivore(Animal):
                 and not harbivore_animal.hidden):
             harbivore_animal.health -= 50
             if harbivore_animal.health <= 0:
-                del Animal.alive[Animal.alive.index(harbivore_animal)]
+                Animal.alive.remove(harbivore_animal)
