@@ -24,12 +24,12 @@ class Carnivore(Animal):
             if herbivore.health <= 0:
                 Animal.alive.remove(herbivore)
         else:
-            print(f"{self.name} cannot bite hidden rabbit")
+            print(f"{self.name} cannot bite hidden {herbivore.name}")
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
         if self.hidden is False:
-            self.hidden = True
+            self.hidden = not self.hidden
         else:
             self.hidden = False
