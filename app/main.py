@@ -2,11 +2,11 @@ class Animal:
 
     alive = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden : bool = False
-                 ) -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden : bool = False) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -27,7 +27,7 @@ class Carnivore(Animal):
 
     @staticmethod
     def bite(animal: Herbivore) -> None:
-        if (animal.hidden is False) and isinstance(animal, Herbivore):
+        if animal.hidden is False and isinstance(animal, Herbivore):
             animal.health -= 50
             if animal.health <= 0:
                 Animal.alive.remove(animal)
