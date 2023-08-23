@@ -22,7 +22,7 @@ class Herbivore(Animal):
         if self.hidden:
             self.hidden = False
         else:
-            self.hidden = True
+            self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
