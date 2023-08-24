@@ -1,6 +1,9 @@
 class Animal:
     alive = []
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
+    
+    def __init__(self, name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
         if health > 0:
             self.health = health
             self.name = name
@@ -8,14 +11,19 @@ class Animal:
             Animal.alive.append(self)
 
     @classmethod
-    def alive_attributes(cls):
+    def alive_attributes(cls) -> list:
         attributes = []
         for instance in cls.alive:
             attributes.append(instance.__dict__)
         return attributes
 
-    def __repr__(self):
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+    def __repr__(self) -> str:
+            return (
+        f"{{Name: {self.name}, "
+        f"Health: {self.health}, "
+        f"Hidden: {self.hidden}}}"
+    )
+
 
 
 class Herbivore(Animal):
