@@ -22,7 +22,7 @@ class Animal:
             f"{{Name: {self.name}, "
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
-                )
+        )
 
 
 class Herbivore(Animal):
