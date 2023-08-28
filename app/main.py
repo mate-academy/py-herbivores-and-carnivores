@@ -13,21 +13,18 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return str(self.__dict__).replace("'", "").title()
+        return f"{self.__dict__}".replace("'", "").title()
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
 
-    def is_alive(self) -> None:
-        if self.health <= 0:
-            Animal.alive.remove(self)
-
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(prey: Herbivore) -> None:
+    @classmethod
+    def bite(cls, prey: Herbivore) -> None:
         if isinstance(prey, Herbivore) and not prey.hidden:
             prey.health -= 50
-            prey.is_alive()
+            if prey.health <= 0:
+                cls.alive.remove(prey)
