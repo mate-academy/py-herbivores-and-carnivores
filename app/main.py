@@ -7,14 +7,14 @@ class Animal:
     def __init__(
             self,
             name: str,
-            health: int = 100,
-            hidden: bool = False
+            health: int | None = 100,
+            hidden: bool | None = False
     ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
 
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
