@@ -21,10 +21,11 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, point: Herbivore) -> None:
-        if point.hidden is False and isinstance(point, Herbivore) is True:
-            point.health -= 50
-        if point.health <= 0:
-            for index, animal in enumerate(Animal.alive):
-                if animal.name == point.name:
-                    Animal.alive.remove(point)
+    def bite(self, herbivore: Herbivore) -> None:
+        if (herbivore.hidden is False
+                and isinstance(herbivore, Herbivore) is True):
+            herbivore.health -= 50
+        if herbivore.health <= 0:
+            for animal in Animal.alive:
+                if animal.name == herbivore.name:
+                    Animal.alive.remove(herbivore)
