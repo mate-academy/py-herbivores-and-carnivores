@@ -25,7 +25,7 @@ class Carnivore(Animal):
         if target.hidden:
             print(f"{self.name} cannot bite hidden {target.name}")
         elif isinstance(target, Carnivore):
-            print(f"x{self.name} can't bite another carnivore.")
+            print(f"{self.name} can't bite another carnivore.")
         else:
             target.health -= 50
             if target.health <= 0:
