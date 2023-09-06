@@ -19,7 +19,7 @@ class Herbivore(Animal):
         else:
             self.hidden = True
 
-
+.
 class Carnivore(Animal):
 
     def bite(self, target: Herbivore) -> None:
