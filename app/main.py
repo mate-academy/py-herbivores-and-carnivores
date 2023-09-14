@@ -19,7 +19,7 @@ class Animal:
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
         )
-git
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
