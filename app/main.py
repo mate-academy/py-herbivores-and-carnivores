@@ -16,8 +16,7 @@ class Animal:
         return (
             f"{{Name: {self.name}, "
             f"Health: {self.health}, "
-            f"Hidden: {self.hidden}"
-            f"}}"
+            f"Hidden: {self.hidden}}}"
         )
 
 
