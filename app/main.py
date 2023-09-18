@@ -12,7 +12,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{{" \
                f"Name: {self.name}, " \
                f"Health: {self.health}, " \
