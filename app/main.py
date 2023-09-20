@@ -10,38 +10,29 @@ class Animal:
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
-        # Animal.alive.append(self.__dict__)
-        print(Animal.alive, len(Animal.alive))
 
-    # def __str__(self):
-    #     res = []
-    #     for _ in self.alive:
-    #         res.append(self.__dict__)
-    #     Animal.alive = res
-    #     return Animal.alive
+    def __repr__(self):
+        res = []
+        for _ in self.alive:
+            res.append(self.__dict__)
+        return f"{res}"
 
 
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
 
     def bite(self, other: object):
-        if other.hidden == False and type(other) != Carnivore:
+        if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
         if other.health <= 0:
             Animal.alive.remove(other)
-        # for i in Animal.alive:
-        #     if i["health"] <= 0:
-        #         Animal.alive.remove(i)
 
 
 pantera = Carnivore("Bagira")
 snake = Carnivore("Kaa")
-# print(Animal.alive)
+print(Animal.alive)
