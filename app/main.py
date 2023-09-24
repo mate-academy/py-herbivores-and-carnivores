@@ -6,7 +6,7 @@ class Animal:
                  name: str,
                  health: int = 100,
                  hidden: bool = False
-    ) -> None:
+                 ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -29,7 +29,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(self, other: object) -> None:
+    def bite(other: object) -> None:
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
         if other.health <= 0:
