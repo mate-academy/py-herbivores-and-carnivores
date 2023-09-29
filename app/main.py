@@ -8,8 +8,11 @@ class Animal:
         self.hidden = False
         Animal.alive.append(self)
 
-    def __str__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Carnivore(Animal):
@@ -18,10 +21,7 @@ class Carnivore(Animal):
             super().alive.remove(animal)
 
     def bite(self, animal: Animal) -> None:
-        print(animal.hidden)
-        print(isinstance(animal, Herbivore) and not animal.hidden)
         if isinstance(animal, Herbivore) and not animal.hidden:
-            print('bam')
             animal.health -= 50
             self.check_is_alive(animal)
 
@@ -29,8 +29,3 @@ class Carnivore(Animal):
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
-
-
-lion = Animal("Lion King")
-print(lion)
-print(Animal.alive)
