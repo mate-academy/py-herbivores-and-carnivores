@@ -17,7 +17,7 @@ class Animal:
 class Carnivore(Animal):
     def check_is_alive(self, animal: Animal) -> None:
         if animal.health <= 0:
-            super().alive.remove(animal)
+            self.alive.remove(animal)
 
     def bite(self, animal: Animal) -> None:
         if isinstance(animal, Herbivore) and not animal.hidden:
