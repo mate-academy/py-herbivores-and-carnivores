@@ -1,10 +1,9 @@
 class Animal:
     alive = []
-    default_health = 100
 
-    def __init__(self, name: str, health: int = None) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = health if health is not None else self.default_health
+        self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
