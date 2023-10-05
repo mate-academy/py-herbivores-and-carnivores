@@ -1,6 +1,4 @@
-from typing import List, Type, TypeVar
-
-T = TypeVar("T", bound="Animal")
+from typing import List
 
 
 class Animal:
@@ -29,7 +27,7 @@ class Animal:
             Animal.alive.remove(animal)
 
     @classmethod
-    def get_alive(cls: Type[T]) -> List[T]:
+    def get_alive(cls) -> List["Animal"]:
         return cls.alive
 
 
