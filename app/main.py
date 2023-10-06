@@ -5,12 +5,13 @@ class Animal:
             self,
             name: str,
             health: int = 100,
-            hidden: bool = False) -> None:
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
 
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __str__(self) -> None:
         return (f"{{Name: {self.name}, "
