@@ -1,6 +1,3 @@
-from typing import List
-
-
 class Animal:
 
     alive = []
@@ -22,13 +19,9 @@ class Animal:
         )
 
     @staticmethod
-    def check_health(animal: "Animal") -> None:
-        if animal.health <= 0:
-            Animal.alive.remove(animal)
-
-    @classmethod
-    def get_alive(cls) -> List["Animal"]:
-        return cls.alive
+    def check_health(self: "Animal") -> None:
+        if self.health <= 0:
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
@@ -44,5 +37,4 @@ class Carnivore(Animal):
             return
 
         animal.health -= 50
-
         Animal.check_health(animal)
