@@ -25,6 +25,4 @@ class Carnivore(Animal):
             return
         animal.health -= 50
         if animal.health <= 0:
-            for item in Animal.alive:
-                if item.name == animal.name:
-                    Animal.alive.remove(item)
+            Animal.alive.remove(animal)
