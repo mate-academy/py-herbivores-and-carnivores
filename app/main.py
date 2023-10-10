@@ -10,16 +10,13 @@ class Animal:
         self.health = health
         self.hidden = hidden
 
-        self.alive.append(self)
+        Animal.alive.append(self)
 
-    def __str__(self) -> str:
+    def __repr__(self) -> str:
 
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
-
-    def __repr__(self) -> str:
-        return self.__str__()
 
 
 class Herbivore(Animal):
@@ -31,7 +28,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @classmethod
-    def bite(cls, victim: "Herbivore") -> None:
+    def bite(cls, victim: Herbivore) -> None:
         if not isinstance(victim, Carnivore) and not victim.hidden:
             victim.health -= 50
             if victim.health <= 0:
