@@ -5,7 +5,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+        self.alive.append(self)
 
     def __repr__(self) -> str:
         return (
