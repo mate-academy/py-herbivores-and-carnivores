@@ -16,18 +16,11 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    def remove_animal(self) -> None:
-        if self in Animal.alive:
-            Animal.alive.remove(self)
-
 
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
@@ -35,5 +28,5 @@ class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
-            if herbivore.health <= 0:
-                herbivore.remove_animal()
+        if herbivore.health <= 0:
+            Animal.alive.remove(herbivore)
