@@ -24,4 +24,4 @@ class Carnivore(Animal):
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
             if herbivore.health <= 0:
-                super(Herbivore, herbivore).alive.remove(herbivore)
+                herbivore.alive.remove(herbivore)
