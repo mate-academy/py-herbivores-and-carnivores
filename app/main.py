@@ -16,7 +16,7 @@ class Animal:
 
     def dead(self) -> None:
         if self.health <= 0:
-            self.alive.remove(self)
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
