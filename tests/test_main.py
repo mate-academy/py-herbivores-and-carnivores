@@ -129,8 +129,6 @@ def test_print_animal_alive():
 
     f = io.StringIO()
 
-    print(Animal.alive)
-
     with redirect_stdout(f):
         print(Animal.alive)
 
