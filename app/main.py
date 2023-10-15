@@ -23,7 +23,7 @@ class Animal:
 
 class Carnivore(Animal):
     def bite(self, other: Animal) -> None:
-        if not other.hidden and not isinstance(other, Carnivore):
+        if not other.hidden and isinstance(other, Herbivore):
             other.health -= 50
             Animal.death(other)
 
