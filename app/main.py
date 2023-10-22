@@ -24,16 +24,13 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> bool:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
         return self.hidden
 
 
 class Carnivore(Animal):
     @staticmethod
     def bite(other: "Animal") -> int:
-        if isinstance(other, Herbivore) is True and other.hidden is False:
+        if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
         return other.health
