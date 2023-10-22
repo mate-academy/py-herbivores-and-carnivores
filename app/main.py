@@ -25,7 +25,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        self.hidden = False if self.hidden else True
+        self.hidden = not self.hidden
 
     def bitten(self) -> None:
         self.health -= 50
