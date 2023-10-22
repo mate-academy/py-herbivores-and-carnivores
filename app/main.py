@@ -14,7 +14,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     @classmethod
     def remove_dead_animal(cls, animal: Type[Herbivore]) -> None:
