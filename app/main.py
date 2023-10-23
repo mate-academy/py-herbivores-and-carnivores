@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
     alive = []
 
@@ -17,20 +20,22 @@ class Animal:
         super().__setattr__(attr, value)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (f"{{"
+                f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}"
+                f"}}")
 
 
 class Herbivore(Animal):
-    def hide(self) -> bool:
+    def hide(self) -> None:
         self.hidden = not self.hidden
-        return
+
 
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(other: "Animal") -> int:
+    def bite(other: "Animal") -> None:
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
-        return
+
