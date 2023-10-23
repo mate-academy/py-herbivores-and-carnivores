@@ -25,7 +25,7 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> bool:
         self.hidden = not self.hidden
-        return self.hidden
+        return
 
 
 class Carnivore(Animal):
@@ -33,4 +33,4 @@ class Carnivore(Animal):
     def bite(other: "Animal") -> int:
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
-        return other.health
+        return
