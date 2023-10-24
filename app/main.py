@@ -14,11 +14,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __setattr__(self, attr: str, value: int) -> None:
-        if attr == "health" and value <= 0 and self in Animal.alive:
-            Animal.alive.remove(self)
-        super().__setattr__(attr, value)
-
     def __repr__(self) -> str:
         return (f"{{"
                 f"Name: {self.name}, "
@@ -37,3 +32,5 @@ class Carnivore(Animal):
     def bite(other: "Animal") -> None:
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
+            if other.health <= 0:
+                Animal.alive.remove(other)
