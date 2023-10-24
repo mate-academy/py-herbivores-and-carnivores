@@ -1,1 +1,34 @@
-# write your code here
+from __future__ import annotations
+
+
+class Animal:
+    alive = []
+
+    def __init__(self, name: str, health: int = 100) -> None:
+        self.health = health
+        self.name = name
+        self.hidden = False
+
+        Animal.alive.append(self)
+
+    def __repr__(self) -> str:
+        return (f"{{Name: {self.name},"
+                f" Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
+
+
+class Herbivore(Animal):
+    def hide(self) -> None:
+        self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+    @staticmethod
+    def bite(animal: Animal) -> None:
+
+        if not animal.hidden:
+            animal.health -= 50
+            if animal.health <= 0:
+                animal.alive.remove(animal)
+        if isinstance(animal, Carnivore):
+            animal.health = 100
