@@ -2,7 +2,7 @@ from typing import List
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive= []
 
     def __init__(
             self,
