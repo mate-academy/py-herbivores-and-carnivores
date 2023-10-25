@@ -1,9 +1,5 @@
 class Animal:
-<<<<<<< HEAD
-    alive = []
-=======
-    alive= []
->>>>>>> a785ecfbd412b849653930adc5e49ba6635d744f
+alive = []
 
     def __init__(
             self,
