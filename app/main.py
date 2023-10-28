@@ -12,11 +12,10 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    @classmethod
-    def death(cls) -> None:
-        for animal in cls.alive:
+    def death(self) -> None:
+        for animal in Animal.alive:
             if animal.health <= 0:
-                cls.alive.remove(animal)
+                Animal.alive.remove(animal)
 
     def __repr__(self) -> str:
         return (
@@ -32,7 +31,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: Herbivore) -> None:
-        if not other.hidden and isinstance(other, Herbivore):
-            other.health -= 50
-            Animal.death()
+    def bite(self, animal: Herbivore) -> None:
+        if not animal.hidden and isinstance(animal, Herbivore):
+            animal.health -= 50
+            self.death()
