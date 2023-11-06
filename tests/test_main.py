@@ -10,38 +10,38 @@ from app.main import Animal, Herbivore, Carnivore
 
 def test_animal_class():
     assert hasattr(Animal, "alive"), (
-        f"Animal class should have attribute 'alive'"
+        f"animal class should have attribute 'alive'"
     )
 
 
 def test_animal_constructor():
     lion = Animal("Lion King")
     assert hasattr(lion, "name"), (
-        "Animal instance should have attribute 'name'"
+        "animal instance should have attribute 'name'"
     )
     assert hasattr(lion, "health"), (
-        "Animal instance should have attribute 'health'"
+        "animal instance should have attribute 'health'"
     )
     assert hasattr(lion, "hidden"), (
-        "Animal instance should have attribute 'hidden'"
+        "animal instance should have attribute 'hidden'"
     )
     assert lion.name == "Lion King", (
         f"'lion.name' should equal to 'Lion King' when "
-        f"'lion' created by 'Animal('Lion King')'"
+        f"'lion' created by 'animal('Lion King')'"
     )
     assert lion.health == 100, (
         f"'lion.health' should equal to 100 when "
-        f"'lion' created by 'Animal('Lion King')'"
+        f"'lion' created by 'animal('Lion King')'"
     )
     assert lion.hidden is False, (
         f"'lion.hidden' should equal to False when "
-        f"'lion' created by 'Animal('Lion King')'"
+        f"'lion' created by 'animal('Lion King')'"
     )
     assert len(Animal.alive) == 1, (
-        "Constructor should add created animal to 'Animal.alive'"
+        "Constructor should add created animal to 'animal.alive'"
     )
     assert Animal.alive[0].name == "Lion King", (
-        "Constructor should add created animal to 'Animal.alive'"
+        "Constructor should add created animal to 'animal.alive'"
     )
 
 
@@ -56,7 +56,7 @@ def test_only_one_method_should_be_declared_in_each_of_children_classes(
     class_, method
 ):
     assert Animal in class_.__bases__, (
-        f"'{class_.__name__}' should be inherited from 'Animal'"
+        f"'{class_.__name__}' should be inherited from 'animal'"
     )
     assert (
         method in class_.__dict__
@@ -137,7 +137,7 @@ def test_print_animal_alive():
              "{Name: Bagira, Health: 100, Hidden: False}, " \
              "{Name: Susan, Health: 100, Hidden: False}]\n"
     assert out == output, (
-        f"Output should equal to {output} when you print 'Animal.alive' with "
+        f"Output should equal to {output} when you print 'animal.alive' with "
         f"three animals"
     )
 
