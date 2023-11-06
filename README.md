@@ -46,7 +46,7 @@ lion.bite(rabbit)
 rabbit.health == 0  # rabbit is dead
 
 rabbit in Animal.alive  # False
-# there is no dead animals in animal.alive
+# there is no dead animals in Animal.alive
 ```
 Also implement feature that when you print `Animal.alive` it
 should look like this:
