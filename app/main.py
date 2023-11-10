@@ -1,6 +1,7 @@
 class Animal:
-    def __init__(self, name: str,
-                 health: int = 100,
+    alive = []
+
+    def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
         self.name = name
         self.health = health
@@ -8,7 +9,10 @@ class Animal:
 
         Animal.alive.append(self)
 
-    alive = []
+    def __repr__(self) -> str:
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def check_is_alive(self) -> None:
         if self.health <= 0:
