@@ -12,12 +12,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    @staticmethod
-    def is_alive() -> None:
-        for animal in Animal.alive:
-            if animal.health <= 0:
-                Animal.alive.remove(animal)
-
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
@@ -26,17 +20,15 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(other: Herbivore) -> None:
-        if isinstance(other, Herbivore):
-            if not other.hidden:
-                other.health -= 50
-        Animal.is_alive()
+    def bite(herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Herbivore):
+            if not herbivore.hidden:
+                herbivore.health -= 50
+                if herbivore.health <= 0:
+                    Animal.alive.remove(herbivore)
