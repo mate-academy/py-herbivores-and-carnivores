@@ -17,7 +17,7 @@ class Animal:
         Animal.alive.append(self)
 
     @classmethod
-    def remove_dead_animal(cls, animal: Type[Herbivore]) -> None:
+    def remove_dead_animal(cls, animal: Herbivore) -> None:
         cls.alive.remove(animal)
 
     def __repr__(self) -> str:
@@ -34,7 +34,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, target: Type[Herbivore]) -> None:
+    def bite(self, target: Herbivore) -> None:
         if (isinstance(target, Herbivore)) and (not target.hidden):
             target.health -= 50
             if target.health <= 0:
