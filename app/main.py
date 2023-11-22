@@ -1,6 +1,3 @@
-from typing import Optional
-
-
 class Animal:
     alive = []
 
@@ -19,9 +16,11 @@ class Animal:
         Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, " \
-               f"Health: {self.health}, " \
-               f"Hidden: {self.hidden}}}"
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
@@ -31,9 +30,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target: Optional[Herbivore]) -> None:
-        if isinstance(target, Carnivore) or target.hidden:
-            return
-        target.health -= 50
-        if target.health <= 0:
-            target.die()
+    def bite(target: Herbivore) -> None:
+        if isinstance(target, Herbivore) and not target.hidden:
+            target.health -= 50
+            if target.health <= 0:
+                target.die()
