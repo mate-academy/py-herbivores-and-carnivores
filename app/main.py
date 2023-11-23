@@ -11,11 +11,11 @@ class Animal:
         self.alive.append(self)
 
     def __repr__(self) -> str:
-        first_upper = {
-            key.title(): value for key, value in self.__dict__.items()
-        }
-        first_upper = str(first_upper).replace("'", "")
-        return f"{first_upper}"
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
