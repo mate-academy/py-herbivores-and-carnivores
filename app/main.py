@@ -15,8 +15,8 @@ class Animal:
         self.alive.append(self)
 
     @classmethod
-    def remove_animal(cls, herbivore_obj: object) -> None:
-        cls.alive.remove(herbivore_obj)
+    def remove_animal(cls, herbivore_unit: object) -> None:
+        cls.alive.remove(herbivore_unit)
 
     def __repr__(self) -> str:
         prep_msg = "Name: {0}, Health: {1}," \
