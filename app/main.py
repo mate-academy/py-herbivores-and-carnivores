@@ -1,4 +1,3 @@
-
 class Animal:
     alive = []
 
