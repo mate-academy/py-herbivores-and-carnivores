@@ -19,7 +19,7 @@ class Animal:
 
 class Herbivore(Animal):
 
-    def hide(self) -> bool:
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
     def died(self) -> None:
