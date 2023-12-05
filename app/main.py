@@ -9,26 +9,21 @@ class Animal:
 
     def __repr__(self) -> str:
         return str(
-            {"Name": self.name,
-             "Health": self.health,
-             "Hidden": self.hidden
-             }
-        ).replace("'", "")
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
     @staticmethod
     def bite(animal: Animal) -> None:
-        if isinstance(animal, Herbivore):
-            if not animal.hidden:
-                animal.health -= 50
-                if animal.health <= 0:
-                    Animal.alive.remove(animal)
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
+            if animal.health <= 0:
+                Animal.alive.remove(animal)
