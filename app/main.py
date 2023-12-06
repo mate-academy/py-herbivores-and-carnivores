@@ -29,7 +29,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: dict) -> None:
+    def bite(self, target: Herbivore) -> None:
         if isinstance(target, Herbivore) and not target.hidden:
             target.health -= 50
         if target.health <= 0:
