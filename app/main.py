@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
 
@@ -25,10 +22,7 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is True:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
