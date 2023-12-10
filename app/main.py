@@ -12,7 +12,7 @@ class Animal:
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
-    def death(self) -> None:
+    def die(self) -> None:
         Animal.alive.remove(self)
 
 
@@ -22,9 +22,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: Herbivore) -> None:
+    @staticmethod
+    def bite(target: Herbivore) -> None:
         if isinstance(target, Carnivore) or target.hidden:
             return
         target.health -= 50
         if target.health <= 0:
-            target.death()
+            target.die()
