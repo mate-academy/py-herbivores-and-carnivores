@@ -20,6 +20,7 @@ Create a `Herbivore` class. This class should inherit from Animal.
 Herbivore has a method of `hide`, which changes 
 the hidden property of the beast to the opposite value and helps to hide 
 from carnivores.
+
 ```python
 rabbit = Herbivore("Susan")
 rabbit.hide()
@@ -30,6 +31,7 @@ Create a `Сarnivore` class. This class should inherit from Animal.
 Carnivore has a `bite` method, which takes a 
 herbivore object and decreases the object's health by 50. The method 
 does not work if it is another сarnivore, or the herbivore is currently hiding.
+
 ```python
 lion = Carnivore("Lion King")
 rabbit = Herbivore("Susan")

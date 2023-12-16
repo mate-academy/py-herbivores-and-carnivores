@@ -111,11 +111,11 @@ def test_herbivore_hide():
     Animal.alive = []
     rabbit = Herbivore("Susan")
     rabbit.hide()
-    assert rabbit.hidden is True, (
+    assert rabbit.Hidden is True, (
         "Method 'hide' should change animal attribute 'hidden'"
     )
     rabbit.hide()
-    assert rabbit.hidden is False, (
+    assert rabbit.Hidden is False, (
         "Method 'hide' should change animal attribute 'hidden'"
     )
 
