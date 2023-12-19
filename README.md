@@ -12,8 +12,8 @@ If the health of the animal reaches 0, the beast dies and it should
 be removed from `Animal.alive`.
 ```python
 lion = Carnivore("Simba")
-len(Animal.alive) == 1
-isinstance(Animal.alive[0], Carnivore) is True
+print(len(Animal.alive) == 1)
+print(isinstance(Animal.alive[0], Carnivore) is True)
 ```
 
 Create a `Herbivore` class. This class should inherit from Animal. 
@@ -22,8 +22,9 @@ the hidden property of the beast to the opposite value and helps to hide
 from carnivores.
 ```python
 rabbit = Herbivore("Susan")
+print(rabbit.hidden is True)
 rabbit.hide()
-rabbit.hidden is True  
+print(rabbit.hidden is True)
 ```
 
 Create a `Сarnivore` class. This class should inherit from Animal. 
@@ -33,19 +34,21 @@ does not work if it is another сarnivore, or the herbivore is currently hiding.
 ```python
 lion = Carnivore("Lion King")
 rabbit = Herbivore("Susan")
-rabbit.health == 100
+print(rabbit  in Animal.alive )
+print(rabbit.health == 100)
 lion.bite(rabbit)
-rabbit.health == 50  # bited
+print(rabbit.health == 50)  # bited
+
 
 rabbit.hide()
 lion.bite(rabbit)
-rabbit.health == 50  # lion cannot bite hidden rabbit
+print(rabbit.health == 50 ) # lion cannot bite hidden rabbit
 
 rabbit.hide()
 lion.bite(rabbit)
-rabbit.health == 0  # rabbit is dead
+print(rabbit.health == 0 ) # rabbit is dead
 
-rabbit in Animal.alive  # False
+print(rabbit not in Animal.alive )
 # there is no dead animals in Animal.alive
 ```
 Also implement feature that when you print `Animal.alive` it
@@ -55,6 +58,7 @@ pantera = Carnivore("Bagira")
 snake = Carnivore("Kaa")
 print(Animal.alive)
 # [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
+print(snake)
 ```
 Hint: Use magic method.
 
