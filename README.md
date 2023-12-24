@@ -1,6 +1,6 @@
 # Herbivores and carnivores
 
-Read [the guideline](https://githu~b.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 
 Nature is well suited to reflect the principles of Object Oriented Programming. 
