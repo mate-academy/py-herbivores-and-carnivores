@@ -13,13 +13,13 @@ class Animal:
             Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        alive_animals = {
+        animal = {
             "Name": self.name,
             "Health": self.health,
             "Hidden": self.hidden
         }
 
-        return str(alive_animals).replace("'", "")
+        return str(animal).replace("'", "")
 
 
 class Herbivore(Animal):
