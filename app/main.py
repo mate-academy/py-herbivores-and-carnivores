@@ -13,13 +13,9 @@ class Animal:
             Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        animal = {
-            "Name": self.name,
-            "Health": self.health,
-            "Hidden": self.hidden
-        }
-
-        return str(animal).replace("'", "")
+        return "{" + (f"Name: {self.name}, "
+                      f"Health: {self.health}, "
+                      f"Hidden: {self.hidden}") + "}"
 
 
 class Herbivore(Animal):
@@ -35,5 +31,5 @@ class Carnivore(Animal):
         herbivore.health -= 50
 
         if herbivore.health <= 0:
-            died_index = super().alive.index(herbivore)
-            del super().alive[died_index]
+            died_index = Animal.alive.index(herbivore)
+            del Animal.alive[died_index]
