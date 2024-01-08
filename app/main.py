@@ -5,7 +5,7 @@ class Animal:
     """
     Class representing an animal.
     """
-    alive: List["Animal"] = []
+    alive = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         """
@@ -14,15 +14,15 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         """
         Represent the animal as a string.
         """
-        return f"{{Name: {self.name}," \
-               f" Health: {self.health}," \
-               f" Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def check_health(self) -> None:
         """
@@ -30,7 +30,7 @@ class Animal:
         If the health is 0 or less, remove the animal from the alive list.
         """
         if self.health <= 0:
-            self.__class__.alive.remove(self)
+            self.alive.remove(self)
 
 
 class Herbivore(Animal):
