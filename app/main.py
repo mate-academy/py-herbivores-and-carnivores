@@ -1,10 +1,10 @@
 from typing import List
 
-
 class Animal:
     """
     Class representing an animal.
     """
+
     alive = []
 
     def __init__(self, name: str, health: int = 100) -> None:
@@ -30,7 +30,7 @@ class Animal:
         If the health is 0 or less, remove the animal from the alive list.
         """
         if self.health <= 0:
-            self.alive.remove(self)
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
