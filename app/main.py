@@ -1,5 +1,3 @@
-from typing import List
-
 class Animal:
     """
     Class representing an animal.
