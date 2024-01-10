@@ -5,10 +5,10 @@ class Animal:
         self.name = name
         self.health = 100
         self.hidden = False
-        Animal.alive.append(Animal(name))
+        Animal.alive.append(self)
 
     def __str__(self) -> str:
-        return [{Name: {animal.name}, Health: {animal.health}, Hidden: {animal.hidden}} for animal in Animal.alive]
+        return str([f"{{Name: {animal.name}, Health: {animal.health}, Hidden: {animal.hidden}}}" for animal in Animal.alive])
 
 class Herbivore(Animal):
 
@@ -23,8 +23,8 @@ class Сarnivore(Animal):
     def __init__(self, name):
         super().__init__(name)
     
-    def bite(self, other: "Herbivore") -> None
-        if other.hidden == False:
+    def bite(self, other: "Herbivore") -> None:
+        if not other.hidden:
             other.health -= 50
         if other.health < 0:
             other.health = 0
