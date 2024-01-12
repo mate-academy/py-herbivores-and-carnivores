@@ -34,8 +34,3 @@ class Carnivore(Animal):
             animal.health -= 50
         if animal.health <= 0:
             Animal.alive.remove(animal)
-
-
-pantera = Carnivore("Bagira")
-snake = Carnivore("Kaa")
-print(Animal.alive)
