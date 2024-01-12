@@ -7,11 +7,12 @@ class Animal:
     def __init__(
             self,
             name: str,
-            health: int = 100
+            health: int = 100,
+            hide: bool = False
     ) -> None:
-        self.name = name,
-        self.health = health,
-        self.hidden = False
+        self.name = name
+        self.health = health
+        self.hidden = hide
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -30,7 +31,9 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(animal: Herbivore) -> None:
+        animal.health = animal.health
         if not animal.hidden and isinstance(animal, Herbivore):
             animal.health -= 50
+
         if animal.health <= 0:
             Animal.alive.remove(animal)
