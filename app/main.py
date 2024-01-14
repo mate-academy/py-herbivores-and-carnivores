@@ -27,7 +27,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, herbivore: Herbivore) -> None:
+    def bite(herbivore: Herbivore) -> None:
         herbivores = [
             animal for animal in Animal.alive
             if isinstance(animal, Herbivore)
