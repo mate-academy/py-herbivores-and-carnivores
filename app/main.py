@@ -27,8 +27,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    @staticmethod
-    def bite() -> None:
+    def bite(self, herbivore: Herbivore) -> None:
         herbivores = [
             animal for animal in Animal.alive
             if isinstance(animal, Herbivore)
