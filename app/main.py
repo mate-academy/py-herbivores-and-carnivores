@@ -5,7 +5,8 @@ class Animal:
 
     alive = []
 
-    def __init__(self, name: str,
+    def __init__(self,
+                 name: str,
                  health: int = 100,
                  hidden: bool = False) -> None:
         self.name = name
@@ -20,14 +21,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @staticmethod
-    def __sub__(animal: Animal) -> Animal:
-        if not animal.hidden:
-            animal.health -= 50
-        if animal.health <= 0:
-            Animal.alive.remove(animal)
-        return animal
-
 
 class Herbivore(Animal):
 
@@ -38,6 +31,9 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(animal: Animal) -> None:
-        if isinstance(animal, Herbivore):
-            Animal.__sub__(animal)
+    def bite(animal: Animal) -> Animal:
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
+        if animal.health <= 0:
+            Animal.alive.remove(animal)
+        return animal
