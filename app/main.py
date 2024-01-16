@@ -1,5 +1,6 @@
 class Animal:
     alive = []
+
     def __init__(self,
                  name: str,
                  health: int = 100,
@@ -16,8 +17,9 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
+
 
 class Carnivore(Animal):
     def bite(self, herb: Herbivore) -> None:
