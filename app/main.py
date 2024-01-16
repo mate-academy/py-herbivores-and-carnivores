@@ -18,13 +18,12 @@ class Animal:
 
     def __repr__(self) -> str:
         return (
-            f"{{"
-            f"Name: {self.name}, "
-            f"Health: {self.health}, "
-            f"Hidden: {self.hidden}"
-            f"}}"
+                "{" +
+                "Name: " + str(self.name) + ", " +
+                "Health: " + str(self.health) + ", " +
+                "Hidden: " + str(self.hidden) +
+                "}"
         )
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
