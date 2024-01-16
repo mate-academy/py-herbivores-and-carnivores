@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
 
@@ -12,27 +9,26 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def died(self) -> None:
+    def remove_animal(self) -> None:
         Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: \
-{self.health}, Hidden: {self.hidden}}}"
+        return (f"{{"
+                f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}"
+                f"}}")
 
 
 class Herbivore(Animal):
-    hidden = False
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-
-    def bite(self, animal: Carnivore | Herbivore) -> None:
-        if isinstance(animal, Herbivore):
-            if not animal.hidden:
-                animal.health -= 50
+    def bite(self, animal: Animal) -> None:
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
 
             if animal.health <= 0:
-                animal.died()
+                animal.remove_animal()
