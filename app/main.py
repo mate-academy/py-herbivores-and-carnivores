@@ -17,13 +17,12 @@ class Animal:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        return (
-                "{" +
-                "Name: " + str(self.name) + ", " +
-                "Health: " + str(self.health) + ", " +
-                "Hidden: " + str(self.hidden) +
-                "}"
-        )
+        return ("{"
+                + "Name: " + str(self.name) + ", "
+                + "Health: " + str(self.health) + ", "
+                + "Hidden: " + str(self.hidden)
+                + "}")
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
