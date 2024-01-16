@@ -46,10 +46,3 @@ class Carnivore(Animal):
             herbivore.health -= 50
 
         Animal.animal_checker()
-
-lion = Carnivore("Simba")
-
-rabbit = Herbivore("Bomj")
-
-print(Animal.alive)
-
