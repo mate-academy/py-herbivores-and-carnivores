@@ -13,7 +13,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def keep_alive(self) -> None:
+    def remove_expired_animals(self) -> None:
         if self.health <= 0:
             Animal.alive.remove(self)
 
@@ -35,4 +35,4 @@ class Carnivore(Animal):
     def bite(other: Herbivore) -> None:
         if not other.hidden and isinstance(other, Herbivore):
             other.health -= 50
-        other.keep_alive()
+        other.remove_expired_animals()
