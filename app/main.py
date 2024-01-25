@@ -11,7 +11,8 @@ class Animal:
         Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+        return f"Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}"
+
 
 
 class Herbivore(Animal):
@@ -31,9 +32,3 @@ class Carnivore(Animal):
         target.health -= 50
         if target.health <= 0:
             target.die()
-
-
-pantera = Carnivore("Bagira")
-snake = Carnivore("Kaa")
-print(Animal.alive)
-# [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
