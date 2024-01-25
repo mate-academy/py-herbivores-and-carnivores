@@ -1,40 +1,39 @@
 class Animal:
     alive = []
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         self.name = name
         self.health = 100
         self.hidden = False
         Animal.alive.append(self)
 
-    def die(self):
+    def die(self) -> None:
         Animal.alive.remove(self)
 
-
-def format_animal_list(animal_list):
-    return [str(animal) for animal in animal_list]
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         super().__init__(name)
         self.hidden = False
 
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
-
-    def __str__(self):
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target):
-        if isinstance(target, Carnivore) or target.hidden:
+    def bite(target: Herbivore) -> None:
+        if target.hidden:
             return
         target.health -= 50
         if target.health <= 0:
             target.die()
 
-    def __str__(self):
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+
+pantera = Carnivore("Bagira")
+snake = Carnivore("Kaa")
+print(Animal.alive)
+# [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
