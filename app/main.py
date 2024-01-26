@@ -11,7 +11,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __str__(str) -> list:
+    def __str__(self) -> list:
         alive_info = []
         for animal in Animal.alive:
             animal_info = {
@@ -21,6 +21,7 @@ class Animal:
             }
             alive_info.append(animal_info)
         return alive_info
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
