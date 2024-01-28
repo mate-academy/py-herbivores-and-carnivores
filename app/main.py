@@ -11,16 +11,12 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __str__(self) -> list:
-        alive_info = []
-        for animal in Animal.alive:
-            animal_info = {
-                "Name": animal.name,
-                "Health": animal.health,
-                "Hidden": animal.hidden
-            }
-            alive_info.append(animal_info)
-        return alive_info
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
