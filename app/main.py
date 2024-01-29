@@ -14,9 +14,9 @@ class Animal:
             Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{{", ".join(
+        return f'{{{", ".join(
             (f"{k.capitalize()}: {v}" for k, v in vars(self).items())
-        )}}}"
+        )}}}'
 
 
 class Herbivore(Animal):
