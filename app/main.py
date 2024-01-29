@@ -14,10 +14,9 @@ class Animal:
             Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        object_items_str = ", ".join(
+        return f"{{{", ".join(
             (f"{k.capitalize()}: {v}" for k, v in vars(self).items())
-        )
-        return f"{{{object_items_str}}}"
+        )}}}"
 
 
 class Herbivore(Animal):
@@ -30,8 +29,8 @@ class Carnivore(Animal):
 
     def bite(self, victim: Herbivore) -> None:
         if (
-                victim.health > 0
-                and isinstance(victim, Herbivore)
+                isinstance(victim, Herbivore)
+                and victim.health > 0
                 and not victim.hidden
         ):
             victim.health -= 50
