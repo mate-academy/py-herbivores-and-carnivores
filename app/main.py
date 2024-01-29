@@ -15,7 +15,7 @@ class Animal:
 
     def __repr__(self) -> str:
         object_items_str = ", ".join(
-            (f"{k.capitalize()}: {v}" for k, v in self.__dict__.items())
+            (f"{k.capitalize()}: {v}" for k, v in vars(self).items())
         )
         return f"{{{object_items_str}}}"
 
