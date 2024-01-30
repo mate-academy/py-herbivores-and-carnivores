@@ -7,7 +7,6 @@ class Animal:
             health: int = 100,
             hidden: bool = False
     ) -> None:
-
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -22,8 +21,7 @@ class Animal:
                 f"Name: {self.name},"
                 f" Health: {self.health},"
                 f" Hidden: {self.hidden}"
-                f"}}"
-                )
+                f"}}")
 
 
 class Herbivore(Animal):
@@ -36,7 +34,6 @@ class Carnivore(Animal):
 
     @staticmethod
     def bite(herbivore: Herbivore) -> None:
-        if not isinstance(herbivore, Herbivore) or herbivore.hidden:
-            return
-        herbivore.health -= 50
-        herbivore.die()
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
+            herbivore.health -= 50
+            herbivore.die()
