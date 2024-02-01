@@ -9,17 +9,11 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        class_dict = {
-            "Name": self.name,
-            "Health": self.health,
-            "Hidden": self.hidden
-        }
-        rep = (f"{{"
-               f"Name: {class_dict["Name"]}, "
-               f"Health: {class_dict["Health"]}, "
-               f"Hidden: {class_dict["Hidden"]}"
-               f"}}")
-        return rep
+        return (f"{{"
+                f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}"
+                f"}}")
 
 
 class Herbivore(Animal):
@@ -28,9 +22,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, whom: Herbivore) -> None:
-        if (not whom.hidden) and isinstance(whom, Herbivore):
-            whom.health -= 50
+    def bite(self, prey: Herbivore) -> None:
+        if (not prey.hidden) and isinstance(prey, Herbivore):
+            prey.health -= 50
 
-        if whom.health <= 0:
-            Animal.alive.remove(whom)
+        if prey.health <= 0:
+            Animal.alive.remove(prey)
