@@ -15,9 +15,9 @@ class Animal:
             "Hidden": self.hidden
         }
         rep = (f"{{"
-               f"Name: {class_dict["Name"]}, "
-               f"Health: {class_dict["Health"]}, "
-               f"Hidden: {class_dict["Hidden"]}"
+               f'Name: {class_dict["Name"]}, '
+               f'Health: {class_dict["Health"]}, '
+               f'Hidden: {class_dict["Hidden"]}'
                f"}}")
         return rep
 
