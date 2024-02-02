@@ -4,7 +4,7 @@ class Animal:
     def __init__(
             self, name: str,
             health: int = 100,
-            hidden: str = False
+            hidden: bool = False
     ) -> None:
         self.name = name
         self.health = health
@@ -28,4 +28,4 @@ class Carnivore(Animal):
             if herbivore.hidden is False:
                 herbivore.health -= 50
                 if herbivore.health <= 0:
-                    self.alive.remove(herbivore)
+                    Animal.alive.remove(herbivore)
