@@ -31,13 +31,3 @@ class Carnivore(Animal):
             other.health = max(other.health - 50, 0)
             if other.health == 0:
                 Animal.alive.remove(other)
-
-
-# lion = Carnivore("King Lion")
-# pantera = Carnivore("Bagira")
-# lion.bite(pantera)
-# rabbit = Herbivore("Susan")
-# print(Animal.alive)
-# print(lion)
-# print(lion.__repr__())
-# print(lion.__str__())
