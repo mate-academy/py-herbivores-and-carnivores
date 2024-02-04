@@ -6,8 +6,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        if self not in Animal.alive:
-            Animal.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -19,9 +18,8 @@ class Animal:
 
 class Herbivore(Animal):
 
-    def hide(self) -> bool:
+    def hide(self) -> None:
         self.hidden = not self.hidden
-        return self.hidden
 
 
 class Carnivore(Animal):
