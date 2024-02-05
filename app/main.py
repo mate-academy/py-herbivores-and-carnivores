@@ -15,10 +15,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __sub__(self) -> None:
-        if self.health <= 0:
-            Animal.alive.remove(self)
-
 
 class Herbivore(Animal):
     def hide(self) -> bool:
@@ -26,7 +22,8 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, instance: Herbivore) -> None:
-        if not isinstance(instance, Carnivore) and not instance.hidden:
-            instance.health -= 50
-            instance.__sub__()
+    def bite(self, herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
+            herbivore.health -= 50
+            if herbivore.health <= 0:
+                Animal.alive.remove(herbivore)
