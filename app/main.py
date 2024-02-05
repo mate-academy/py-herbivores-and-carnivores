@@ -16,17 +16,15 @@ class Animal:
 
     def __repr__(self) -> str:
         return (
+            "{"
             f"Name: {self.name}, "
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}"
+            "}"
         )
 
 
 class Herbivore(Animal):
-    def __init__(self, name: str) -> None:
-        super().__init__(name)
-        self.hidden = False
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
