@@ -1,9 +1,7 @@
 from __future__ import annotations
-from typing import Union
 
 
 class Animal:
-
     alive = []
 
     def __init__(
@@ -18,10 +16,11 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        name = "{Name: " + str(self.name)
-        health = ", Health: " + str(self.health)
-        hidden = ", Hidden: " + str(self.hidden) + "}"
-        return name + health + hidden
+        return (
+            f'{{Name: {str(self.name)}'
+            f', Health: {str(self.health)}'
+            f', Hidden: {str(self.hidden)}}}'
+        )
 
 
 class Herbivore(Animal):
@@ -33,8 +32,8 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(animal: Union[Herbivore, Carnivore]) -> None:
-        if animal.hidden is False and isinstance(animal, Herbivore):
+    def bite(animal: Animal) -> None:
+        if not animal.hidden and isinstance(animal, Herbivore):
             animal.health -= 50
         for index, beast in enumerate(Animal.alive):
             if beast.health <= 0:
