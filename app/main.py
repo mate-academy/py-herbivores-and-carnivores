@@ -8,7 +8,9 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return str(self.__dict__).title().replace("'", "")
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def die(self) -> None:
         Animal.alive.remove(self)
