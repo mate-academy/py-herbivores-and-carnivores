@@ -14,9 +14,9 @@ class Animal:
             Animal.alive.append(self)
 
     def __repr__(self, *args, **kwargs) -> str:
-        return "{" + f"Name: {self.name}," \
-                     f" Health: {self.health}," \
-                     f" Hidden: {self.hidden}" + "}"
+        return "{" + (f"Name: {self.name}, "
+                      f"Health: {self.health},"
+                      f" Hidden: {self.hidden}") + "}"
 
     def __str__(self, *args, **kwargs) -> str:
         return str([alive.__repr__() for alive in Animal.alive])
