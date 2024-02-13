@@ -10,14 +10,14 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __repr__(self):
-        for i in Animal.alive:
-            print(f"Name: {i.name}")
+    def __repr__(self) -> str:
+        return (f"{{Name: {self.name}, Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
 
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
@@ -29,17 +29,3 @@ class Carnivore(Animal):
         for i, animal in enumerate(Animal.alive):
             if animal.health <= 0:
                 Animal.alive.pop(i)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
