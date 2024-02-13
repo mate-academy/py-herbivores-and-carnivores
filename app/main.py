@@ -10,6 +10,10 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
+    def __repr__(self):
+        for i in Animal.alive:
+            print(f"Name: {i.name}")
+
 
 class Herbivore(Animal):
 
