@@ -25,7 +25,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target: str) -> None:
+    def bite(target: Herbivore) -> None:
         if isinstance(target, Herbivore) and not target.hidden:
             target.health -= 50
             if target.health <= 0:
