@@ -15,11 +15,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def __sub__(self) -> "Animal":
-        if self.health <= 0:
-            Animal.alive.remove(self)
-        return self
-
 
 class Herbivore(Animal):
 
