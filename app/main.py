@@ -43,7 +43,8 @@ class Carnivore(Animal):
     bite метод, бере травоїдний об’єкт і знижує здоров’я об’єкта на 50.
     Метод не працює, якщо це хижа тварина або травоїдна тварина ховається.
     """
-    def bite(self, herbivore_animal: Herbivore) -> None:
+    @staticmethod
+    def bite(herbivore_animal: Herbivore) -> None:
         if not herbivore_animal.hidden and \
                 isinstance(herbivore_animal, Herbivore):
             herbivore_animal.health -= 50
