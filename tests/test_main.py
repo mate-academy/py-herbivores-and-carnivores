@@ -164,4 +164,4 @@ def test_unnecessary_comment():
 
         assert (
                 "# write your code here" not in main_content
-        )
+        ), "Remove unnecessary comment"
