@@ -1,5 +1,4 @@
 class Animal:
-    #  create list animals
     alive = []
 
     def __init__(
@@ -21,7 +20,6 @@ class Animal:
         Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        # use magic method to get the look you want
         return (
             f"{{Name: {self.name}, "
             f"Health: {self.health}, "
@@ -30,24 +28,17 @@ class Animal:
 
 
 class Herbivore(Animal):
-    """
-    A method that changes animal`s hidden property
-on the opposite and hides it from carnivores
-    """
+
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    """
-    A method that take herbivore object and reduces the object's health by 50.
-    A method doesn't work if it's a carnivore or herbivore hiding.
-    """
 
     @staticmethod
-    def bite(herbivore_animal: Herbivore) -> None:
-        if (not herbivore_animal.hidden
-                and isinstance(herbivore_animal, Herbivore)):
-            herbivore_animal.health -= 50
+    def bite(herbivore: Herbivore) -> None:
+        if (not herbivore.hidden
+                and isinstance(herbivore, Herbivore)):
+            herbivore.health -= 50
             # check if the animal is dead
-            herbivore_animal.update_status()
+            herbivore.update_status()
