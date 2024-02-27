@@ -2,17 +2,17 @@ class Animal:
     alive = []
 
     def __init__(
-            self, name: str, health: int = 100, hidden: bool = False
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
     ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
-        # check Let’s check that the creature hasn’t died.
-        self.update_status()
 
     def update_status(self) -> None:
-        # if health <= 0 remove the animal object from Animal.alive.
         if self.health <= 0:
             self.die()
 
@@ -40,5 +40,4 @@ class Carnivore(Animal):
         if (not herbivore.hidden
                 and isinstance(herbivore, Herbivore)):
             herbivore.health -= 50
-            # check if the animal is dead
             herbivore.update_status()
