@@ -22,16 +22,13 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
     @classmethod
-    def bite(cls, other: Animal) -> None:
-        if other.hidden is False and isinstance(other, Herbivore):
-            other.health -= 50
-            if other.health <= 0:
-                return Animal.alive.remove(other)
+    def bite(cls, herbivore: Animal) -> None:
+        if herbivore.hidden is False and isinstance(herbivore, Herbivore):
+            herbivore.health -= 50
+            if herbivore.health <= 0:
+                return Animal.alive.remove(herbivore)
