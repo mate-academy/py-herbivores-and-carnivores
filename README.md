@@ -58,4 +58,5 @@ print(Animal.alive)
 ```
 Hint: Use magic method.
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+### Note: Check your code using this [checklist](che
+cklist.md) before pushing your solution.
