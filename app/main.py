@@ -30,7 +30,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    @classmethod
+    @staticmethod
     def bite(cls, victim: Animal) -> None:
         if not victim.hidden and victim.__class__ == Herbivore:
             victim.health -= 50
