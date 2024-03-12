@@ -22,7 +22,7 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        self.hidden =  not elf.hidden
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
