@@ -21,11 +21,12 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal: Animal) -> None:
+    @classmethod
+    def bite(cls, animal: Animal) -> None:
         if animal.hidden or not animal.health or isinstance(animal, Carnivore):
             return
 
         animal.health -= min(animal.health, 50)
 
         if not animal.health:
-            Animal.alive = list(filter(lambda alive_animal: alive_animal != animal, Animal.alive))
+            Animal.alive.remove(animal)
