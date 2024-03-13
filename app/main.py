@@ -4,22 +4,24 @@ from __future__ import annotations
 class Animal:
     alive = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+        self,
+        name: str,
+        health: int = 100,
+        hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def remove_dead(self) -> None:
+    def remove_dead_animals(self) -> None:
         Animal.alive.remove(self)
 
-    def deadly_actions(self, bite_power: int = 50) -> None:
+    def bite_attack(self, bite_power: int = 50) -> None:
         self.health -= bite_power
         if self.health <= 0:
-            self.remove_dead()
+            self.remove_dead_animals()
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -34,10 +36,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(creature: Herbivore) -> None:
-        if creature.hidden:
-            print("Cannot bite a hidden {creature}!")
-        elif isinstance(creature, Carnivore):
-            print("Cannot bite another carnivore!")
+    def bite(creature: Animal) -> str | None:
+        if creature.hidden or isinstance(creature, Carnivore):
+            return f"Cannot bite {creature}!"
         else:
-            creature.deadly_actions()
+            creature.bite_attack()
