@@ -36,8 +36,6 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(creature: Animal) -> str | None:
-        if creature.hidden or isinstance(creature, Carnivore):
-            return f"Cannot bite {creature}!"
-        else:
+    def bite(creature: Herbivore) -> None:
+        if not creature.hidden and isinstance(creature, Herbivore):
             creature.bite_attack()
