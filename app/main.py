@@ -10,7 +10,6 @@ class Animal:
         Animal.alive.append(self)
 
     def is_alive(self) -> None:
-        if self.health <= 0:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
