@@ -10,7 +10,7 @@ class Animal:
         Animal.alive.append(self)
 
     def is_alive(self) -> None:
-            Animal.alive.remove(self)
+        Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
