@@ -15,10 +15,7 @@ class Animal:
                 "}")
 
     def remove_animal(self) -> None:
-        for i, animal in enumerate(Animal.alive):
-            if self is animal:
-                Animal.alive.pop(i)
-                break
+        Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
