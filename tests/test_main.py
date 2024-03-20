@@ -38,10 +38,10 @@ def test_animal_constructor():
         f"'lion' created by 'Animal('Lion King')'"
     )
     assert len(Animal.alive) == 1, (
-        "Constructor should add created animal to 'Animal.alive'"
+        "Constructor should add created animal to 'Animal.alive'len"
     )
     assert Animal.alive[0].name == "Lion King", (
-        "Constructor should add created animal to 'Animal.alive'"
+        "Constructor should add created animal to 'Animal.alive'name"
     )
 
 
