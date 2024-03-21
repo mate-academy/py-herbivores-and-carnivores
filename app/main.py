@@ -12,8 +12,8 @@ class Animal:
         symbol_right = "}"
         symbol_left = "{"
         return (f"{symbol_left}Name: {self.name}, "
-                f" Health: {self.health}, "
-                f" Hidden: {self.hidden}{symbol_right}")
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}{symbol_right}")
 
 
 class Herbivore(Animal):
