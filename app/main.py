@@ -12,9 +12,9 @@ class Animal:
         self.__class__.alive.append(self)
 
     def __repr__(self) -> str:
-        return (f"{{Name: {self.__dict__["name"]}, "
-                + f"Health: {self.__dict__["health"]}, "
-                + f"Hidden: {self.__dict__["hidden"]}}}")
+        return (f"{{Name: {self.__dict__['name']}, "
+                + f"Health: {self.__dict__['health']}, "
+                + f"Hidden: {self.__dict__['hidden']}}}")
 
 
 class Herbivore(Animal):
