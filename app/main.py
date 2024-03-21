@@ -16,7 +16,7 @@ class Animal:
                 f"Hidden: {self.hidden}}}")
 
     def remove_dead(self) -> None:
-        Animal.alive.pop(Animal.alive.index(self))
+        Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
