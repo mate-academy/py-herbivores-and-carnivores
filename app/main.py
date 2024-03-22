@@ -13,8 +13,8 @@ class Animal:
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.__dict__['name']}, "
-                + f"Health: {self.__dict__['health']}, "
-                + f"Hidden: {self.__dict__['hidden']}}}")
+                f"Health: {self.__dict__['health']}, "
+                f"Hidden: {self.__dict__['hidden']}}}")
 
 
 class Herbivore(Animal):
