@@ -11,8 +11,8 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return (f"{{Name: {self.name}, "
-                f" Health: {self.health}, "
+        return (f"{{Name: {self.name},"
+                f" Health: {self.health},"
                 f" Hidden: {self.hidden}}}")
 
     def die(self) -> None:
@@ -31,8 +31,3 @@ class Carnivore(Animal):
             herbivore.health -= 50
             if herbivore.health <= 0:
                 herbivore.die()
-
-
-if __name__ == "__main__":
-    lion: Carnivore = Carnivore("Lion King")
-    rabbit: Herbivore = Herbivore("Susan")
