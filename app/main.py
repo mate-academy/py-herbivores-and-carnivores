@@ -8,7 +8,6 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive = True
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -29,7 +28,6 @@ class Carnivore(Animal):
             if not herbivore_animal.hidden:
                 herbivore_animal.health -= 50
         if herbivore_animal.health <= 0:
-            herbivore_animal.alive = False
             Animal.alive = [animal
                             for animal in Animal.alive
                             if animal.name != herbivore_animal.name
