@@ -7,7 +7,7 @@ class Animal:
         self.health = health
         self.name = name
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def die(self) -> None:
         Animal.alive.remove(self)
