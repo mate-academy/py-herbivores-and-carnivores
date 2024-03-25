@@ -4,8 +4,7 @@ class Animal:
     def __init__(self,
                  name: str,
                  health: int = 100,
-                 hidden: bool = False
-                 ) -> None:
+                 hidden: bool = False) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -15,14 +14,10 @@ class Animal:
         print(f"{self.name} has died")
         Animal.alive.remove(self)
 
-    def __str__(self) -> str:
-        return f"Animal: {self.name}"
-
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
-                f"Hidden: {self.hidden}}}"
-                )
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
