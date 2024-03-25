@@ -8,7 +8,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -18,7 +18,7 @@ class Animal:
         )
 
     def die(self) -> None:
-        self.alive.remove(self)
+        Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
