@@ -1,7 +1,10 @@
+from typing import Optional
+
+
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health=None) -> str:
+    def __init__(self, name: str, health: Optional[int] = None) -> str:
         self.name = name
         self.health = health
         if self.health is None:
@@ -18,7 +21,7 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
         if self.health <= 0:
             print("Herbivore health is zero or less. Dying...")
