@@ -1,19 +1,19 @@
 class Animal:
     alive = []
 
-    def __init__(self, name, health=None):
+    def __init__(self, name: str, health=None) -> str:
         self.name = name
         self.health = health
         if self.health is None:
-            self.health = 100  # Set default health to 100 if not provided
+            self.health = 100
         self.hidden = False
         Animal.alive.append(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"{{Name: {self.name},"
                 f" Health: {self.health}, Hidden: {self.hidden}}}")
 
-    def die(self):
+    def die(self) -> None:
         Animal.alive.remove(self)
 
 
@@ -23,16 +23,16 @@ class Herbivore(Animal):
         if self.health <= 0:
             print("Herbivore health is zero or less. Dying...")
             self.die()
-            return  # Return after dying to prevent further actions
+            return
 
 
 class Carnivore(Animal):
-    def bite(self, animal):
+    def bite(self, animal: str) -> str:
         if isinstance(animal, Carnivore) or animal.hidden:
             return
         print(f"Biting {animal.name}. Health before: {animal.health}")
         animal.health -= 50
         if animal.health <= 0:
-            animal.health = 0  # Ensure health is set to zero if less than zero
+            animal.health = 0
             animal.die()
         print(f"Health after biting: {animal.health}")
