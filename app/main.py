@@ -25,9 +25,11 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Carnivore):
-            return print("Carnivores cannot bite carnivor")
+            print("Carnivores cannot bite carnivor")
+            return
         if herbivore.hidden:
-            return print("Cannot bite a hidden herbivore")
+            print("Cannot bite a hidden herbivore")
+            return
 
         herbivore.health -= 50
         if herbivore.health <= 0:
