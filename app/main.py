@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
 
@@ -15,11 +12,6 @@ class Animal:
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
-    @classmethod
-    def remove_alive(cls, inst: Herbivore | Carnivore) -> None:
-        if inst in cls.alive:
-            cls.alive.remove(inst)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -27,12 +19,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, inst: Carnivore | Herbivore) -> None:
-        if isinstance(inst, Carnivore) or inst.hidden:
-            print_hidden = "hidden" if isinstance(inst, Herbivore) else ""
-            print(f"{self.name} cannot bite {print_hidden} {inst.name}")
-        else:
-            inst.health -= 50
-
-        if inst.health <= 0:
-            Animal.remove_alive(inst)
+    @staticmethod
+    def bite(enemy: Herbivore) -> None:
+        if isinstance(enemy, Herbivore) and not enemy.hidden:
+            enemy.health -= 50
+        if enemy.health <= 0:
+            Animal.alive.remove(enemy)
