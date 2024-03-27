@@ -14,11 +14,9 @@ class Animal:
         return str(self.alive)
 
     def __repr__(self) -> str:
-        return "{" + \
-            f"Name: {self.name}, " + \
-            f"Health: {self.health}, " + \
-            f"Hidden: {self.hidden}" + \
-            "}"
+        return (f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
@@ -28,8 +26,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self,
-             animal: Animal) -> None:
-        if not isinstance(animal, Carnivore) and not animal.hidden:
+             animal: Herbivore) -> None:
+        if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
         if animal.health <= 0:
             self.alive.remove(animal)
