@@ -8,7 +8,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __str__(self) -> str:
         return str(self.alive)
@@ -25,9 +25,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self,
+    @classmethod
+    def bite(cls,
              animal: Herbivore) -> None:
         if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
         if animal.health <= 0:
-            self.alive.remove(animal)
+            cls.alive.remove(animal)
