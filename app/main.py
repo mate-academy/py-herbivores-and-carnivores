@@ -14,7 +14,9 @@ class Animal:
 
     @classmethod
     def remove_dead(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
+        for animal in cls.alive[:]:
+            if animal.health <= 0:
+                cls.alive.remove(animal)
 
 
 class Herbivore(Animal):
@@ -23,10 +25,8 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: int) -> None:
-        if isinstance(other, Carnivore) or other.hidden:
-            return
-        other.health -= 50
-        if other.health <= 0:
-            Animal.alive.remove(other)
-            Animal.remove_dead()
+    def bite(self, other: Animal) -> None:
+        if not isinstance(other, Carnivore) and not other.hidden:
+            other.health -= 50
+            if other.health <= 0:
+                Animal.remove_dead()
