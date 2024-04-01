@@ -24,10 +24,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(herbivore_animal: Herbivore) -> None:
-        if isinstance(herbivore_animal, Carnivore) or herbivore_animal.hidden:
-            return
-
-        herbivore_animal.health -= 50
-        if herbivore_animal.health <= 0:
-            Animal.alive = [animal for animal in Animal.alive
-                            if animal.name != herbivore_animal.name]
+        if not herbivore_animal.hidden and not isinstance(herbivore_animal, Carnivore):
+            herbivore_animal.health -= 50
+            if herbivore_animal.health <= 0:
+                Animal.alive.remove(herbivore_animal)
