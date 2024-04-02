@@ -21,7 +21,6 @@ class Animal:
 
     def die(self) -> None:
         Animal.alive.remove(self)
-        print(f"{self.name} has died.")
 
 
 class Herbivore(Animal):
