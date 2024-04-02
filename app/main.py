@@ -19,12 +19,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    def take_damage(self, damage: int) -> None:
-        self.health -= damage
-        if self.health <= 0:
-            self.health = 0
-            self.die()
-
     def die(self) -> None:
         Animal.alive.remove(self)
         print(f"{self.name} has died.")
