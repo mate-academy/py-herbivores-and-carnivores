@@ -1,7 +1,8 @@
-from typing import List, Optional
+from typing import List
+
 
 class Animal:
-    alive: List['Animal'] = []
+    alive: List["Animal"] = []
 
     def __init__(self, name: str) -> None:
         self.name: str = name
@@ -13,15 +14,18 @@ class Animal:
         Animal.alive.remove(self)
 
     def __str__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+        return (f"{{Name: {self.name}, Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
+
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
+
 
 class Carnivore(Animal):
     def bite(self, target: Animal) -> None:
@@ -30,6 +34,7 @@ class Carnivore(Animal):
         target.health -= 50
         if target.health <= 0:
             target.die()
+
 
 lion = Carnivore("Lion King")
 rabbit = Herbivore("Susan")
