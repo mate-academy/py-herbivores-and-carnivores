@@ -9,8 +9,8 @@ class Animal:
 
     def __repr__(self) -> str:
         res = (f"{{Name: {self.n: str}, "
-              f"Health: {self.h: int}, "
-              f"Hidden: {self.d: bool}}}")
+              f"Health:  {self.h: int}, "
+              f"Hidden:  {self.d: bool}}}")
         return res
 
 
