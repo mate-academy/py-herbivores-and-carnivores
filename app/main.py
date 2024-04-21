@@ -2,27 +2,27 @@ class Animal:
     alive = []
 
     def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
-        self.name = name
-        self.health = health
-        self.hidden = False
+        self.n = name
+        self.h = health
+        self.d = False
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name: str}, 
-                  Health: {self.health: int}, Hidden: {self.hidden: bool}}}"
+        res = f"{{Name: {self.n: str}, Health: {self.h: int}, Hidden: {self.d: bool}}}"
+        return res
 
 
 class Herbivore(Animal):
     def hide(self) -> bool:
-        if self.hidden:
-            self.hidden = False
+        if self.d:
+            self.d = False
         else:
-            self.hidden = True
+            self.d = True
 
 
 class Carnivore(Animal):
     def bite(self, animal) -> object:
-        if isinstance(animal, Herbivore) and not animal.hidden:
-            animal.health -= 50
-            if animal.health <= 0:
+        if isinstance(animal, Herbivore) and not animal.d:
+            animal.h -= 50
+            if animal.h <= 0:
                 Animal.alive.remove(animal)
