@@ -1,9 +1,9 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
-        self.n = name
-        self.h = health
+    def __init__(self, n: str, h: int = 100, hid: bool = False) -> None:
+        self.n = n
+        self.h = h
         self.d = False
         Animal.alive.append(self)
 
@@ -21,7 +21,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal) -> object:
+    def bite(self, animal: object) -> object:
         if isinstance(animal, Herbivore) and not animal.d:
             animal.h -= 50
             if animal.h <= 0:
