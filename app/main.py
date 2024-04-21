@@ -1,14 +1,17 @@
 class Animal:
     alive = []
 
-    def __init__(self, n: str, h: int = 100, hid: bool = False) -> None:
-        self.n = n
-        self.h = h
+    def __init__(self, na: str, hl: int = 100, hid: bool = False) -> None:
+        self.n = na
+        self.h = hl
         self.d = False
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        res = f"{{Name: {self.n: str}, Health: {self.h: int}, Hidden: {self.d: bool}}}"
+        res = (
+              f"{{Name: {self.n: str}, "
+              f"Health: {self.h: int}, "
+              f"Hidden: {self.d: bool}}}")
         return res
 
 
