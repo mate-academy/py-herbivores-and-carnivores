@@ -28,9 +28,9 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     def bite(self, other: Herbivore) -> str:
-        if other.hidden:
-            return f"{self.name} cannot bite hidden {other.name}"
         if isinstance(other, Herbivore):
+            if other.hidden:
+                return f"{self.name} cannot bite hidden {other.name}"
             other.health -= 50
             if other.health <= 0:
                 other.alive.remove(other)
