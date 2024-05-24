@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
     alive = []
 
@@ -23,7 +26,7 @@ class Animal:
         )
 
     @staticmethod
-    def remove_dead_animals(animal) -> None:
+    def remove_dead_animals(animal: Animal) -> None:
         Animal.alive.remove(animal)
 
 
