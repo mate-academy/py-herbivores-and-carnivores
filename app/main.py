@@ -12,9 +12,11 @@ class Animal:
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
+
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
+
 
 class Carnivore(Animal):
     @staticmethod
