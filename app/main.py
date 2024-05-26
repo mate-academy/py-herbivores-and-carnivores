@@ -15,14 +15,6 @@ class Animal:
         return (f"{{Name: {self.name}, Health: "
                 f"{self.health}, Hidden: {self.hidden}}}")
 
-    @classmethod
-    def check_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
-
-    @classmethod
-    def __str__(cls) -> str:
-        return str(cls.alive)
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -35,4 +27,3 @@ class Carnivore(Animal):
             other.health -= 50
             if other.health <= 0:
                 other.die()
-        Animal.check_alive()
