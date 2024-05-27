@@ -7,12 +7,8 @@ class Animal:
     def __init__(self, name: str) -> None:
         self.name: str = name
         self.health: int = 100
-        self._hidden: bool = False
+        self.hidden: bool = False
         Animal.alive.append(self)
-
-    @property
-    def hidden(self) -> bool:
-        return self._hidden
 
     def die(self) -> None:
         if self in Animal.alive:
@@ -27,7 +23,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        self._hidden = not self._hidden
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
