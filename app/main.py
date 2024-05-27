@@ -31,5 +31,4 @@ class Carnivore(Animal):
         if victim.hidden or not isinstance(victim, Herbivore):
             return
         victim.health -= 50
-        if victim.health <= 0:
-            victim.dead()
+        victim.dead()
