@@ -1,6 +1,3 @@
-from typing import Any
-
-
 class Animal:
     alive = []
 
@@ -31,7 +28,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(victim: Any) -> None:
+    def bite(victim: Herbivore) -> None:
         if not victim.hidden and isinstance(victim, Herbivore):
             victim.health -= 50
             if victim.health <= 0:
