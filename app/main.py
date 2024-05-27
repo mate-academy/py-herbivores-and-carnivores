@@ -11,13 +11,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def take_damage(self) -> None:
-        alive_animals = []
-        for animal in self.alive:
-            if animal.health > 0:
-                alive_animals.append(animal)
-        self.alive = alive_animals
-
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
