@@ -11,6 +11,17 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
+    def __repr__(self) -> None:
+        info = {}
+        result = []
+
+        for animal in Animal.alive:
+            info["Name"] = animal.name,
+            info["Health"] = animal.health,
+            info["Hidden"] = animal.hidden
+
+        return info
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -24,11 +35,9 @@ class Carnivore(Animal):
             return
 
         if herbivore.hidden is False:
-            if herbivore.health == 100:
-                herbivore.health = 50
-            if herbivore.health == 50:
-                Animal.die(herbivore)
+            herbivore.health -= 50
+            if herbivore.health <= 0:
+                herbivore.die()
 
         if herbivore.hidden is True:
             herbivore.health = 100
-
