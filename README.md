@@ -1,6 +1,6 @@
 # Herbivores and carnivores
 
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 
 Nature is well suited to reflect the principles of Object Oriented Programming. 
@@ -13,7 +13,7 @@ be removed from `Animal.alive`.
 ```python
 lion = Carnivore("Simba")
 len(Animal.alive) == 1
-isinstance(Animal.alive, Carnivore) is True
+isinstance(Animal.alive[0], Carnivore) is True
 ```
 
 Create a `Herbivore` class. This class should inherit from Animal. 
@@ -58,3 +58,4 @@ print(Animal.alive)
 ```
 Hint: Use magic method.
 
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
