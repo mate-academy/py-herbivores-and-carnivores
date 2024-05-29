@@ -12,7 +12,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def alive_animal(self, damage: int) -> None:
+    def decrease_health(self, damage: int) -> None:
         self.health -= damage
         if self.health <= 0:
             Animal.alive.remove(self)
@@ -28,6 +28,6 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal: str) -> None:
+    def bite(self, animal: Herbivore) -> None:
         if isinstance(animal, Herbivore) and animal.hidden is False:
-            animal.alive_animal(50)
+            animal.decrease_health(50)
