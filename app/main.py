@@ -4,8 +4,7 @@ class Animal:
     def __init__(
             self,
             name: str,
-            health:
-            int = 100,
+            health: int = 100,
             hidden: bool = False
     ) -> None:
         self.name = name
