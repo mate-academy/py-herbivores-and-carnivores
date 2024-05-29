@@ -11,10 +11,6 @@ class Animal:
     def hidden(self) -> bool:
         return self._hidden
 
-    def die(self) -> None:
-        if self in Animal.alive:
-            Animal.alive.remove(self)
-
     def __repr__(self) -> str:
         return (
             f"{{Name: {self.name}, "
