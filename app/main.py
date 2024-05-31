@@ -11,11 +11,7 @@ class Animal:
         self.health = health
         self.name = name
         self.hidden = hidden
-        Animal.if_alive(self)
-
-    @classmethod
-    def if_alive(cls, beast: Animal) -> None:
-        cls.alive += [beast] if beast.health > 0 else []
+        Animal.alive += [self]
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -25,10 +21,10 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
+        if self.hidden is not False:
             self.hidden = False
+        else:
+            self.hidden = True
 
 
 class Carnivore(Animal):
