@@ -1,19 +1,20 @@
+from __future__ import annotations
 from typing import List
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive: List[Animal] = []
 
     def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
         self.name: str = name
         self.health: int = health
         self.hidden: bool = hidden
-        self.__class__.alive.append(self)
+        Animal.alive.append(self)
 
     def __str__(self) -> str:
-        return (f"{{Name: {self.name}, "
-                f"Health: {self.health}, Hidden: {self.hidden}}}")
+        return (f"{{Name: {self.name}, Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
     def __repr__(self) -> str:
         return str(self)
@@ -29,4 +30,4 @@ class Carnivore(Animal):
         if isinstance(target, Herbivore) and not target.hidden:
             target.health -= 50
             if target.health <= 0:
-                self.alive.remove(target)
+                Animal.alive.remove(target)
