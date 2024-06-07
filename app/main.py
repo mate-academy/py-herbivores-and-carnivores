@@ -12,10 +12,6 @@ class Animal:
                 f"Health: {self.health}, Hidden: {self.hidden}}}")
 
     @classmethod
-    def check_live(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
-
-    @classmethod
     def __str__(cls) -> str:
         return str(cls.alive)
 
