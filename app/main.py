@@ -1,4 +1,3 @@
-
 class Animal():
     alive = []
 
@@ -7,10 +6,6 @@ class Animal():
         self.health = health
         self.hidden = False
         Animal.alive.append(self)
-
-    @classmethod
-    def check_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
 
     def __repr__(self) -> list:
         return (
@@ -30,4 +25,5 @@ class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
-            Animal.check_alive()
+            if herbivore.health <= 0:
+                Animal.alive.remove(herbivore)
