@@ -4,9 +4,10 @@ class Animal:
     def __init__(
             self,
             name: str,
+            health: int = 100,
     ) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
         if self not in Animal.alive:
             self.alive.append(self)
