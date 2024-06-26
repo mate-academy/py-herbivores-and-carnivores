@@ -12,7 +12,12 @@ class Animal:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
+<<<<<<< HEAD
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+=======
+        return f"{{Name: {self.name}, Health: " \
+               f"{self.health}, Hidden: {self.hidden}}}"
+>>>>>>> 55fd91972ac9a8a84c700d8783c7d8d582c80758
 
     @classmethod
     def remove_dead(cls):
@@ -25,7 +30,11 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
+<<<<<<< HEAD
     def bite(self, herbivore: Herbivore) -> None:
+=======
+    def bite(self, herbivore) -> None:
+>>>>>>> 55fd91972ac9a8a84c700d8783c7d8d582c80758
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
             if herbivore.health <= 0:
