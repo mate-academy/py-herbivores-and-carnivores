@@ -1,10 +1,7 @@
 class Animal:
     alive = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
@@ -21,18 +18,13 @@ class Animal:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        return "{{Name: {}, Health: {}, Hidden: {}}}".format(
-            self.name,
-            self.health,
-            self.hidden)
+        return "{{Name: {}, Health: {}, Hidden: {}}}".format(self.name, self.health, self.hidden)
 
-    @classmethod
-    def update_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.is_alive()]
+    def update_alive(self) -> None:
+        Animal.alive = [animal for animal in Animal.alive if animal.is_alive()]
 
-    @classmethod
-    def __str__(cls) -> str:
-        return str(cls.alive)
+    def __str__(self) -> str:
+        return str(Animal.alive)
 
 
 class Herbivore(Animal):
@@ -46,4 +38,4 @@ class Carnivore(Animal):
             animal.health -= 50
             if animal.health <= 0:
                 animal.die()
-        Animal.update_alive()
+        self.update_alive()
