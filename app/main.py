@@ -30,7 +30,8 @@ class Animal:
         Animal.alive = [animal for animal in Animal.alive if animal.is_alive()]
 
     def __str__(self) -> str:
-        return str(Animal.alive)
+        return (f"Name: {self.name}, "
+                f" Health: {self.health}, Hidden: {self.hidden}")
 
 
 class Herbivore(Animal):
