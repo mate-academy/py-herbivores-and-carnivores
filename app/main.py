@@ -13,15 +13,11 @@ class Animal:
         return (f"{{Name: {self.name},"
                 f" Health: {self.health},"
                 f" Hidden: {self.hidden}}}")
-        # return result
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if not self.hidden:
-            self.hidden = not self.hidden
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
