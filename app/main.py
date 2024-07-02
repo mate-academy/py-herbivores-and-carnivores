@@ -10,9 +10,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def hide(self) -> None:
-        self.hidden = not self.hidden
-
     def is_alive(self) -> bool:
         return self.health > 0
 
@@ -26,9 +23,6 @@ class Animal:
             self.health,
             self.hidden)
 
-    def update_alive(self) -> None:
-        Animal.alive = [animal for animal in Animal.alive if animal.is_alive()]
-
     def __str__(self) -> str:
         return (f"Name: {self.name}, "
                 f" Health: {self.health}, Hidden: {self.hidden}")
@@ -36,7 +30,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        super().hide()
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
@@ -45,4 +39,3 @@ class Carnivore(Animal):
             animal.health -= 50
             if animal.health <= 0:
                 animal.die()
-        self.update_alive()
