@@ -21,25 +21,12 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-
         self.hidden = not self.hidden
-
-        for index in range(len(Animal.alive)):
-            if Animal.alive[index].name == self.name:
-                Animal.alive[index].hidden = self.hidden
-                break
 
 
 class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
-
         if isinstance(herbivore, Herbivore) and herbivore.hidden is False:
             herbivore.health -= 50
-
-            for index in range(len(super().alive)):
-                if Animal.alive[index].name == herbivore.name:
-                    if herbivore.health <= 0:
-                        del Animal.alive[index]
-                    else:
-                        Animal.alive[index].health = herbivore.health
-                    break
+            if herbivore.health <= 0:
+                Animal.alive.remove(herbivore)
