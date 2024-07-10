@@ -1,6 +1,3 @@
-from typing import Callable
-
-
 class Animal:
     alive = []
 
@@ -15,12 +12,12 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def take_damage(self, amount: int) -> Callable:
+    def take_damage(self, amount: int) -> None:
         self.health -= amount
         if self.health <= 0:
             self.die()
 
-    def die(self) -> Callable:
+    def die(self) -> None:
         self.health = 0
         if self in Animal.alive:
             Animal.alive.remove(self)
@@ -32,11 +29,11 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self) -> Callable:
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Herbivore) -> int:
+    def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.take_damage(50)
