@@ -27,11 +27,8 @@ class Animal:
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
-                f"Health: {self.health}, Hidden: {self.hidden}}}")
-
-    @classmethod
-    def __str__(cls) -> str:
-        return str([str(animal) for animal in cls.alive])
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
