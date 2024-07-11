@@ -18,10 +18,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @classmethod
-    def __str__(cls) -> str:
-        return f"[{', '.join(cls.alive)}]"
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
