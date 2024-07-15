@@ -8,11 +8,19 @@ class Animal:
                 f"Hidden: {self.hidden}}}"
                 )
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False)\
-            -> None:
+    def __str__(self) -> str:
+        return (f"{{"
+                f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}"
+                )
+
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
@@ -26,11 +34,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @classmethod
-    def bite(cls, herbivore: Herbivore) -> None:
+    def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Carnivore):
             return
-        if herbivore.hidden is False:
+        if not herbivore.hidden:
             herbivore.health -= 50
         if herbivore.health <= 0:
             Animal.alive.remove(herbivore)
