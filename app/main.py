@@ -11,10 +11,14 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __str__(self):
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+    def __str__(self) -> str:
+        return (f"{{"
+                f"Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}"
+                f"}}")
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return self.__str__()
 
 
