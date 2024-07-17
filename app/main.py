@@ -11,15 +11,11 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __repr__(self) -> str:
-        return (f"{{"
-                f"Name: {self.name}, "
-                f"Health: {self.health}, "
-                f"Hidden: {self.hidden}"
-                f"}}")
+    def __str__(self):
+        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
-    def __str__(self) -> None:
-        print(Animal.alive.__repr__())
+    def __repr__(self):
+        return self.__str__()
 
 
 class Herbivore(Animal):
@@ -29,9 +25,8 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(victim: Animal) -> None:
-        if isinstance(victim, Herbivore) and victim.hidden is False:
+    def bite(self, victim: Animal) -> None:
+        if isinstance(victim, Herbivore) and not victim.hidden:
             victim.health -= 50
         if victim.health <= 0:
             victim.die()
