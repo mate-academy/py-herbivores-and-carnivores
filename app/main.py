@@ -19,9 +19,8 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @classmethod
-    def __str__(cls) -> str:
-        return str([repr(animal) for animal in cls.alive])
+    def __str__(self) -> str:
+        return str([repr(animal) for animal in self.alive])
 
     def die(self) -> None:
         Animal.alive.remove(self)
