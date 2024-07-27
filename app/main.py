@@ -11,7 +11,7 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def dying(self) -> None:
+    def die(self) -> None:
         Animal.alive.remove(self)
 
     def __repr__(self) -> str:
@@ -34,4 +34,4 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
             if other.health <= 0:
-                other.dying()
+                other.die()
