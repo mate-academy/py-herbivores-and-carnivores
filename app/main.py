@@ -16,7 +16,6 @@ class Animal:
             self.die()
 
     def die(self) -> None:
-        self.health = 0
         if self in Animal.alive:
             Animal.alive.remove(self)
 
