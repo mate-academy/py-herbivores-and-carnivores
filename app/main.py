@@ -19,7 +19,7 @@ class Animal:
         return (
             "{"
             f"Name: {self.name}, "
-            f"Health: {self.health},"
+            f"Health: {self.health}, "
             f"Hidden: {self.hidden}"
             "}"
         )
