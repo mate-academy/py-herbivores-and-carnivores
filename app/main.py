@@ -1,7 +1,3 @@
-from __future__ import annotations
-from typing import Union
-
-
 class Animal:
     alive = []
 
@@ -32,9 +28,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(target: Union[Herbivore, Carnivore]) -> None:
-        if isinstance(target, Carnivore) or target.hidden:
-            return
-        target.health -= 50
-        if target.health <= 0:
-            target.die()
+    def bite(target: Herbivore) -> None:
+        if isinstance(target, Herbivore) and not target.hidden:
+            target.health -= 50
+            if target.health <= 0:
+                target.die()
