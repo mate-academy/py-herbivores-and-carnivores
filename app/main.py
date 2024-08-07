@@ -1,11 +1,11 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
-        self.alive.append(name)
+        self.alive.append(self)
 
     def die(self) -> None:
         if self in Animal.alive:
@@ -23,7 +23,7 @@ class Carnivore(Animal):
     def bite(cls, animal: Animal) -> None:
         if animal.hidden is False and isinstance(animal, Herbivore):
             animal.health -= 50
-            if animal.health == 0:
+            if animal.health <= 0:
                 animal.die()
 
 
