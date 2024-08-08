@@ -11,10 +11,10 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __repr__(self) -> None:
-        return f"{{Name: {self.name}," \
-               f" Health: {self.health}," \
-               f" Hidden: {self.hidden}}}"
+    def __repr__(self) -> str:
+        return (f"{{Name: {self.name},"
+                f" Health: {self.health},"
+                f" Hidden: {self.hidden}}}")
 
 
 class Carnivore(Animal):
