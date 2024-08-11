@@ -12,11 +12,6 @@ class Animal:
         self.hidden = hidden
         self.alive.append(self)
 
-    @classmethod
-    def is_alive(cls, animal: Animal) -> None:
-        if animal.health <= 0:
-            cls.alive.remove(animal)
-
     def __repr__(self) -> str:
         return (
             f"{{Name: {self.name}, "
@@ -36,4 +31,5 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
 
-        Animal.is_alive(other)
+        if other.health <= 0:
+            Animal.alive.remove(other)
