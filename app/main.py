@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
 
@@ -34,6 +31,6 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, prey: Herbivore) -> None:
-        if not prey.hidden and isinstance(prey, Herbivore):
+        if isinstance(prey, Herbivore) and not prey.hidden:
             prey.health -= 50
         prey.is_alive()
