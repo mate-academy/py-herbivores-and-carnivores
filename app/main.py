@@ -2,8 +2,8 @@ class Animal:
     alive: list["Animal"] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
-        self.name: str = name
         self.health: int = health
+        self.name: str = name
         self.hidden: bool = False
         Animal.alive.append(self)
 
@@ -14,9 +14,10 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @classmethod
-    def update_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
+    def decrease_health(self, amount: int) -> None:
+        self.health -= amount
+        if self.health <= 0:
+            self.__class__.alive.remove(self)
 
 
 class Herbivore(Animal):
@@ -25,8 +26,6 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
-        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
-            herbivore.health -= 50
-            if herbivore.health <= 0:
-                Animal.update_alive()
+    def bite(self, prey: Animal) -> None:
+        if isinstance(prey, Herbivore) and not prey.hidden:
+            prey.decrease_health(50)
