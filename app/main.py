@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Animal:
     alive = []
 
@@ -10,6 +7,7 @@ class Animal:
             health: int = 100,
             hidden: bool = False
     ) -> None:
+
         self.name = name
         self.hidden = hidden
         self.health = health
@@ -26,9 +24,9 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> None:
         if self.hidden:
-            setattr(self, "hidden", False)
+            self.hidden = False
         elif not self.hidden:
-            setattr(self, "hidden", True)
+            self.hidden = True
 
 
 class Carnivore(Animal):
@@ -36,6 +34,5 @@ class Carnivore(Animal):
     def bite(herbivore: Herbivore) -> None:
         if not herbivore.hidden and not isinstance(herbivore, Carnivore):
             herbivore.health -= 50
-        for num in range(len(Animal.alive)):
-            if Animal.alive[num].health <= 0:
-                del Animal.alive[num]
+        if herbivore.health <= 0:
+            del Animal.alive[(Animal.alive.index(herbivore))]
