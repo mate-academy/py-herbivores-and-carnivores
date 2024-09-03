@@ -23,7 +23,7 @@ class Animal:
                 f"Hidden: {self.hidden}}}")
 
     @classmethod
-    def print_alive(cls) -> list:
+    def print_alive(cls) -> list[str]:
         return [str(animal) for animal in cls.alive]
 
 
