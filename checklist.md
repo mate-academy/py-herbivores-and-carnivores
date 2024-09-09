@@ -1,4 +1,4 @@
-m# Сheck Your Code Against the Following Points
+# Сheck Your Code Against the Following Points
 
 ## Code Efficiency
 
