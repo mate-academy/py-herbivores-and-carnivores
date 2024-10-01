@@ -22,3 +22,9 @@ class Animal:
     def die(self) -> None:
         if self.health <= 0:
             self.alive.remove(self)
+
+
+class Herbivore(Animal):
+
+    def hide(self) -> None:
+        self.hidden = not self.hidden
