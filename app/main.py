@@ -8,8 +8,10 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return str(
-            {key.capitalize(): value for key, value in self.__dict__.items()}
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
         )
 
 
