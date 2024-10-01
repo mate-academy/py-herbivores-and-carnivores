@@ -22,7 +22,7 @@ class Animal:
 
     @staticmethod
     def print_alive() -> str:
-        return f"[{", ".join([repr(animal) for animal in Animal.alive])}]"
+        return f'[{", ".join([repr(animal) for animal in Animal.alive])}]'
 
 
 class Herbivore(Animal):
