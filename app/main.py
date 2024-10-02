@@ -22,7 +22,7 @@ class Animal:
 
     @staticmethod
     def print_alive() -> str:
-        return f'[{", ".join([repr(animal) for animal in Animal.alive])}]'
+        return f'[{", ".join(repr(animal) for animal in Animal.alive)}]'
 
 
 class Herbivore(Animal):
@@ -35,9 +35,9 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(herbivore: Herbivore) -> None:
-        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
-            herbivore.health -= 50
+    def bite(animal: Animal) -> None:
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
 
-            if herbivore.health <= 0:
-                herbivore.die()
+            if animal.health <= 0:
+                animal.die()
