@@ -14,11 +14,6 @@ class Animal:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, Hidden: {self.hidden}}}")
 
-    @classmethod
-    def print_alive(cls) -> str:
-        for animal in Animal.alive:
-            return repr([animal])
-
 
 class Herbivore(Animal):
 
