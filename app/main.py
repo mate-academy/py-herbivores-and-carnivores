@@ -1,4 +1,8 @@
+from __future__ import annotations
+
+
 class Animal:
+
     alive = []
 
     def __init__(self, name: str,
@@ -21,10 +25,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(herbivore: Herbivore) -> None:
+    @classmethod
+    def bite(cls, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and herbivore.hidden is False:
             herbivore.health -= 50
 
         if herbivore.health <= 0:
-            Animal.alive.remove(herbivore)
+            cls.alive.remove(herbivore)
