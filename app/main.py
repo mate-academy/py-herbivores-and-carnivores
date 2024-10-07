@@ -7,9 +7,12 @@ class Animal:
         self.hidden = False
         Animal.alive.append(self)
 
-    def __str__(self) -> str:
-        return (f"{self.__class__.__name__}(name={self.name}, "
-                f"health={self.health}, hidden={self.hidden})")
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
     @staticmethod
     def print_alive() -> str:
