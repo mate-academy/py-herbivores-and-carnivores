@@ -14,16 +14,6 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    @staticmethod
-    def print_alive() -> str:
-        alive_animals = []
-        for animal in Animal.alive:
-            animal_info = (f"{{Name: {animal.name},"
-                           f" Health: {animal.health},"
-                           f" Hidden: {animal.hidden}}}")
-            alive_animals.append(animal_info)
-        return f"[{', '.join(alive_animals)}]"
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -37,9 +27,3 @@ class Carnivore(Animal):
             herbivore.health -= 50
             if herbivore.health <= 0:
                 Animal.alive.remove(herbivore)
-
-
-# lion = Carnivore("King Lion")
-# pantera = Carnivore("Bagira")
-# rabbit = Herbivore("Susan")
-# print(Animal.print_alive())
