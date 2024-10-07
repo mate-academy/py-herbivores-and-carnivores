@@ -1,8 +1,9 @@
+from __future__ import annotations
 from typing import List, Union
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive: List[Animal] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name: str = name
@@ -19,16 +20,13 @@ class Animal:
         self.health -= damage
         self.die()
 
-    def __str__(self) -> str:
-        return (
-            f"{{"
-            f"Name: {self.name}, "
-            f"Health: {self.health}, "
-            f"Hidden: {self.hidden}}}"
-        )
-
     def __repr__(self) -> str:
-        return self.__str__()
+       return (
+           f"{{"
+           f"Name: {self.name}, "
+           f"Health: {self.health}, "
+           f"Hidden: {self.hidden}}}"
+       )
 
 
 class Herbivore(Animal):
