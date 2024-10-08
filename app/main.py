@@ -16,13 +16,6 @@ class Animal:
         if self.health <= 0:
             Animal.alive.remove(self)
 
-    def __str__(self) -> str:
-        return (
-            f"Name: {self.name}, "
-            f"Health: {self.health}, "
-            f"Hidden: {self.hidden}"
-        )
-
     def __repr__(self) -> str:
         return (
             f"{{Name: {self.name}, "
