@@ -8,6 +8,7 @@ class Animal:
         self.hidden = False
         Animal.alive.append(self)
 # Use
+
     def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
