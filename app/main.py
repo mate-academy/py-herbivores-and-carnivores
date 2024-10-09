@@ -1,10 +1,15 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int = 100) -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
-        self.hidden = False
+        self.hidden = hidden
         self.alive.append(self)
 
     def __repr__(self) -> str:
@@ -17,14 +22,14 @@ class Animal:
 
 
 class Carnivore(Animal):
-    def bite(self, animal: Animal) -> None:
-        if animal.__class__ is Herbivore:
-            if animal.hidden is False:
-                animal.health -= 50
-                if animal.health < 1:
-                    Animal.alive.pop(Animal.alive.index(animal))
+    @staticmethod
+    def bite(animal: Animal) -> None:
+        if isinstance(animal, Herbivore) and not animal.hidden:
+            animal.health -= 50
+            if animal.health < 1:
+                Animal.alive.remove(animal)
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        self.hidden = True if self.hidden is False else False
+        self.hidden = not self.hidden
