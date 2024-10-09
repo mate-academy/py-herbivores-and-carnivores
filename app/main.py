@@ -20,10 +20,6 @@ class Animal:
         )
 
     @classmethod
-    def update_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
-
-    @classmethod
     def __str__(cls) -> str:
         return str([repr(animal) for animal in cls.alive])
 
@@ -37,4 +33,5 @@ class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.health -= 50
-            Animal.update_alive()
+            if herbivore.health <= 0:
+                Animal.alive.remove(herbivore)
