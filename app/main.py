@@ -20,7 +20,7 @@ class Animal:
             exc_tb: TracebackType
     ) -> None:
         if self in Animal.alive:
-            Animal.alive.append(self)
+            Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
