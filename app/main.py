@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 
+# Fixed class
 class Animal:
     alive: list = []
 
