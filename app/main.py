@@ -20,7 +20,7 @@ class Animal:
             exc_tb: TracebackType
     ) -> None:
         if self in Animal.alive:
-            Animal.alive.remove(self)
+            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -34,9 +34,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Herbivore) -> None:
-        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
-            herbivore.health -= 50
-            if herbivore.health <= 0:
-                herbivore.health = 0
-                Animal.alive.remove(herbivore)
+    def bite(self, target: Animal) -> None:
+        if isinstance(target, Herbivore):
+            if not target.hidden:
+                target.health -= 50
+                if target.health <= 0:
+                    Animal.alive.remove(target)
