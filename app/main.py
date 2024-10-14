@@ -12,7 +12,8 @@ class Animal:
         return self._hidden
 
     def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self._hidden}}}"
+        return (f"{{Name: {self.name}, Health: {self.health}, "
+                f"Hidden: {self._hidden}}}")
 
     def die(self) -> None:
         if self in Animal.alive:
