@@ -1,4 +1,4 @@
-from app.animal import Animal, Carnivore, Herbivore
+from animal import Animal, Carnivore, Herbivore
 
 
 if __name__ == "__main__":

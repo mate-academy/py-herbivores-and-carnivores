@@ -10,11 +10,15 @@ class Animal:
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
-
-class Herbivore(Animal):
     @property
     def is_alive(self) -> bool:
         return self.health > 0
+
+    def bitten(self) -> None:
+        pass
+
+
+class Herbivore(Animal):
 
     def hide(self) -> None:
         self.hidden = not self.hidden
@@ -29,5 +33,5 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal: Herbivore):
+    def bite(self, animal: Animal):
         animal.bitten()
