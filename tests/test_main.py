@@ -5,7 +5,7 @@ import io
 
 from contextlib import redirect_stdout
 
-from app.main import Animal, Herbivore, Carnivore
+from app.animal import Animal, Herbivore, Carnivore
 
 
 def test_animal_class():
