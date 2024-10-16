@@ -9,10 +9,10 @@ class Animal:
         self.add_alive()
 
     def add_alive(self) -> None:
-        if self.health > 0 and self not in self.__class__.alive:
-            self.__class__.alive.append(self)
-        elif self.health <= 0 and self in self.__class__.alive:
-            self.__class__.alive.remove(self)
+        if self.health > 0 and self not in Animal.alive:
+            Animal.alive.append(self)
+        elif self.health <= 0 and self in Animal.alive:
+            Animal.alive.remove(self)
 
     def __str__(self) -> str:
         return (f"Name: {self.name}, "
@@ -26,14 +26,11 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if not self.hidden:
-            self.hidden = True
-        else:
-            self.hidden = False
+
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-
     @staticmethod
     def bite(animal: Animal) -> None:
         if not animal.hidden and isinstance(animal, Herbivore):
