@@ -6,7 +6,7 @@ class Animal:
                  hidden: bool = False) -> None:
         self.name = name
         self.health = health
-        self. hidden = hidden
+        self.hidden = hidden
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -29,4 +29,4 @@ class Carnivore(Animal):
         if animal.hidden is False and not isinstance(animal, Carnivore):
             animal.health -= 50
         if animal.health <= 0:
-            super().alive.remove(animal)
+            Animal.alive.remove(animal)
