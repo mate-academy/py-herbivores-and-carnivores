@@ -2,7 +2,7 @@ from typing import List, Union
 
 
 class Animal:
-    """Base Animal class with shared attributes for all animals. """
+    """Base Animal class with shared attributes for all animals."""
     alive: List["Animal"] = []  # List of all alive animals
 
     def __init__(self, name: str, health: int = 100) -> None:
@@ -12,7 +12,7 @@ class Animal:
         Animal.alive.append(self)  # Add the animal to the alive list
 
     def __repr__(self) -> str:
-        """Return a string representation of alive animals. """
+        """Return a string representation of alive animals."""
         return (
             f"{{Name: {self.name}, Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
