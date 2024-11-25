@@ -26,7 +26,6 @@ class Animal:
 
 
 class Herbivore(Animal):
-    """Herbivore class inherits from Animal and can hide."""
 
     def hide(self) -> None:
         """Toggle the hidden attribute."""
