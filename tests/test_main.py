@@ -41,7 +41,7 @@ def test_animal_constructor():
         "Constructor should add created animal to 'Animal.alive'"
     )
     assert Animal.alive[0].name == "Lion King", (
-        "Constructor should add created animal to 'Animal.alive'"
+        f"Constructor should add created animal to 'Animal.alive'"
     )
 
 
