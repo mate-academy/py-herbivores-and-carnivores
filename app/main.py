@@ -45,7 +45,7 @@ class Herbivore(Animal):
 
 # Створюємо клас Carnivore, який наслідується від Animal.
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
+    def bite(self, herbivore: Herbivore) -> None:
         """
         Метод "bite" дозволяє хижакові нападати на травоїдну тварину.
         :param herbivore: Об'єкт травоїдної тварини, на яку нападає хижак.
