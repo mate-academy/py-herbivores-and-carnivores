@@ -1,19 +1,19 @@
 # Herbivores and carnivores
 
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 
 Nature is well suited to reflect the principles of Object Oriented Programming. 
 All instances of the `Animal` class must have health, name and hidden attribute. 
 Health is 100 and hidden is false by default.
 
-All alive animals should be in the class attribute `Animal.alive`. 
+All alive animals should be in the `__class__` attribute `Animal.alive`. 
 If the health of the animal reaches 0, the beast dies and it should 
 be removed from `Animal.alive`.
 ```python
 lion = Carnivore("Simba")
 len(Animal.alive) == 1
-isinstance(Animal.alive, Carnivore) is True
+isinstance(Animal.alive[0], Carnivore) is True
 ```
 
 Create a `Herbivore` class. This class should inherit from Animal. 
@@ -58,3 +58,4 @@ print(Animal.alive)
 ```
 Hint: Use magic method.
 
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
