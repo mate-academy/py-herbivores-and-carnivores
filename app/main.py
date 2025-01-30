@@ -1,4 +1,7 @@
- class Animal:
+from __future__ import annotations
+
+
+class Animal:
     alive = []
 
     def __init__(self, name: str,
@@ -13,11 +16,13 @@
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __str__(self) -> list:
-        return [(f'{{"Name": "{animal.name}", '
-                 f'"Health": {animal.health}, '
-                 f'"Hidden": {animal.hidden}}}')
-                for animal in Animal.alive]
+    def __str__(self) -> str:
+        return "[" + ", ".join(
+            f'{{"Name": "{animal.name}", '
+            f'"Health": {animal.health}, '
+            f'"Hidden": {animal.hidden}}}'
+            for animal in Animal.alive
+        ) + "]"
 
 
 class Herbivore(Animal):
