@@ -18,8 +18,7 @@ class Animal:
 
     @classmethod
     def __str__(cls) -> str:
-        return f"[{", ".join(map(str, cls.alive))}]"
-
+        return f"[{', '.join(map(str, cls.alive))}]"
 
 class Herbivore(Animal):
     def hide(self) -> bool:
