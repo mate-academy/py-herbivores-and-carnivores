@@ -7,6 +7,10 @@ from contextlib import redirect_stdout
 
 from app.main import Animal, Herbivore, Carnivore
 
+@pytest.fixture(autouse=True)
+def reset_alive():
+    Animal.reset_alive()
+
 
 def test_animal_class():
     assert hasattr(Animal, "alive"), (
