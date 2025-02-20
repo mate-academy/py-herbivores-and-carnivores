@@ -1,1 +1,34 @@
-# write your code here
+class Animal:
+    alive: list["Animal"] = []
+
+    def __init__(self, name: str, health: int = 100) -> None:
+        self.name: str = name
+        self.health: int = health
+        self.hidden: bool = False
+        Animal.alive.append(self)
+
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
+
+    @classmethod
+    def remove_dead(cls) -> None:
+        cls.alive = [animal for animal in cls.alive if animal.health > 0]
+
+    @classmethod
+    def __str__(cls) -> str:
+        return str(cls.alive)
+
+
+class Herbivore(Animal):
+    def hide(self) -> None:
+        self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+    def bite(self, victim: "Herbivore") -> None:
+        if isinstance(victim, Herbivore) and not victim.hidden:
+            victim.health -= 50
+            Animal.remove_dead()
