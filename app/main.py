@@ -25,7 +25,10 @@ class Herbivore(Animal):
             pass
         else:
             if self.health <= 50:
-                self.alive.remove(self)
+                if self in Animal.alive:
+                    self.alive.remove(self)
+                else:
+                    pass
             else:
                 self.health -= 50
 
