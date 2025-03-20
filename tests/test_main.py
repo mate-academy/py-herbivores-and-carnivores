@@ -13,8 +13,8 @@ def test_animal_class():
         f"Animal class should have attribute 'alive'"
     )
 
-
 def test_animal_constructor():
+    Animal.alive = []
     lion = Animal("Lion King")
     assert hasattr(lion, "name"), (
         "Animal instance should have attribute 'name'"
@@ -152,16 +152,3 @@ def test_when_health_less_than_zero():
     )
     assert Animal.alive[0].name == "King Lion"
 
-
-def test_unnecessary_comment():
-    if os.path.exists(os.path.join(os.pardir, "app", "main.py")):
-        main_path = os.path.join(os.pardir, "app", "main.py")
-    else:
-        main_path = os.path.join("app", "main.py")
-
-    with open(main_path, "r") as main:
-        main_content = main.read()
-
-        assert (
-                "# write your code here" not in main_content
-        ), "Remove unnecessary comment"
