@@ -6,7 +6,7 @@ class Animal:
         self.health = health
         self.name = name
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -25,6 +25,8 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(victim: Herbivore) -> None :
+        if victim.health == 0:
+            return
         if isinstance(victim, Herbivore) and victim.hidden is False:
             victim.health -= 50
         if victim.health <= 0:
