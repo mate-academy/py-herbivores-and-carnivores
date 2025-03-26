@@ -8,16 +8,11 @@ class Animal:
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
-        return (
-            f"{{Name: {self.name}, Health: {self.health}, "
-            f"Hidden: {self.hidden}}}"
-        )
+        return (f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}")
 
     @classmethod
     def cleanup(cls) -> None:
-        cls.alive = [
-            animal for animal in cls.alive if animal.health > 0
-        ]
+        cls.alive = [animal for animal in cls.alive if animal.health > 0]
 
     @classmethod
     def reset_alive(cls) -> None:
@@ -34,7 +29,7 @@ class Carnivore(Animal):
         if isinstance(prey, Herbivore) and not prey.hidden:
             prey.health -= 50
             if prey.health <= 0:
-                Animal.cleanup()
+                cls.cleanup()
 
 
 # Тест для конструктора
