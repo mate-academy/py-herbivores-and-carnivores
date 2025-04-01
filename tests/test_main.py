@@ -146,7 +146,7 @@ def test_when_health_less_than_zero():
     Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
-    rabbit.health = 25
+    lion.bite(rabbit)
     lion.bite(rabbit)
     assert len(Animal.alive) == 1, (
         "Herbivore should die if health less than zero"
