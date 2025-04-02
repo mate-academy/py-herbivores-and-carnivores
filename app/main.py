@@ -3,7 +3,7 @@ class Animal:
         def __repr__(self) -> str:
             return "[" + ", ".join(repr(animal) for animal in self) + "]"
 
-    alive = _AliveList()
+    alive: "list[Animal]" = _AliveList()
 
     def __init__(
         self, name: str,
@@ -37,6 +37,6 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: str) -> None:
-        if isinstance(target, Herbivore) and not target.hidden:
-            target.lose_health(50)
+    def bite(self, herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
+            herbivore.lose_health(50)
