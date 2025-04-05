@@ -1,8 +1,9 @@
+from __future__ import annotations
 from typing import List
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive: List[Animal] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
@@ -32,7 +33,6 @@ class Carnivore(Animal):
             other._check_health()
 
 
-# Exemplo de uso:
 
 lion = Carnivore("Simba")
 assert len(Animal.alive) == 1
@@ -43,23 +43,22 @@ rabbit.hide()
 assert rabbit.hidden is True
 
 lion.bite(rabbit)
-assert rabbit.health == 100  # Não foi mordido porque está escondido
+assert rabbit.health == 100
 
-rabbit.hide()  # Agora aparece
+rabbit.hide()
 lion.bite(rabbit)
-assert rabbit.health == 50  # Agora foi mordido
+assert rabbit.health == 50
 
-rabbit.hide()  # Se esconde
+rabbit.hide()
 lion.bite(rabbit)
-assert rabbit.health == 50  # Não foi mordido novamente
+assert rabbit.health == 50
 
-rabbit.hide()  # Aparece
+rabbit.hide()
 lion.bite(rabbit)
-assert rabbit.health == 0  # Morreu
+assert rabbit.health == 0
 assert rabbit not in Animal.alive
 
-# Impressão formatada
 pantera = Carnivore("Bagira")
 snake = Carnivore("Kaa")
 print(Animal.alive)
-# [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
+
