@@ -1,9 +1,9 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
@@ -15,23 +15,32 @@ class Animal:
         )
 
     def die(self) -> None:
-        Animal.alive.remove(self)
+        if self in Animal.alive:
+            Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
-        if self.hidden:
-            print(f"{self.name} is now hidden.")
+        status = "hidden" if self.hidden else "visible"
+        print(f"{self.name} is now {status}.")
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
-        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
-            herbivore.health -= 50
-            if herbivore.health <= 0:
-                herbivore.die()
-        elif isinstance(herbivore, Carnivore):
-            print(f"{self.name} cannot bite another carnivore.")
+    def bite(self, target: Animal) -> None:
+        if not isinstance(target, Herbivore):
+            print(f"{self.name} cannot bite {target.name} (not a herbivore).")
+            return
+
+        if target.hidden:
+            print(f"{self.name} cannot bite {target.name} (it is hidden).")
+            return
+
+        target.health -= 50
+        if target.health <= 0:
+            target.die()
+            print(f"{target.name} has been eaten by {self.name}!")
         else:
-            print(f"{self.name} cannot bite a hidden herbivore.")
+            print(
+                f"{self.name} bit {target.name}! Health left: {target.health}"
+            )
