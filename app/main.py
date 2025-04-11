@@ -27,4 +27,6 @@ class Carnivore(Animal):
             if not herbivore.hidden:
                 herbivore.health -= 50
                 if herbivore.health <= 0:
-                    Herbivore.alive.remove(herbivore)
+                    Animal.alive.remove(herbivore)
+        else:
+            print(f"{self.name} cannot bite a non-herbivore!")
