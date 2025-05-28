@@ -1,11 +1,13 @@
 from typing import Any
 
+
 class AnimalList(list):
     def __repr__(self) -> str:
         items = []
         for animal in self:
             items.append(
-                f"{{Name: {animal.name}, Health: {animal.health}, Hidden: {animal.hidden}}}"
+                f"{{Name: {animal.name}, Health: {animal.health}, "
+                f"Hidden: {animal.hidden}}}"
             )
         return "[" + ", ".join(items) + "]"
 
@@ -20,7 +22,8 @@ class AnimalMeta(type):
 class Animal(metaclass=AnimalMeta):
     alive: AnimalList = AnimalList()
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
+    def __init__(self, name: str, health: int = 100,
+                 hidden: bool = False) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
