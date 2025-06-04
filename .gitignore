@@ -6,3 +6,10 @@
 venv/
 .pytest_cache/
 **__pycache__/
+venv/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+.idea/
+
