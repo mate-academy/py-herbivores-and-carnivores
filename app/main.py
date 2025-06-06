@@ -9,8 +9,8 @@ class Animal:
                  ) -> None:
         self.name = name
         self.health = health
-        self. hidden = hidden
-        self.alive.append(self)
+        self.hidden = hidden
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -30,6 +30,6 @@ class Carnivore(Animal):
         if isinstance(victim, Herbivore) and not victim.hidden:
             victim.health -= 50
             if victim.health <= 0:
-                self.alive.pop(
-                    self.alive.index(victim)
+                Animal.alive.pop(
+                    Animal.alive.index(victim)
                 )
