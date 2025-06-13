@@ -42,4 +42,4 @@ class Carnivore(Animal):
 
 
 def __str_alive__(cls: Any) -> str:
-    return f"[{", ".join(repr(animal) for animal in cls.alive)}]"
+    return f'[{", ".join(repr(animal) for animal in cls.alive)}]'
