@@ -24,11 +24,11 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     def bite(self, herbivore: "Animal") -> None:
 
-        print(herbivore.name)
         if isinstance(herbivore, Herbivore):
             if herbivore.hidden is False:
 
                 herbivore.health -= 50
 
         if herbivore.health <= 0:
-            Animal.alive.remove(herbivore)
+            if herbivore in Animal.alive:
+                Animal.alive.remove(herbivore)
