@@ -11,7 +11,8 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        Animal.alive.append(self)
+        if self not in Animal.alive:
+            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (f"{{"
@@ -30,5 +31,5 @@ class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
         if isinstance(herbivore, Herbivore) and herbivore.hidden is False:
             herbivore.health -= 50
-        if herbivore.health <= 0:
+        if herbivore in Animal.alive and herbivore.health <= 0:
             Animal.alive.remove(herbivore)
