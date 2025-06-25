@@ -10,6 +10,11 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
+    def take_damage(self, amount: int) -> None:
+        self.health -= amount
+        if self.health <= 0:
+            self.die()
+
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
@@ -27,7 +32,5 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, target: Herbivore) -> None:
-        if isinstance(target, Herbivore):
-            if not target.hidden:
-                target.health -= 50
-                target.die()
+        if isinstance(target, Herbivore) and not target.hidden:
+            target.take_damage(50)
