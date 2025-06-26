@@ -35,7 +35,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(victim: str) -> None:
+    def bite(victim: Herbivore) -> None:
         if not isinstance(victim, Herbivore) or victim.hidden:
             return
         victim.loose_hp(50)
