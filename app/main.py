@@ -27,6 +27,11 @@ class Animal:
     def __str__(self) -> str:
         return self.__repr__()
 
+    @classmethod
+    def kill(cls, animal: Animal) -> None:
+        if animal in cls.alive:
+            cls.alive.remove(animal)
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -44,4 +49,4 @@ class Carnivore(Animal):
 
         herbivore.health -= 50
         if herbivore.health <= 0:
-            Carnivore.alive.remove(herbivore)
+            Animal.kill(herbivore)
