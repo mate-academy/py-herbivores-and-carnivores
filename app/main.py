@@ -35,33 +35,3 @@ class Carnivore(Animal):
 
         if herbivore.health <= 0:
             Animal.alive.remove(herbivore)
-
-
-if __name__ == "__main__":
-    # lion = Carnivore("Lion King")
-    # print(len(Animal.alive))
-    # print(isinstance(Animal.alive[0], Carnivore))
-    #
-    # rabbit = Herbivore("Susan")
-    # rabbit.hide()
-    # is_hidden = rabbit.hidden
-    # print(is_hidden)
-
-    lion = Carnivore("Lion King")
-    rabbit = Herbivore("Susan")
-
-    print(Animal.alive)
-
-    print(rabbit.health)
-    lion.bite(rabbit)
-    print(rabbit.health == 50)
-
-    rabbit.hide()
-    lion.bite(rabbit)
-    print(rabbit.health == 50)
-
-    rabbit.hide()
-    lion.bite(rabbit)
-    print(rabbit.health == 0)
-
-    # print(rabbit in Animal.alive)
