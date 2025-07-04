@@ -1,16 +1,21 @@
 class Animal:
 
     alive = []
-    def __init__(self, name: str):
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
         self.name = name
-        self.health = 100
-        self.hidden = False
+        self._health = health
+        self.hidden = hidden
         Animal.alive.append(self)
 
-    def health_check(self, value):
-        self.health = value
-        if self.health <= 0:
-            self.health = 0
+    @property
+    def health(self):
+        return self._health
+
+    @health.setter
+    def health(self, value):
+        self._health = value
+        if self._health <= 0:
+            self._health = 0
             if self in Animal.alive:
                 Animal.alive.remove(self)
 
