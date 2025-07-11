@@ -1,11 +1,14 @@
+from typing import ClassVar, List
+
+
 class Animal:
 
-    alive = []
+    alive: ClassVar[List["Animal"]] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
-        self.name = name
-        self.health = health
-        self.hidden = False
+        self.name: str = name
+        self.health: int = health
+        self.hidden: bool = False
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -21,7 +24,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, herbivore : Herbivore) -> None:
+    def bite(self, herbivore: Herbivore) -> None:
         if not isinstance(herbivore, Herbivore):
             return
 
