@@ -1,6 +1,11 @@
-class Animal:
+from typing import List
 
-    alive = []
+
+class Animal:
+    name: str
+    health: int
+    hidden: bool
+    alive: List["Animal"] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
@@ -14,14 +19,12 @@ class Animal:
 
 
 class Herbivore(Animal):
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-
-    def bite(self, herbivore : Herbivore) -> None:
+    def bite(self, herbivore: Animal) -> None:
         if not isinstance(herbivore, Herbivore):
             return
 
@@ -31,4 +34,5 @@ class Carnivore(Animal):
         herbivore.health -= 50
 
         if herbivore.health <= 0:
-            Animal.alive.remove(herbivore)
+            if herbivore in Animal.alive:
+                Animal.alive.remove(herbivore)
