@@ -1,16 +1,20 @@
-from typing import ClassVar, List
-
-
 class Animal:
-    alive: ClassVar[List["Animal"]] = []
-    def __init__(self, name: str, health: int = 100) -> None:
-        self.name: str = name
-        self.health: int = health
-        self.hidden: bool = False
-        Animal.alive.append(self)
+    alive = []
+
+    def __init__(self,
+                 name: str,
+                 health: int = 100,
+                 hidden: bool = False) -> None:
+        self.name = name
+        self.health = health
+        self.hidden = hidden
+        if self.health > 0:
+            Animal.alive.append(self)
+
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
-                f"Health: {self.health}, Hidden: {self.hidden}}}")
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}")
 
 
 class Herbivore(Animal):
@@ -19,11 +23,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Herbivore) -> None:
-        if not isinstance(herbivore, Herbivore):
-            return
-        if herbivore.hidden:
-            return
-        herbivore.health -= 50
-        if herbivore.health <= 0:
-            Animal.alive.remove(herbivore)
+    @staticmethod
+    def bite(other_animal: Animal) -> None:
+        if isinstance(other_animal, Herbivore) and not other_animal.hidden:
+            other_animal.health -= 50
+            if other_animal.health <= 0 and other_animal in Animal.alive:
+                Animal.alive.remove(other_animal)
