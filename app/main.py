@@ -10,7 +10,7 @@ class Animal:
         Animal.alive.append(self)
 
     def die(self) -> None:
-        if self in Animal.alive and self.health == 0:
+        if self in Animal.alive and self.health <= 0:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
@@ -31,4 +31,4 @@ class Carnivore(Animal):
             if isinstance(other, Herbivore):
                 if other.health <= 0:
                     if other in Animal.alive:
-                        Animal.alive.remove(other)
+                        other.die()
