@@ -17,9 +17,11 @@ class Animal:
 
     def __repr__(self) -> str:
         if isinstance(self, Animal):
-            return f"{{Name: {
-                self.name
-            }, Health: {self.health}, Hidden: {self.hidden}}}"
+            return (
+                f"{{Name: {self.name}, "
+                f"Health: {self.health}, "
+                f"Hidden: {self.hidden}}}"
+            )
         else:
             return str(self)
 
@@ -41,7 +43,4 @@ class Carnivore(Animal):
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden:
-            self.hidden = False
-        else:
-            self.hidden = True
+        self.hidden = not self.hidden
