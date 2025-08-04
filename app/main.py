@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, ClassVar
 
 
 class Animal:
-    alive: List["Animal"] = []
+    alive: ClassVar[List["Animal"]] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
@@ -17,7 +17,7 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
-    def _die(self) -> None:
+    def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
@@ -25,6 +25,8 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
+        state = "hidden" if self.hidden else "visible"
+        print(f"{self.name} is now {state}")
 
 
 class Carnivore(Animal):
@@ -32,4 +34,35 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
             if other.health <= 0:
-                other._die()
+                other.die()
+
+
+if __name__ == "__main__":
+    lion = Carnivore("Simba")
+    assert len(Animal.alive) == 1
+    assert isinstance(Animal.alive[0], Carnivore)
+
+    rabbit = Herbivore("Susan", 25)  # działa z podanym zdrowiem
+    rabbit.hide()
+    assert rabbit.hidden is True
+
+    lion = Carnivore("Lion King")
+    rabbit = Herbivore("Susan")
+    assert rabbit.health == 100
+
+    lion.bite(rabbit)
+    assert rabbit.health == 50
+
+    rabbit.hide()
+    lion.bite(rabbit)
+    assert rabbit.health == 50
+
+    rabbit.hide()
+    lion.bite(rabbit)
+    assert rabbit.health == 0
+    assert rabbit not in Animal.alive
+
+    panther = Carnivore("Bagheera")
+    snake = Carnivore("Kaa")
+
+    print(Animal.alive)
