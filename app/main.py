@@ -1,8 +1,21 @@
-from typing import List, ClassVar
+from typing import ClassVar
+
+
+class AnimalList(list):
+    def __repr__(self) -> str:
+        # Represent as list of dicts with desired fields
+        return repr([
+            {
+                "name": animal.name,
+                "health": animal.health,
+                "hidden": animal.hidden,
+            }
+            for animal in self
+        ])
 
 
 class Animal:
-    alive: ClassVar[List["Animal"]] = []
+    alive: ClassVar[AnimalList] = AnimalList()
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
@@ -42,7 +55,7 @@ if __name__ == "__main__":
     assert len(Animal.alive) == 1
     assert isinstance(Animal.alive[0], Carnivore)
 
-    rabbit = Herbivore("Susan", 25)  # działa z podanym zdrowiem
+    rabbit = Herbivore("Susan", 25)
     rabbit.hide()
     assert rabbit.hidden is True
 
@@ -65,4 +78,4 @@ if __name__ == "__main__":
     panther = Carnivore("Bagheera")
     snake = Carnivore("Kaa")
 
-    print(Animal.alive)
+    print(Animal.alive)  # This will print the custom formatted list of dicts
