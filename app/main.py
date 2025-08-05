@@ -1,16 +1,5 @@
-class AliveList(list):
-
-    def __repr__(self) -> str:
-        alive_list = []
-        for animal in self:
-            animal_dict = {"Name": animal.name, "Health": animal.health,
-                           "Hidden": animal.hidden}
-            alive_list.append(animal_dict)
-        return f"{alive_list}"
-
-
 class Animal:
-    alive = AliveList()
+    alive = []
 
     def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
@@ -18,6 +7,9 @@ class Animal:
         self.health = health
         self.hidden = hidden
         Animal.alive.append(self)
+
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
 
 class Herbivore(Animal):
@@ -30,4 +22,4 @@ class Carnivore(Animal):
         if isinstance(animal, Herbivore) and animal.hidden is False:
             animal.health -= 50
             if animal.health <= 0:
-                animal.alive.remove(animal)
+                Animal.alive.remove(animal)
