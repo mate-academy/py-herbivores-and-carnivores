@@ -2,13 +2,14 @@ from __future__ import annotations
 
 
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
         self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+        if self.health > 0:
+            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -29,8 +30,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(other: Animal) -> None:
+    def bite(self, other: Animal) -> None:
         if not isinstance(other, Herbivore):
             return
         if other.hidden:
