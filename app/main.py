@@ -2,11 +2,12 @@ from __future__ import annotations
 
 
 class AliveList(list):
-    def __repr__(self) -> str:
+    def __repr__(
+        self,
+    ) -> str:
         return "[" + ", ".join(
-            f"{{Name: {animal.name},"
-            f" Health: {animal.health},"
-            f" Hidden: {animal.hidden}}}"
+            f"{{Name: {animal.name}, Health: {animal.health}, "
+            f"Hidden: {animal.hidden}}}"
             for animal in self
         ) + "]"
 
