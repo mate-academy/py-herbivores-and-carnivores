@@ -40,6 +40,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
+
     def bite(
         self: "Carnivore",
         prey: "Herbivore"
