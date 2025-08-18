@@ -36,7 +36,7 @@ class Herbivore(Animal):
     def hide(self: "Herbivore") -> None:
         self.hidden = not self.hidden
 
-
+# Комент
 class Carnivore(Animal):
     def bite(
         self: "Carnivore",
