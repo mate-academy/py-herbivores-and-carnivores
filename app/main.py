@@ -27,9 +27,7 @@ class Animal:
     @classmethod
     def __str__(cls: type) -> str:
         return str([
-            {"Name": animal.name,
-             "Health": animal.health,
-             "Hidden": animal.hidden}
+            {"Name": animal.name, "Health": animal.health, "Hidden": animal.hidden}
             for animal in cls.alive
         ])
 
@@ -40,7 +38,6 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-
     def bite(
         self: "Carnivore",
         prey: "Herbivore"
