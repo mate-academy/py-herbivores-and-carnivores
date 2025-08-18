@@ -1,5 +1,9 @@
+from typing import List
+
+
+
 class Animal:
-    alive = []
+    alive: List["Animal"] = []
 
     def __init__(
         self, name: str, health: int = 100, hidden: bool = False
@@ -8,11 +12,11 @@ class Animal:
         self.health = health
         self.hidden = hidden
 
-        self.__class__.alive.append(self)
+        Animal.alive.append(self)
 
     def die(self) -> None:
         if self.health <= 0:
-            self.__class__.alive.remove(self)
+            Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (
