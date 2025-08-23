@@ -2,8 +2,8 @@ from __future__ import annotations
 
 
 class AliveList(list):
-    def __repr__(self) -> list[dict]:
-        return ([
+    def __repr__(self) -> str:
+        return str([
             {
                 "Name": animal.name,
                 "Health": animal.health,
