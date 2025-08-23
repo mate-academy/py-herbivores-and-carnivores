@@ -2,7 +2,6 @@ from __future__ import annotations
 
 
 class Animal:
-
     alive: list[Animal] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
@@ -13,28 +12,25 @@ class Animal:
 
     def __repr__(self) -> str:
         return (
-            "{Name: " + str(self.name)
-            + ", Health: " + str(self.health)
-            + ", Hidden: " + str(self.hidden) + "}"
+            f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
         )
 
 
 class Herbivore(Animal):
-
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
+    def bite(self, herbivore: Herbivore) -> None:
 
-    @staticmethod
-    def bite(herbivore: Herbivore) -> None:
-
-        if not isinstance(herbivore, Herbivore):
+        if isinstance(herbivore, Carnivore):
             return
 
-        if not herbivore.hidden:
-            herbivore.health -= 50
+        if herbivore.hidden:
+            return
 
+        herbivore.health -= 50
         if herbivore.health <= 0:
+            herbivore.health = 0
             Animal.alive.remove(herbivore)
