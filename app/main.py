@@ -1,8 +1,20 @@
 from __future__ import annotations
 
 
+class AliveList(list):
+    def __repr__(self) -> list[dict]:
+        return ([
+            {
+                "Name": animal.name,
+                "Health": animal.health,
+                "Hidden": animal.hidden,
+            }
+            for animal in self
+        ])
+
+
 class Animal:
-    alive: list[Animal] = []
+    alive: AliveList = AliveList()
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
