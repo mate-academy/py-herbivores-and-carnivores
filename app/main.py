@@ -1,10 +1,9 @@
-# write your code here
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
@@ -33,3 +32,4 @@ class Carnivore(Animal):
         other.health -= 50
         if other.health <= 0:
             other._die()
+
