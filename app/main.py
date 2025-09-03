@@ -1,10 +1,10 @@
 class AnimalList(list):
     def __repr__(self) -> str:
-        return f"[{[x for x in self]}]"
+        return "[" + ", ".join(repr(a) for a in self) + "]"
 
 
 class Animal:
-    alive: AnimalList = []
+    alive: AnimalList = AnimalList()
 
     def __init__(
         self,
@@ -32,7 +32,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, target: Animal) -> None:
-        if not isinstance(target, Animal):
+        if not isinstance(target, Herbivore):
             return
 
         if isinstance(target, Herbivore) and not target.hidden:
