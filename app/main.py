@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
             self,
@@ -14,6 +14,7 @@ class Animal:
 
     def _die(self) -> None:
         if self in Animal.alive and self.health <= 0:
+            self.health = 0
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
