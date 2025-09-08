@@ -40,5 +40,5 @@ class Carnivore(Animal):
             and victim.health > 0
         ):
             victim.health -= 50
-        if victim.health == 0:
+        if victim.health <= 0:
             victim.death()
