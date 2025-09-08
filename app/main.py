@@ -14,13 +14,14 @@ class Animal:
 
         Animal.alive.append(self)
 
-    def death(self):
+    def death(self) -> None:
         Animal.alive.remove(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"""Name: {self.name},
          Health: {self.health},
          Hidden: {self.hidden}"""
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
