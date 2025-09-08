@@ -1,6 +1,9 @@
+from __future__ import annotations
+
+
 class Animal:
 
-    alive = []
+    Animal.alive: list["Animal"] = []
 
     def __init__(
         self,
@@ -39,6 +42,6 @@ class Carnivore(Animal):
             and victim.hidden is False
             and victim.health > 0
         ):
-            victim.health -= 50
-        if victim.health <= 0:
+            victim.health = max(0, victim.health - 50)
+        if victim.health == 0:
             victim.death()
