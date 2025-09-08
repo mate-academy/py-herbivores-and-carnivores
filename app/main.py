@@ -3,7 +3,7 @@ from __future__ import annotations
 
 class Animal:
 
-    Animal.alive: list["Animal"] = []
+    alive: list["Animal"] = []
 
     def __init__(
         self,
