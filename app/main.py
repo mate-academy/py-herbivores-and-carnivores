@@ -1,6 +1,6 @@
 class Animal:
 
-    Animal.alive: list["Animal"] = []
+    alive = []
 
     def __init__(
         self,
@@ -25,7 +25,6 @@ class Animal:
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
         )
-
 
 
 class Herbivore(Animal):
