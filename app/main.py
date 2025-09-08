@@ -3,8 +3,9 @@ class Animal:
     alive = []
 
     def __init__(
-        self, health: int = 100,
+        self,
         name: str,
+        health: int = 100,
         hidden: bool = False
     ) -> None:
         self.health = health
