@@ -12,16 +12,20 @@ class Animal:
 
         Animal.alive.append(self)
 
-    def is_alive(self) -> bool:
-        if self.health <= 0:
-            Animal.alive.remove(self)
-            return False
-        return True
-
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
+
+    @property
+    def is_alive(self):
+        return self.health == 0
+
+    def __setattr__(self, name, value):
+        super().__setattr__(name, value)
+        if name == "health":
+            if value == 0 and self in Animal.alive:
+                Animal.alive.remove(self)
 
 
 class Herbivore(Animal):
@@ -35,7 +39,6 @@ class Herbivore(Animal):
 class Carnivore(Animal):
 
     @staticmethod
-    def bite(victim: Animal) -> None:
-        if not victim.hidden and not isinstance(victim, Carnivore):
-            victim.health -= 50
-            victim.is_alive()
+    def bite(victim: Herbivore) -> None:
+        if not victim.hidden and isinstance(victim, Herbivore):
+            victim.health = max(victim.health - 50, 0)
