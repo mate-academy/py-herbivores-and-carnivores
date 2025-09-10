@@ -18,10 +18,10 @@ class Animal:
                 f"Hidden: {self.hidden}}}")
 
     @property
-    def is_alive(self):
+    def is_alive(self) -> bool:
         return self.health == 0
 
-    def __setattr__(self, name, value):
+    def __setattr__(self, name: str, value: int) -> None:
         super().__setattr__(name, value)
         if name == "health":
             if value == 0 and self in Animal.alive:
