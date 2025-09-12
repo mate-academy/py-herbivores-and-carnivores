@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 class Animal:
     alive: list["Animal"] = []
 
@@ -33,5 +34,5 @@ class Carnivore(Animal):
         if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
             if animal.health <= 0 and animal in Animal.alive:
-                animal.health=0
+                animal.health = 0
                 Animal.alive.remove(animal)
