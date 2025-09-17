@@ -6,12 +6,10 @@ class Animal:
         name: str,
         health: int = 100
     ) -> None:
-        self.health = health
         self.name = name
+        self._health = 0
+        self.health = health
         self.hidden = False
-
-        if self.health > 0:
-            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -19,6 +17,22 @@ class Animal:
             f"Health: {self.health}, "
             f"Hidden: {self.hidden}}}"
         )
+
+    @property
+    def health(self) -> int:
+        return self._health
+
+    @health.setter
+    def health(self, value: int) -> None:
+        old_health = self.health
+        self._health = max(0, value)
+
+        if old_health > 0 and self._health == 0:
+            if self in Animal.alive:
+                Animal.alive.remove(self)
+        elif old_health == 0 and self._health > 0:
+            if self not in Animal.alive:
+                Animal.alive.append(self)
 
 
 class Herbivore(Animal):
@@ -34,6 +48,3 @@ class Carnivore(Animal):
             and target in Animal.alive
         ):
             target.health = max(0, target.health - 50)
-
-            if target.health <= 0:
-                Animal.alive.remove(target)
