@@ -17,8 +17,8 @@ class Animal:
         return self._health
 
     @health.setter
-    def health(self, value):
-        self._health = value
+    def health(self, value_health):
+        self._health = value_health
 
         if self._health <= 0:
             Animal.alive.remove(self)
