@@ -1,5 +1,8 @@
+from __future__ import annotations
+
+
 class Animal:
-    alive = []
+    alive = ["Animal"]
 
     def __init__(
         self,
@@ -21,7 +24,8 @@ class Animal:
         self._health = value_health
 
         if self._health <= 0:
-            Animal.alive.remove(self)
+            if self in Animal.alive:
+                Animal.alive.remove(self)
         else:
             if self not in Animal.alive:
                 Animal.alive.append(self)
