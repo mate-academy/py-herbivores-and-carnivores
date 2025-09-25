@@ -4,4 +4,6 @@ from app.animal_project.Carnivore import Carnivore
 
 
 if __name__ == "__main__":
-    print("start")
+    print(Animal.alive)
+    print(Herbivore.alive)
+    print(Carnivore.alive)
