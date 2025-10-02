@@ -1,8 +1,9 @@
 class Animal:
 
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str = "animal",
+    def __init__(self,
+                 name: str = "animal",
                  health: int = 100,
                  hidden: bool = False) -> None:
         self.health = health
@@ -11,7 +12,7 @@ class Animal:
         Animal.alive.append(self)
 
     def die(self) -> None:
-        if self.health <= 0:
+        if self.health <= 0 and self in Animal.alive:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
@@ -39,7 +40,7 @@ class Carnivore(Animal):
         if victim.hidden:
             return
 
-        victim.health -= 50
+        victim.health = max(victim.health - 50, 0)
 
-        if victim.health <= 0:
+        if victim.health == 0:
             victim.die()
