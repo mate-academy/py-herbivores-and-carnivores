@@ -2,14 +2,17 @@ class Animal:
 
     alive: list["Animal"] = []
 
-    def __init__(self,
-                 name: str = "animal",
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+            self,
+            name: str = "animal",
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.health = health
         self.name = name
         self.hidden = hidden
-        Animal.alive.append(self)
+        if health > 0:
+            Animal.alive.append(self)
 
     def die(self) -> None:
         if self.health <= 0 and self in Animal.alive:
