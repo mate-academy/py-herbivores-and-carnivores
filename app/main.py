@@ -25,7 +25,8 @@ class Animal:
 
     def _check_health(self) -> None:
         """Check if animal is dead and remove from alive list if necessary."""
-        if self.health <= 0:  # Mudado de volta para <= 0 para atender ao teste
+        # CORREÇÃO: mudado para <= 0 para remover quando saúde é 0 ou negativa
+        if self.health <= 0:
             if self in Animal.alive:
                 Animal.alive.remove(self)
 
