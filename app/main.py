@@ -3,9 +3,11 @@ from typing import List
 
 
 class Animal:
-    alive: List[Animal] = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100
+    def __init__(self,
+                 name: str,
+                 health: int = 100
                  ) -> None:
         self.name = name
         self.health = health
@@ -20,7 +22,9 @@ class Herbivore(Animal):
             self.hidden = not self.hidden
 
 class Carnivore(Animal):
-    def bite(self, target: Herbivore):
+    def bite(self,
+             target: Herbivore
+             ) -> None:
         if not isinstance(target, Herbivore) or target.hidden:
             return
 
