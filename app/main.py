@@ -1,8 +1,8 @@
-from typing import List, Any
+from __future__ import annotations
 
 
 class Animal:
-    alive: List[Any] = []
+    alive: list[Animal] = []
 
     def __init__(
             self,
@@ -13,7 +13,9 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        Animal.alive.append(self)
+        # Só adiciona à lista se estiver vivo
+        if self.health > 0:
+            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -23,7 +25,7 @@ class Animal:
 
     def _check_health(self) -> None:
         """Check if animal is dead and remove from alive list if necessary."""
-        if self.health <= 0:
+        if self.health <= 0:  # Mudado de volta para <= 0 para atender ao teste
             if self in Animal.alive:
                 Animal.alive.remove(self)
 
@@ -41,7 +43,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: Animal) -> None:
+    def bite(self, other: Herbivore) -> None:
         """Bite another animal - only works on unhidden herbivores."""
         # Check if other is a herbivore and not hidden
         if isinstance(other, Herbivore) and not other.hidden:
