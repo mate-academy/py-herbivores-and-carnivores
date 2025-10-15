@@ -20,7 +20,8 @@ class Animal:
         return self._health
 
     @health.setter
-    def health(self, value: int) -> None:
+    def health(self,
+               value: int) -> None:
         new = max(0, min(100, value))
         self._health = new
         if self._health <= 0 and self in Animal.alive:
@@ -35,6 +36,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, target: Animal) -> None:
+    def bite(self,
+             target: Herbivore) -> None:
         if not target.hidden and isinstance(target, Herbivore):
             target.health = target.health - 50
