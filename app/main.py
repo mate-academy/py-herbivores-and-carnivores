@@ -18,10 +18,6 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __str__(self) -> str:
-        alive_str = ", ".join(map(str, Animal.alive))
-        return f"[{alive_str}]"
-
 
 class Herbivore(Animal):
     def hide(self) -> None:
