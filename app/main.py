@@ -28,14 +28,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
 
-    def bite(self, prey: Herbivore) -> None:
+    def bite(self, prey: Animal) -> None:
         if not prey.hidden and not isinstance(prey, Carnivore):
             prey.health -= 50
             if prey.health <= 0:
                 Animal.alive.remove(prey)
-
-
-# pantera = Carnivore("Bagira")
-# snake = Carnivore("Kaa")
-# lion = Carnivore("Lion King")
-# print(Animal.alive)
