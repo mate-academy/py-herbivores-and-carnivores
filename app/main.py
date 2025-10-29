@@ -33,7 +33,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        self.__class__.alive.append(self)
 
     def __repr__(self) -> str:
         """
@@ -60,7 +60,7 @@ class Animal:
         :return: None
         """
         if self in Animal.alive:
-            self.alive.remove(self)
+            self.__class__.alive.remove(self)
 
 
 class Herbivore(Animal):
@@ -99,8 +99,7 @@ class Carnivore(Animal):
     cause death.
 
     """
-    @staticmethod
-    def bite(other: Herbivore) -> None:
+    def bite(self, other: Herbivore) -> None:
         """
         Attacks a herbivorous animal by reducing its health.
 
