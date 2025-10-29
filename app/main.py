@@ -12,7 +12,7 @@ class Animal:
     :type hidden: bool
     """
 
-    alive = list()
+    alive: list["Animal"] = list()
 
     def __init__(
             self,
@@ -62,13 +62,13 @@ class Carnivore(Animal):
     """A class to represent a carnivore."""
 
     @staticmethod
-    def bite(animal: Herbivore) -> None:
-        """Bite a herbivore.
+    def bite(animal: Animal) -> None:
+        """Bite an animal.
 
-        :param animal: The herbivore to bite.
+        :param animal: The animal to bite.
         :type animal: Herbivore
         """
-        if not (isinstance(animal, Carnivore) or animal.hidden):
+        if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
-            if animal.health <= 0:
+            if animal.health <= 0 and animal in animal.__class__.alive:
                 animal.__class__.alive.remove(animal)
