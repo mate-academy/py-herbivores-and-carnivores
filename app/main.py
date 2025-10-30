@@ -1,5 +1,8 @@
+from __future__ import annotations
+
+
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(
             self,
@@ -9,7 +12,7 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = hidden
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         name = self.name
@@ -28,4 +31,4 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
             if other.health <= 0:
-                self.alive.remove(other)
+                Animal.alive.remove(other)
