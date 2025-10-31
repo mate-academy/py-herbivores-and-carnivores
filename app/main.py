@@ -4,8 +4,11 @@ from typing import List
 class Animal:
     alive: List["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False
-                 ) -> None:
+    def __init__(
+            self, name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name: str = name
         self.health: int = health
         self.hidden: bool = hidden
@@ -35,8 +38,5 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, herbivore: Herbivore) -> None:
-        if not isinstance(herbivore, Herbivore):
-            return
-        if herbivore.hidden:
-            return
-        herbivore.take_damage(50)
+        if isinstance(herbivore, Herbivore) and not herbivore.hidden:
+            herbivore.take_damage(50)
