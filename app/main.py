@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self,
                  name: str,
@@ -23,7 +23,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(herbivore: Herbivore) -> None:
+    def bite(herbivore: Animal) -> None:
         if not herbivore.hidden and not isinstance(herbivore, Carnivore):
             herbivore.health -= 50
 
