@@ -1,35 +1,35 @@
 class Animal:
-    alive = []  # lista com todos os animais vivos
+    alive: list["Animal"] = []
 
-    def __init__(self, name):
-        self.name = name
-        self.health = 100
-        self.hidden = False
+    def __init__(self, name: str, health: int = 100) -> None:
+        self.name: str = name
+        self.health: int = health
+        self.hidden: bool = False
         Animal.alive.append(self)
 
-    def die(self):
-        """Remove o animal da lista se morrer."""
+    def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __repr__(self):
-        """Representação personalizada para print(Animal.alive)."""
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+    def __repr__(self) -> str:
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
 
 class Herbivore(Animal):
-    def hide(self):
-        """Alterna o estado hidden (se esconder ou aparecer)."""
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, target):
-        """Morde um herbívoro e reduz sua saúde em 50."""
+    def bite(self, target: "Animal") -> None:
         if not isinstance(target, Herbivore):
-            return  # não morde carnívoros
+            return
         if target.hidden:
-            return  # não pode morder herbívoro escondido
+            return
 
         target.health -= 50
         if target.health <= 0:
