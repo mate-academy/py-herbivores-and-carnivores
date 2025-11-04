@@ -33,5 +33,5 @@ class Carnivore(Animal):
                 and bited_animal.hidden is False
         ):
             bited_animal.health -= 50
-            if bited_animal.health <= 0:
-                Animal.alive.remove(bited_animal)
+        if bited_animal.health <= 0 and bited_animal in Animal.alive:
+            Animal.alive.remove(bited_animal)
