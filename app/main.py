@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self,
                  name: str,
@@ -29,9 +29,9 @@ class Carnivore(Animal):
 
     def bite(self, bited_animal: Animal) -> None:
         if (
-                bited_animal.__class__ is Herbivore
+                isinstance(bited_animal, Herbivore)
                 and bited_animal.hidden is False
         ):
             bited_animal.health -= 50
-        if bited_animal.health <= 0:
-            Animal.alive.remove(bited_animal)
+            if bited_animal.health <= 0:
+                Animal.alive.remove(bited_animal)
