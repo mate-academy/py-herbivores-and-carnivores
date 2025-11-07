@@ -9,7 +9,6 @@ class Animal:
         self.health = health  # через setter
 
     def __repr__(self) -> str:
-        # так список распечатает ровно нужную строку
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
     @property
@@ -17,7 +16,7 @@ class Animal:
         return self._health
 
     @health.setter
-    def health(self, value: int):
+    def health(self, value: int) -> None:
         v = max(0, int(value))
         self._health = v
         if v == 0 and self in Animal.alive:
@@ -30,7 +29,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: Animal):
+    def bite(self, other: Animal) -> None:
         if not isinstance(other, Herbivore):
             return
         if other.hidden:
