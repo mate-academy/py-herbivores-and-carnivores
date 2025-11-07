@@ -1,14 +1,14 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False):
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
         self.name = name
         self.hidden = hidden
         self._health = 0
         Animal.alive.append(self)
         self.health = health  # через setter
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         # так список распечатает ровно нужную строку
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
