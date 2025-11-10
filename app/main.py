@@ -38,7 +38,7 @@ class Carnivore(Animal):
         if getattr(other, "hidden", False):
             return
 
-        if isinstance(other, Carnivore):
+        if not isinstance(other, Herbivore):
             return
 
         other.health = max(0, other.health - damage)
