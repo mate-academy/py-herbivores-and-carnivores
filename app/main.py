@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str,
                  health: int = 100,
@@ -22,7 +22,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: Herbivore) -> None:
+    def bite(self, target: Animal) -> None:
         # 1. Перевірка: не можна кусати іншого хижака (Carnivore)
         if isinstance(target, Carnivore):
             print(f"{self.name} не може кусати іншого хижака!")
