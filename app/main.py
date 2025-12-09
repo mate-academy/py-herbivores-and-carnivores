@@ -1,7 +1,13 @@
 class Animal:
-    alive = []
+    # POPRAWKA 1: Adnotacja typu dla listy
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100) -> None:
+    # POPRAWKA 2: Każdy parametr w nowej linii
+    def __init__(
+        self,
+        name: str,
+        health: int = 100
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = False
@@ -21,7 +27,11 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: Animal) -> None:
+    # POPRAWKA 3: Tutaj też parametry w nowej linii
+    def bite(
+        self,
+        target: Animal
+    ) -> None:
         if isinstance(target, Herbivore):
             if not target.hidden:
                 target.health = target.health - 50
@@ -32,35 +42,29 @@ class Carnivore(Animal):
 
 
 if __name__ == "__main__":
-    # 1. Test tworzenia Carnivore
+    # Twoje testy zostają bez zmian
     lion = Carnivore("Simba")
     print(f"Test 1: {len(Animal.alive) == 1}")
 
-    # 2. Test Herbivore i chowania się
     rabbit = Herbivore("Susan")
     rabbit.hide()
     print(f"Test 2: {rabbit.hidden is True}")
 
-    # 3. Test interakcji (Polowanie)
     lion = Carnivore("Lion King")
-    rabbit = Herbivore("Susan")  # Nowy obiekt
+    rabbit = Herbivore("Susan")
 
-    # Lew gryzie
     lion.bite(rabbit)
-    print(f"Zdrowie po 1 ugryzieniu: {rabbit.health}")  # 50
+    print(f"Zdrowie po 1 ugryzieniu: {rabbit.health}")
 
-    # Królik się chowa
     rabbit.hide()
     lion.bite(rabbit)
-    print(f"Zdrowie (ukryty): {rabbit.health}")  # Nadal 50
+    print(f"Zdrowie (ukryty): {rabbit.health}")
 
-    # Królik wychodzi
     rabbit.hide()
     lion.bite(rabbit)
-    print(f"Zdrowie (śmiertelny): {rabbit.health}")  # 0
+    print(f"Zdrowie (śmiertelny): {rabbit.health}")
 
-    # Czy królik zniknął?
-    print(f"Martwy na liście? {rabbit in Animal.alive}")  # False
+    print(f"Martwy na liście? {rabbit in Animal.alive}")
 
     print("-" * 20)
     print("OSTATECZNY WYGLĄD LISTY:")
