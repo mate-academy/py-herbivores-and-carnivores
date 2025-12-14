@@ -1,1 +1,22 @@
-# write your code here
+class Animal:
+    alive = []
+    def __init__(self, name: str, hidden: bool = False, health: int = 100) -> None:
+        self.health = health
+        self.hidden = hidden
+        self.name = name
+        if self.health > 0:
+            Animal.alive.append(self)
+
+    def __repr__(self):
+        return f'{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}'
+
+class Herbivore(Animal):
+    def hide(self):
+        self.hidden = not self.hidden
+class Carnivore(Animal):
+    def bite(self, herbivore):
+        if not herbivore.hidden and isinstance(herbivore, Herbivore):
+            herbivore.health -= 50
+        if herbivore.health <= 0 and herbivore in Animal.alive:
+            Animal.alive.remove(herbivore)
+        self.hidden = False
