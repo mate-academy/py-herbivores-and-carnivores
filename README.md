@@ -26,7 +26,7 @@ rabbit.hide()
 rabbit.hidden is True  
 ```
 
-Create a `Сarnivore` class. This class should inherit from Animal. 
+Create a `Carnivore` class. This class should inherit from Animal. 
 Carnivore has a `bite` method, which takes a 
 herbivore object and decreases the object's health by 50. The method 
 does not work if it is another сarnivore, or the herbivore is currently hiding.
