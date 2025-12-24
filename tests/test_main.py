@@ -130,7 +130,7 @@ def test_print_animal_alive():
     f = io.StringIO()
 
     with redirect_stdout(f):
-        print(Animal.alive)
+        print(Animal.alive)  # [lion, pantera, rabbit]
 
     out = f.getvalue()
     output = "[{Name: King Lion, Health: 100, Hidden: False}, " \
