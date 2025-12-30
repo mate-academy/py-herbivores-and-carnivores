@@ -1,6 +1,6 @@
 class Animal:
     # track alive animals
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
         self,
@@ -16,8 +16,10 @@ class Animal:
 
     def __repr__(self) -> str:
         # short formatting to avoid long lines
-        return "{Name: %s, Health: %s, Hidden: %s}" % (
-            self.name, self.health, self.hidden
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
         )
 
 
@@ -27,15 +29,15 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: "Animal") -> None:
-        # can bite only Herbivore instances and only when they are not hidden
-        if not isinstance(other, Animal):
-            return
-        # do not bite other carnivores
-        if isinstance(other, Carnivore):
+    def bite(
+        self,
+        other: "Herbivore",
+    ) -> None:
+        # only bite Herbivore instances
+        if not isinstance(other, Herbivore):
             return
         # do not bite if target is hidden
-        if getattr(other, "hidden", False):
+        if other.hidden:
             return
         # reduce health
         other.health -= 50
