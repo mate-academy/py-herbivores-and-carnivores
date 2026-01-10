@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Animal:
     alive = []
 
@@ -14,6 +17,14 @@ class Herbivore(Animal):
         super().__init__(name, health, hidden)
 
     def hide(self):
-        self.hidden = True
+        self.hidden = not self.hidden
 
+
+class Carnivores(Animal):
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
+        super().__init__(name, health, hidden)
+
+    @staticmethod
+    def bite(animal: Herbivore) -> None:
+        pass
 
