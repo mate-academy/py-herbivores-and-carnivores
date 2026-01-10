@@ -10,17 +10,19 @@ class Animal:
 
         hidden (bool): Indicates whether the animal is hidden, default False.
 
-        alive (list): Class attribute that stores all live instances.
+        alive (list["Animal"]): Class attribute that stores all live instances.
     """
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100) -> None:
+    def __init__(self,
+                 name: str,
+                 health: int = 100) -> None:
         self.name = name
         self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {
             self.health}, Hidden: {self.hidden}}}"
 
