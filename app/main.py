@@ -34,3 +34,25 @@ class Herbivore(Animal):
         Toggle the animal's hidden status to protect it from carnivores.
         """
         self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+    """
+    A subclass of Animal representing a hunting animal.
+    """
+
+    def bite(self, target: Animal) -> None:
+        """
+        Attempt to bite another animal.
+
+        The attack only succeeds if the target is an instance of Herbivore
+        and is not currently hiding. If the target's health reaches 0,
+        it is removed from the Animal.alive registry.
+
+        Args:
+            target (Animal): The animal object to be attacked.
+        """
+        if isinstance(target, Herbivore) and not target.hidden:
+            target.health -= 50
+            if target.health <= 0:
+                Animal.alive.remove(target)
