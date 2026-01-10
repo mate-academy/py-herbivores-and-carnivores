@@ -40,7 +40,8 @@ class Carnivores(Animal):
                  ) -> None:
         super().__init__(name, health, hidden)
 
-    @staticmethod
-    def bite(animal: Herbivore) -> None:
-        pass
-
+    def bite(self, animal: Herbivore) -> None:
+        if isinstance(animal, Herbivore):
+            if animal.hidden:
+                print(f"{self.name} cannot bite hidden {animal.name}")
+            animal.health = animal.health - 50
