@@ -14,9 +14,11 @@ class Animal:
     """
     alive: list["Animal"] = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100) -> None:
+    def __init__(
+        self,
+        name: str,
+        health: int = 100
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = False
@@ -32,7 +34,9 @@ class Herbivore(Animal):
     A subclass of Animal representing a prey animal.
     """
 
-    def hide(self) -> None:
+    def hide(
+            self
+    ) -> None:
         """
         Toggle the animal's hidden status to protect it from carnivores.
         """
@@ -44,7 +48,10 @@ class Carnivore(Animal):
     A subclass of Animal representing a hunting animal.
     """
 
-    def bite(self, target: Animal) -> None:
+    def bite(
+            self,
+            target: Animal
+    ) -> None:
         """
         Attempt to bite another animal.
 
