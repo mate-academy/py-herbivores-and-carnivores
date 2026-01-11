@@ -1,6 +1,9 @@
+from typing import List
+
+
 class Animal:
-    alive = []
-    hidden = False
+    alive: List["Animal"] = []
+    hidden: bool = False
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
@@ -24,6 +27,5 @@ class Carnivore(Animal):
         if isinstance(herb_obj, Herbivore):
             if not herb_obj.hidden:
                 herb_obj.health -= 50
-
-        if herb_obj.health <= 0:
-            Animal.alive.remove(herb_obj)
+                if herb_obj.health <= 0:
+                    Animal.alive.remove(herb_obj)
