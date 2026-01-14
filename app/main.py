@@ -1,28 +1,37 @@
-from app.anilmal.animal_base import Animal
-from app.anilmal.herbivore import Herbivore
-from app.anilmal.carnivore import Carnivore
+class Animal:
+    alive = []
+    animal = {}
+
+    def __init__(self, name: str, health: int = 100) -> None:
+        self.health = health
+        self.name = name
+        self.hidden = False
+        Animal.animal[self.name] = self
+        Animal.alive.append(self)
+
+    def __repr__(self) -> None:
+        return (f"{{Name: {self.name}"
+                f", Health: {self.health}"
+                f", Hidden: {self.hidden}}}")
 
 
-rabbit = Herbivore("Susan")
-rabbit.hide()
-print(rabbit.hidden is True)
+class Herbivore(Animal):
+    def hide(self) -> Animal:
+        if self.hidden:
+            self.hidden = False
+        else:
+            self.hidden = True
+        return self
 
-lion = Carnivore("Lion King")
-print(rabbit.health)
-lion.bite(rabbit)
-print(rabbit.health)
 
-rabbit.hide()
-lion.bite(rabbit)
-print(rabbit.health)
+class Carnivore(Animal):
+    @staticmethod
+    def bite(animal: Animal) -> Animal:
+        if isinstance(animal, Herbivore):
+            if not animal.hidden:
+                animal.health -= 50
 
-rabbit.hide()
-lion.bite(rabbit)
-print(rabbit.health)
+        if animal.health <= 0 and animal in Animal.alive:
+            Animal.alive.remove(animal)
 
-print(rabbit in Animal.alive)
-
-pantera = Carnivore("Bagira")
-snake = Carnivore("Kaa")
-print(Animal.alive)
-Animal.alive.clear()
+        return animal
