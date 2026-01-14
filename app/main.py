@@ -1,4 +1,3 @@
-# write your code here
 class Animal:
     alive = []
 
@@ -24,9 +23,12 @@ class Carnivore(Animal):
         if not victim.hidden and isinstance(victim, Herbivore):
             victim.health -= 50
             if victim.health <= 0:
-                victim.alive.remove(self)
+                victim.alive.remove(victim)
 
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        self.hidden = True
+        if self.hidden:
+            self.hidden = False
+        else:
+            self.hidden = True
