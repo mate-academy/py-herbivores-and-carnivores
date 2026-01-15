@@ -1,31 +1,56 @@
 class Animal:
-    alive: list["Animal"] = []
 
     def __init__(
             self,
             name: str,
-            health: int = 100,
-            hidden: bool = False
+            appetite: int,
+            is_hungry: bool = True
     ) -> None:
         self.name = name
-        self.health = health
-        self.hidden = hidden
-        Animal.alive.append(self)
+        self.appetite = appetite
+        self.is_hungry = is_hungry
 
-    def __repr__(self) -> str:
-        return (f"{{Name: {self.name}, "
-                f"Health: {self.health}, "
-                f"Hidden: {self.hidden}}}")
+    def print_name(self) -> None:
+        print(f"Hello, I'm {self.name}")
 
-
-class Carnivore(Animal):
-    def bite(self, victim: Animal) -> None:
-        if not victim.hidden and isinstance(victim, Herbivore):
-            victim.health -= 50
-            if victim.health <= 0:
-                Animal.alive.remove(victim)
+    def feed(self) -> int:
+        if self.is_hungry:
+            print(f"Eating {self.appetite} food points...")
+            self.is_hungry = False
+            return self.appetite
+        return 0
 
 
-class Herbivore(Animal):
-    def hide(self) -> None:
-        self.hidden = not self.hidden
+class Cat(Animal):
+
+    def __init__(
+            self,
+            name: str,
+            is_hungry: bool = True
+    ) -> None:
+        super().__init__(name, 3, is_hungry)
+
+    @staticmethod
+    def catch_mouse() -> None:
+        print("The hunt began!")
+
+
+class Dog(Animal):
+
+    def __init__(
+            self,
+            name: str,
+            is_hungry: bool = True
+    ) -> None:
+        super().__init__(name, 7, is_hungry)
+
+    @staticmethod
+    def bring_slippers() -> None:
+        print("The slippers delivered!")
+
+
+def feed_animals(animals_list: list[Animal]) -> int:
+    # sum_appetites = 0
+    # for animal in animals_list:
+    #     sum_appetites += animal.feed()
+    return sum((animal.feed() for animal in animals_list))
