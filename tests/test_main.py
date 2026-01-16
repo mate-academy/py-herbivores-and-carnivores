@@ -130,14 +130,14 @@ def test_print_animal_alive():
     f = io.StringIO()
 
     with redirect_stdout(f):
-        print(Animal.alive)
+        print(Animal.print_alive())
 
     out = f.getvalue()
     output = "[{Name: King Lion, Health: 100, Hidden: False}, " \
              "{Name: Bagira, Health: 100, Hidden: False}, " \
              "{Name: Susan, Health: 100, Hidden: False}]\n"
     assert out == output, (
-        f"Output should equal to {output} when you print 'Animal.alive' with "
+        f"Output should equal to {output} when you use 'Animal.print_alive()' with "
         f"three animals"
     )
 
