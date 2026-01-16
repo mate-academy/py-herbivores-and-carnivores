@@ -133,6 +133,7 @@ def test_print_animal_alive():
         print(Animal.alive)
 
     out = f.getvalue()
+
     output = "[{Name: King Lion, Health: 100, Hidden: False}, " \
              "{Name: Bagira, Health: 100, Hidden: False}, " \
              "{Name: Susan, Health: 100, Hidden: False}]\n"
