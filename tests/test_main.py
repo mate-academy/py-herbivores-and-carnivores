@@ -67,7 +67,7 @@ def test_only_one_method_should_be_declared_in_each_of_children_classes(
 
 
 def test_carnivore_bite_not_hidden():
-    Animal.alive = []
+        Animal.alive = []
     lion = Carnivore("King Lion")
     rabbit = Herbivore("Susan")
     lion.bite(rabbit)
@@ -93,19 +93,19 @@ def test_carnivore_bite_to_death():
     lion = Carnivore("King Lion")
     pantera = Carnivore("Bagira")
     rabbit = Herbivore("Susan")
-    lion.bite(rabbit)
-    pantera.bite(rabbit)
+    bite(rabbit)
+    bite(rabbit)
     assert len(Animal.alive) == 2, (
         f"It shouldn't be dead animals in Animals.alive"
     )
 
 
 def test_carnivore_bite_carnivore():
+    Animal.alive = []
     lion = Carnivore("Simba")
-    pantera = Carnivore("Bagire")
-    lion.bite(pantera)
-    assert pantera.health == 100
-
+    panther = Carnivore("Bagire")
+    lion.bite(panther)
+    assert panther.health == 100
 
 def test_herbivore_hide():
     Animal.alive = []

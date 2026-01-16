@@ -30,19 +30,20 @@ Create a `Сarnivore` class. This class should inherit from Animal.
 Carnivore has a `bite` method, which takes a 
 herbivore object and decreases the object's health by 50. The method 
 does not work if it is another сarnivore, or the herbivore is currently hiding.
+
 ```python
 lion = Carnivore("Lion King")
 rabbit = Herbivore("Susan")
 rabbit.health == 100
-lion.bite(rabbit)
+bite(rabbit)
 rabbit.health == 50  # bited
 
 rabbit.hide()
-lion.bite(rabbit)
+bite(rabbit)
 rabbit.health == 50  # lion cannot bite hidden rabbit
 
 rabbit.hide()
-lion.bite(rabbit)
+bite(rabbit)
 rabbit.health == 0  # rabbit is dead
 
 rabbit in Animal.alive  # False
