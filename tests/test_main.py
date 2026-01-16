@@ -37,6 +37,7 @@ def test_animal_constructor():
         f"'lion.hidden' should equal to False when "
         f"'lion' created by 'Animal('Lion King')'"
     )
+    # sssssssssssss = len(Animal.alive)
     assert len(Animal.alive) == 1, (
         "Constructor should add created animal to 'Animal.alive'"
     )
