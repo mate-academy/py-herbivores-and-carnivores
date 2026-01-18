@@ -1,20 +1,20 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self, name, health=100, hidden=False):
-        self.name = name
-        self.health = health
-        self.hidden = hidden
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
+        self.name: str = name
+        self.health: int = health
+        self.hidden: bool = hidden
         Animal.alive.append(self)
 
         if self.health <= 0:
             self.health = 0
             self.die()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
-    def die(self):
+    def die(self) -> None:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
@@ -25,12 +25,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal) -> None:
-        # не працює, якщо це інший хижак або взагалі не травоїдний
+    def bite(self, animal: Animal) -> None:
         if isinstance(animal, Carnivore) or not isinstance(animal, Herbivore):
             return
 
-        # не працює, якщо травоїдна тварина ховається
         if animal.hidden:
             return
 
