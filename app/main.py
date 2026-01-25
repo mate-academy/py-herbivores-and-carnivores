@@ -17,10 +17,10 @@ class Animal:
                 f"Health: {self.health}, "
                 f"Hidden: {self.hidden}}}")
 
-    @staticmethod
-    def is_alive(animal: "Animal") -> bool:
-        if animal.health <= 0:
-            Animal.alive.remove(animal)
+    @classmethod
+    def is_alive(cls, animal: "Animal") -> bool:
+        if animal.health <= 0 and animal in cls.alive:
+            cls.alive.remove(animal)
         return animal.health > 0
 
 
