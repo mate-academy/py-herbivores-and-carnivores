@@ -27,5 +27,5 @@ class Carnivore(Animal):
             prey.health -= 50
         if prey.health <= 0:
             del Animal.alive[Animal.alive.index(prey)]
-        elif prey.hidden is True:
+        if prey.hidden is True:
             print(f" cannot bite hidden {prey.name}")
