@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str,
                  health: int = 100,
@@ -27,5 +27,5 @@ class Carnivore(Animal):
             prey.health -= 50
         if prey.health <= 0:
             del Animal.alive[Animal.alive.index(prey)]
-        else:
+        elif prey.hidden is True:
             print(f" cannot bite hidden {prey.name}")
