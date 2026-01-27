@@ -1,5 +1,5 @@
 class Animal():
-    alive = []
+    alive: "list[Animal]" = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.health = health
@@ -9,12 +9,13 @@ class Animal():
 
     def __repr__(self) -> str:
 
-        parts = [
-            f"Name: {self.name}",
-            f"Health: {self.health}",
+        return (
+            "{"
+            f"Name: {self.name}, "
+            f"Health: {self.health}, "
             f"Hidden: {self.hidden}"
-        ]
-        return "{" + ", ".join(parts) + "}"
+            "}"
+        )
 
     def take_damage(self, amount: int) -> None:
         self.health -= amount
