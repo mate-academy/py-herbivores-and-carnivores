@@ -8,7 +8,8 @@ class Animal:
         self.hidden = False
 
     def __repr__(self) -> str:
-        return f"Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}"
+        return \
+            f"Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}"
 
 
 class Herbivore(Animal):
