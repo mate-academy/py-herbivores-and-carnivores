@@ -1,1 +1,44 @@
-# write your code here
+from typing import List
+
+
+class Animal():
+    alive: List["Animal"] = []
+
+    def __init__(self, name: str, health: int = 100) -> None:
+        self.health = health
+        self.name = name
+        self.hidden = False
+        Animal.alive.append(self)
+
+    def __repr__(self) -> str:
+
+        return (
+            "{"
+            f"Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}"
+            "}"
+        )
+
+    def take_damage(self, amount: int) -> None:
+        self.health -= amount
+        if self.health <= 0:
+            Animal.alive.remove(self)
+            # return f"{self.name} is dead"
+
+
+class Herbivore(Animal):
+
+    def hide(self) -> None:
+        self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+
+    def bite(self, animal_obj: Animal) -> None:
+        if not isinstance(animal_obj, Herbivore):
+            return
+        elif animal_obj.hidden:
+            return
+        else:
+            animal_obj.take_damage(50)
