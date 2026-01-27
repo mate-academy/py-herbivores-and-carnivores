@@ -1,5 +1,8 @@
+from typing import List
+
+
 class Animal():
-    alive: "list[Animal]" = []
+    alive: List["Animal"] = []
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.health = health
@@ -28,7 +31,6 @@ class Herbivore(Animal):
 
     def hide(self) -> None:
         self.hidden = not self.hidden
-        return self.hidden
 
 
 class Carnivore(Animal):
@@ -38,5 +40,5 @@ class Carnivore(Animal):
             return
         elif animal_obj.hidden:
             return
-        elif isinstance(animal_obj, Herbivore):
+        else:
             animal_obj.take_damage(50)
