@@ -36,4 +36,7 @@ class Carnivore(Animal):
         if not isinstance(prey, Herbivore):
             return
         if prey.hidden:
+            return
+        if isinstance(prey, Herbivore):
             prey.health -= 50
+        prey._check_alive(Animal.alive)
