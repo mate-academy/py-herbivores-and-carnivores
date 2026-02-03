@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
             self,
@@ -26,8 +26,6 @@ class Animal:
     def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {self._health}, " \
                f"Hidden: {self.hidden}}}"
-
-    print(repr(alive))
 
 
 class Herbivore(Animal):
