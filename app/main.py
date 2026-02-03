@@ -12,12 +12,6 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    def _check_alive(self, alive: list) -> list:
-        for animal in alive:
-            if animal.health <= 0:
-                Animal.alive.remove(animal)
-        return alive
-
     def __repr__(self) -> str:
         return (
             f"{{Name: {self.name}, "
@@ -37,6 +31,6 @@ class Carnivore(Animal):
             return
         if prey.hidden:
             return
-        if isinstance(prey, Herbivore):
-            prey.health -= 50
-        prey._check_alive(Animal.alive)
+        prey.health -= 50
+        if prey.health <= 0 and prey in Animal.alive:
+            Animal.alive.remove(prey)
