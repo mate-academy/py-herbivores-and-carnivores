@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
         self,
@@ -10,8 +10,9 @@ class Animal:
         self.name = name
         self._health = 0
         self.hidden = hidden
-        self.health = health
+
         Animal.alive.append(self)
+        self.health = health
 
     @property
     def health(self) -> int:
