@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
         self,
@@ -22,7 +22,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
