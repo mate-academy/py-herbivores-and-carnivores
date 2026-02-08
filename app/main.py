@@ -4,7 +4,8 @@ class Animal:
     def __init__(self,
                  name: str,
                  health: int = 100,
-                 hidden: bool = False) -> None:
+                 hidden: bool = False) \
+            -> None:
         self.name = str(name)
         self.health = health
         self.hidden = hidden
@@ -21,7 +22,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
+    def bite(self,
+             herbivore: Herbivore) \
+            -> None:
 
         if not herbivore.hidden and isinstance(herbivore, Herbivore):
             herbivore.health -= 50
