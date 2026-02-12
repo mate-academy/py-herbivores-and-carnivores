@@ -5,13 +5,18 @@ class Animal:
     # Class attribute to track all instances
     alive: list["Animal"] = []
 
-    def __init__(self, name: str, health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+        self,
+        name: str,
+        health: int = 100,
+        hidden: bool = False
+    ) -> None:
         self.name = name
-        self.health = health
+        if(health <=0):
+            self.health = 0
         self.hidden = hidden
         # Automatically add to the tracking list upon creation
-        Animal.alive.append(self)
+        Animal.alive.append(self)        
 
     def _check_death(self) -> None:
         """Internal helper to clean up Animal.alive if health drops to 0."""
