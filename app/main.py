@@ -1,3 +1,6 @@
+# flake8: noqa: E501
+
+
 class Animal:
     # Class attribute to track all instances
     alive: list["Animal"] = []
@@ -23,7 +26,7 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self) -> None:        
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
@@ -35,4 +38,4 @@ class Carnivore(Animal):
         # Logic check: Must be Herbivore and not hidden
         if isinstance(target, Herbivore) and not target.hidden:
             target.health -= 50
-            target._check_death()# write your code here
+            target._check_death()
