@@ -2,21 +2,22 @@ class Animal:
     # Class attribute to track all instances
     alive = []
 
-    def __init__(self, name: str, health: int = 100, hidden: bool = False):
+    def __init__(self, name: str, health: int = 100,
+                 hidden: bool = False) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
         # Automatically add to the tracking list upon creation
         Animal.alive.append(self)
 
-    def _check_death(self):
+    def _check_death(self) -> None:
         """Internal helper to clean up Animal.alive if health drops to 0."""
         if self.health <= 0:
             self.health = 0
             if self in Animal.alive:
                 Animal.alive.remove(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Controls how the object looks inside a list like Animal.alive."""
         strtmp = f"{{Name: {self.name}, Health: {self.health}"
         strtmp += f", Hidden: {self.hidden}}}"
@@ -24,13 +25,13 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         """Toggles the hidden state."""
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, target: Animal):
+    def bite(self, target: Animal) -> None:
         """
         Reduces target health by 50 if target is a visible Herbivore.
         """
