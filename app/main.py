@@ -17,7 +17,7 @@ class Animal:
                 Animal.alive.remove(self)
 
     def __repr__(self):
-      """Controls how the object looks inside a list like Animal.alive."""
+        """Controls how the object looks inside a list like Animal.alive."""
         strtmp = f"{{Name: {self.name}, Health: {self.health}"
         strtmp += f", Hidden: {self.hidden}}}"
         return strtmp
