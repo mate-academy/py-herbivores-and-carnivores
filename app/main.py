@@ -14,6 +14,8 @@ class Animal:
         self.name = name
         if(health <=0):
             self.health = 0
+        else:
+            self.health = health
         self.hidden = hidden
         # Automatically add to the tracking list upon creation
         Animal.alive.append(self)        
