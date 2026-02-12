@@ -1,6 +1,6 @@
 class Animal:
     # Class attribute to track all instances
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
@@ -18,10 +18,13 @@ class Animal:
                 Animal.alive.remove(self)
 
     def __repr__(self) -> str:
-        """Controls how the object looks inside a list like Animal.alive."""
-        strtmp = f"{{Name: {self.name}, Health: {self.health}"
-        strtmp += f", Hidden: {self.hidden}}}"
-        return strtmp
+        """Format output to fit within a 79-character line limit."""
+        parts = [
+            f"{{Name: {self.name}",
+            f"Health: {self.health}",
+            f"Hidden: {self.hidden}}}"
+        ]
+        return ", ".join(parts)
 
 
 class Herbivore(Animal):
