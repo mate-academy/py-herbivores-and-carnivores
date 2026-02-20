@@ -3,6 +3,7 @@
 Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 
+
 Nature is well suited to reflect the principles of Object Oriented Programming. 
 All instances of the `Animal` class must have health, name and hidden attribute. 
 Health is 100 and hidden is false by default.
