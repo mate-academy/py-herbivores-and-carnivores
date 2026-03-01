@@ -1,7 +1,23 @@
 [flake8]
-inline-quotes = "
-ignore = E203, E266, W503, ANN002, ANN003, ANN101, ANN102, ANN401, N807, N818
-max-line-length = 79
-max-complexity = 18
-select = B,C,E,F,W,T4,B9,ANN,Q0,N8,VNE
-exclude = venv, tests
+# --- Ignorowane błędy ---
+# Q000  -> brak cudzysłowów "smart quotes" (flake8-quotes)
+# E203  -> kolizja z Black (przestrzeń przed ':')
+# W503  -> kolizja z PEP8 (złamana linia przed operatorem)
+ignore = Q000, E203, W503
+
+# --- Maksymalna długość linii ---
+max-line-length = 120
+
+# --- Wyłączone katalogi ---
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    env,
+    build,
+    dist,
+    tests,
+    */tests/*,
+    */migrations/*,
+    *.pyc
