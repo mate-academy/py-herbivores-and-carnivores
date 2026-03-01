@@ -19,7 +19,8 @@ class Animal:
         self
     ) -> None:
         if self.health <= 0:
-            Animal.alive.remove(self)
+            if self in Animal.alive:
+                Animal.alive.remove(self)
 
     def __repr__(
         self
