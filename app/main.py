@@ -22,10 +22,13 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    @staticmethod
-    def bite(other: Herbivore) -> None:
+    def bite(self, other: Herbivore) -> None:
         if isinstance(other, Herbivore):
             if not other.hidden:
                 other.health -= 50
+                self.check_if_alive(other)
+
+    @staticmethod
+    def check_if_alive(other: Herbivore) -> None:
         if other.health <= 0:
             Animal.alive.remove(other)
