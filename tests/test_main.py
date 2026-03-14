@@ -15,6 +15,7 @@ def test_animal_class():
 
 
 def test_animal_constructor():
+    Animal.alive = []
     lion = Animal("Lion King")
     assert hasattr(lion, "name"), (
         "Animal instance should have attribute 'name'"
