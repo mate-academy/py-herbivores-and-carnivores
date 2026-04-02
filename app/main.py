@@ -1,5 +1,11 @@
+class AnimalList(list):
+    def __repr__(self) -> str:
+        items = ", ".join(repr(animal) for animal in self)
+        return f"[{items}]"
+
+
 class Animal:
-    alive: list["Animal"] = []
+    alive = AnimalList()
 
     def __init__(
             self,
@@ -17,18 +23,27 @@ class Animal:
         return self._health
 
     @health.setter
-    def health(self, value: int) -> None:
+    def health(
+            self,
+            value: int
+    ) -> None:
         self._health = value
         if self._health <= 0:
             self.remove_from_alive(self)
 
     @classmethod
-    def add_to_alive(cls, animal: Animal) -> None:
+    def add_to_alive(
+            cls,
+            animal: Animal
+    ) -> None:
         if animal not in cls.alive:
             cls.alive.append(animal)
 
     @classmethod
-    def remove_from_alive(cls, animal: Animal) -> None:
+    def remove_from_alive(
+            cls,
+            animal: Animal
+    ) -> None:
         if animal in cls.alive:
             cls.alive.remove(animal)
 
@@ -46,6 +61,9 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, victim: Herbivore) -> None:
+    def bite(
+            self,
+            victim: Herbivore
+    ) -> None:
         if not victim.hidden and isinstance(victim, Herbivore):
             victim.health -= 50
