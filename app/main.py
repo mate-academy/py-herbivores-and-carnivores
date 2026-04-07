@@ -1,6 +1,6 @@
 class AliveList(list["Animal"]):
     def __repr__(self) -> str:
-        return f"[{', '.join(repr(animal) for animal in self)}]"
+        return f"[{", ".join(repr(animal) for animal in self)}]"
 
 
 class Animal:
