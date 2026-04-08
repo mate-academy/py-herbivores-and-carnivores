@@ -31,7 +31,10 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore: Animal) -> None:
+    def bite(
+            self,
+            herbivore: Animal
+    ) -> None:
         if not isinstance(herbivore, Herbivore):
             return
 
