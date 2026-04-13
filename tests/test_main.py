@@ -1,11 +1,8 @@
-import os
-
-import pytest
 import io
-
+import os
 from contextlib import redirect_stdout
-
-from app.main import Animal, Herbivore, Carnivore
+from app.main import *
+import pytest
 
 
 def test_animal_class():
