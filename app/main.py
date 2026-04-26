@@ -1,6 +1,6 @@
 class Animal:
 
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
@@ -10,12 +10,14 @@ class Animal:
 
         Animal.alive.append(self)
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         return (f"{{Name: {self.name}, Health: {self.health},"
                 f" Hidden: {self.hidden}}}")
 
-    def demage(self, demage_amount: int) -> None:
-        self.health -= demage_amount
+    __repr__ = __str__
+
+    def damage(self, damage_amount: int) -> None:
+        self.health -= damage_amount
         if self.health <= 0:
             self.health = 0
             if self in Animal.alive:
@@ -24,10 +26,7 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        else:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
@@ -38,7 +37,7 @@ class Carnivore(Animal):
             if animal.hidden:
                 return
             else:
-                animal.demage(50)
+                animal.damage(50)
 
 
 if __name__ == "__main__":
