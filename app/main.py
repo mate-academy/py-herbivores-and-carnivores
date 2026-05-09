@@ -20,16 +20,14 @@ class Animal:
 
 
 class Herbivore(Animal):
-    pass
 
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    pass
 
-    def bite(self, other: str) -> None:
+    def bite(self, other: "Animal") -> None:
         if not other.hidden and not isinstance(other, Carnivore):
             other.health = other.health - 50
             if other.health <= 0 and other in Animal.alive:
