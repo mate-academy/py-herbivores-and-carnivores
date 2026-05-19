@@ -19,8 +19,9 @@ class Animal:
             self.health = 0
             Animal.die(self)
 
-    def die(self) -> None:
-        Animal.alive.remove(self)
+    @staticmethod
+    def die(victim: "Animal") -> None:
+        Animal.alive.remove(victim)
 
     def __repr__(self) -> str:
         return (
