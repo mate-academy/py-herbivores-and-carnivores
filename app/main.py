@@ -26,4 +26,4 @@ class Carnivore(Animal):
             return
         target.health -= 50
         if target.health <= 0:
-            target.alive.remove(target)
+            Animal.alive.remove(target)
