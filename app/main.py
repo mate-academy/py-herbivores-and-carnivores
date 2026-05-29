@@ -11,6 +11,7 @@ class AliveList(list):
 
         return "[" + ", ".join(animals) + "]"
 
+
 class Animal:
     alive = AliveList()
 
