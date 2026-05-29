@@ -1,5 +1,18 @@
+class AliveList(list):
+    def __repr__(self) -> str:
+        animals = []
+
+        for animal in self:
+            animals.append(
+                f"{{Name: {animal.name}, "
+                f"Health: {animal.health}, "
+                f"Hidden: {animal.hidden}}}"
+            )
+
+        return "[" + ", ".join(animals) + "]"
+
 class Animal:
-    alive = []
+    alive = AliveList()
 
     def __init__(
             self, name: str,
