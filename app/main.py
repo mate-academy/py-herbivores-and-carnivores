@@ -8,7 +8,6 @@ class Animal:
         self.name = name
         self.health = health
         self.hidden = False
-        self.alive = True
 
         self.__class__.alive.append(self)
 
