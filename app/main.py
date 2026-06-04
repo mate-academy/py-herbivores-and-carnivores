@@ -24,23 +24,19 @@ class Animal:
 class Herbivore(Animal):
 
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
 
     def bite(self, animal: Animal) -> None:
         if isinstance(animal, Carnivore):
-            pass
-
+            return
         elif animal.hidden is True:
             messsage = f"{self} cannot bite hidden {animal}"
             return messsage
-
         if isinstance(animal, Herbivore) and animal.hidden is False:
             animal.health -= 50
-
             if animal.health <= 0:
                 messsage = f"{animal} is dead"
                 Animal.alive.remove(animal)
