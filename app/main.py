@@ -1,3 +1,39 @@
+class Health:
+    def __check(self, result: int) -> None:
+        if result <= 0:
+            Animal.alive.pop(Animal.alive.index(self.animal))
+
+    def __init__(self, animal: Animal, value: int) -> None:
+        self.animal = animal
+        self.value = value
+
+    def __repr__(self) -> str:
+        return f"{self.value}"
+
+    def __sub__(self, other: Health | int) -> int:
+        rvalue = 0
+        if isinstance(other, int):
+            rvalue = other
+        elif isinstance(other, Health):
+            rvalue = other.value
+        result = self.value - rvalue
+        self.__check(result)
+        return result
+
+    def __isub__(self, other: Health | int) -> Health:
+        if isinstance(other, int):
+            self.value -= other
+        elif isinstance(other, Health):
+            self.value -= other.value
+        self.__check(self.value)
+        return self
+
+    def __eq__(self, value: object) -> bool:
+        if isinstance(value, Health):
+            return self.value == value.value
+        return self.value == value
+
+
 class Animal:
     alive = []
 
@@ -8,7 +44,7 @@ class Animal:
         hidden: bool = False
     ) -> None:
         self.name = name
-        self.health = health
+        self.health = Health(self, health)
         self.hidden = hidden
         Animal.alive.append(self)
 
@@ -29,7 +65,3 @@ class Carnivore(Animal):
     def bite(self, other: Herbivore) -> None:
         if not isinstance(other, Carnivore) and not other.hidden:
             other.health -= 50
-            if other.health <= 0:
-                for i in range(len(Animal.alive)):
-                    if Animal.alive[i].name == other.name:
-                        Animal.alive.pop(i)
