@@ -58,6 +58,9 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
+    def __str__(self) -> str:
+        return self.__repr__()
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
