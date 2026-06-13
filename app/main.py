@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class Health:
     def __check(self, result: int) -> None:
         if result <= 0:
@@ -35,7 +38,7 @@ class Health:
 
 
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(
         self,
