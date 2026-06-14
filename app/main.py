@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(
         self,
@@ -21,11 +21,15 @@ class Animal:
             f"Hidden: {self.hidden}}}"
         )
 
+    @staticmethod
+    def remove_from_alive(animal: "Animal") -> None:
+        if animal in Animal.alive:
+            Animal.alive.remove(animal)
+
     def _check_health(self) -> None:
         if self.health <= 0:
             self.health = 0
-            if self in Animal.alive:
-                Animal.alive.remove(self)
+            Animal.remove_from_alive(self)
 
 
 class Herbivore(Animal):
