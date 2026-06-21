@@ -1,5 +1,4 @@
 class AliveList(list):
-
     def __repr__(self) -> str:
         return f"[{', '.join(repr(animal) for animal in self)}]"
 
@@ -14,9 +13,16 @@ class Animal:
             hidden: bool = False
     ) -> None:
         self.name = name
-        self.health = health
+        self._health = health
         self.hidden = hidden
         Animal.alive.append(self)
+
+        if Animal.is_dead(self._health) and self in Animal.alive:
+            Animal.alive.remove(self)
+
+    @staticmethod
+    def is_dead(health: int) -> bool:
+        return health <= 0
 
     @property
     def health(self) -> int:
@@ -25,7 +31,8 @@ class Animal:
     @health.setter
     def health(self, value: int) -> None:
         self._health = value
-        if self._health <= 0 and self in Animal.alive:
+
+        if Animal.is_dead(self._health) and self in Animal.alive:
             Animal.alive.remove(self)
 
     def __repr__(self) -> str:
