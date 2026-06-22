@@ -8,9 +8,24 @@ class Animal:
             hidden: bool = False
     ) -> None:
         self.name: str = name
-        self.health: int = health
         self.hidden: bool = hidden
         Animal.alive.append(self)
+        self.health = health
+
+    @property
+    def health(self) -> int:
+        return self._health
+
+    @health.setter
+    def health(self, value: int) -> None:
+        self._health = value
+        if self._health <= 0:
+            Animal.remove_dead(self)
+
+    @staticmethod
+    def remove_dead(animal: "Animal") -> None:
+        if animal in Animal.alive:
+            Animal.alive.remove(animal)
 
     def __repr__(self) -> str:
         return (
@@ -29,5 +44,3 @@ class Carnivore(Animal):
     def bite(self, animal: Animal) -> None:
         if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
-            if animal.health <= 0:
-                Animal.alive.remove(animal)
