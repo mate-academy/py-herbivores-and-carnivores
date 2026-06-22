@@ -12,15 +12,15 @@ class Animal:
         Animal.alive.append(self)
         self.health = health
 
-    @property
-    def health(self) -> int:
+    def _get_health(self) -> int:
         return self._health
 
-    @health.setter
-    def health(self, value: int) -> None:
+    def _set_health(self, value: int) -> None:
         self._health = value
         if self._health <= 0:
             Animal.remove_dead(self)
+
+    health = property(_get_health, _set_health)
 
     @staticmethod
     def remove_dead(animal: "Animal") -> None:
@@ -31,7 +31,8 @@ class Animal:
         return (
             f"{{Name: {self.name}, "
             f"Health: {self.health}, "
-            f"Hidden: {self.hidden}}}"
+            f"Hidden: {self.hidden}"
+            f"}}"
         )
 
 
