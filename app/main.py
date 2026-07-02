@@ -3,8 +3,7 @@ from __future__ import annotations
 
 class AnimalList(list):
     def __repr__(self) -> str:
-        animals = ", ".join(repr(animal) for animal in self)
-        return f"[{animals}]"
+        return f"[{', '.join(map(repr, self))}]"
 
 
 class Animal:
