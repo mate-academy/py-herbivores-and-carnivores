@@ -1,8 +1,14 @@
 from __future__ import annotations
 
 
+class AnimalList(list):
+    def __repr__(self) -> str:
+        animals = ", ".join(repr(animal) for animal in self)
+        return f"[{animals}]"
+
+
 class Animal:
-    alive: list[Animal] = []
+    alive: AnimalList = AnimalList()
 
     def __init__(self, name: str, health: int = 100) -> None:
         self.name: str = name
