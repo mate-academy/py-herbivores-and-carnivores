@@ -1,5 +1,10 @@
+class AliveAnimals(list):
+    def __repr__(self) -> str:
+        return "[" + ", ".join(repr(animal) for animal in self) + "]"
+
+
 class Animal:
-    alive: list["Animal"] = []
+    alive: AliveAnimals = AliveAnimals()
 
     def __init__(
             self,
