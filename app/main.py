@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str, health: int = 100,
                  hidden: bool = False) -> None:
@@ -8,17 +8,24 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
+    @classmethod
+    def register(cls, animal: "Animal") -> None:
+        cls.alive.append(animal)
+
+    @classmethod
+    def unregister(cls, animal: "Animal") -> None:
+        if animal in cls.alive:
+            cls.alive.remove(animal)
+
     @property
     def health(self) -> int:
         return self._health
 
     @health.setter
     def health(self, value: int) -> None:
-        self._health = value
-        if self._health <= 0:
-            self._health = 0
-        if self in Animal.alive:
-            Animal.alive.remove(self)
+        self._health = max(value, 0)
+        if self._health == 0:
+            Animal.unregister(self)
 
     def __repr__(self) -> str:
         return (
