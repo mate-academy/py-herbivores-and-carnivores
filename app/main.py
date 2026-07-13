@@ -4,10 +4,10 @@ class Animal:
     def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
         self.health = health
-        self.hidden = False
+        self._hidden = False
 
-        Animal.alive.append(self)
-        self._check_life_status()
+        if self.health > 0:
+            Animal.alive.append(self)
 
     @property
     def hidden(self) -> bool:
