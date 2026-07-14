@@ -6,9 +6,6 @@ class Animal:
         self.name = name
         self.hidden = False
 
-        if name == "Lion King":
-            Animal.alive.clear()
-
         Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -18,15 +15,13 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(self) -> None:
-        if self.hidden is False:
-            self.hidden = True
-        elif self.hidden is True:
-            self.hidden = False
+        self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, catch: str) -> None:
-        if catch.hidden is False and isinstance(catch, Carnivore) is not True:
-            catch.health -= 50
-            if catch.health <= 0:
-                Animal.alive.remove(catch)
+    def bite(self, catch: Herbivore) -> None:
+        if catch.health > 0:
+            if catch.hidden is False and not isinstance(catch, Carnivore):
+                catch.health -= 50
+                if catch.health <= 0:
+                    Animal.alive.remove(catch)
