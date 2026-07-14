@@ -1,12 +1,17 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
     def __init__(self, name: str = "", health: int = 100) -> None:
         self.health = health
         self.name = name
         self.hidden = False
-
         Animal.alive.append(self)
+
+    def change_health(self, amount: int) -> None:
+        self.health += amount
+        if self.health <= 0:
+            if self in Animal.alive:
+                Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, Health: {self.health},"
@@ -19,9 +24,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, catch: Herbivore) -> None:
-        if catch.health > 0:
-            if catch.hidden is False and not isinstance(catch, Carnivore):
-                catch.health -= 50
-                if catch.health <= 0:
-                    Animal.alive.remove(catch)
+    def bite(self, prey: Animal) -> None:
+        if prey.health > 0:
+            if not prey.hidden and not isinstance(prey, Carnivore):
+                prey.change_health(-50)
