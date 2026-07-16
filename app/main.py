@@ -8,3 +8,8 @@ class Animal:
         self.name = name
         self.hidden = hidden
         Animal.alive.append(self)
+
+
+class Herbivore(Animal):
+    def hide(self) -> None:
+        self.hidden = not self.hidden
