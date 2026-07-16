@@ -13,3 +13,12 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+    def bite(self, herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Carnivore):
+            return
+        if herbivore.hidden:
+            return
+        herbivore.health -= 50
