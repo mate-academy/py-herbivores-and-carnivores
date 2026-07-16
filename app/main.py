@@ -22,3 +22,7 @@ class Carnivore(Animal):
         if herbivore.hidden:
             return
         herbivore.health -= 50
+
+        if herbivore.health <= 0:
+            herbivore.health = 0
+            Animal.alive.remove(herbivore)
