@@ -1,20 +1,16 @@
+from __future__ import annotations
+
+
 class Animal:
     # Список усіх живих тварин.
     # Це атрибут класу, тому він спільний для всіх об'єктів. добавь анотации
-    alive: list = []
+    alive: list[Animal] = []
 
-    def __init__(self, name: str) -> None:
-        # Ім'я тварини
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-
-        # Початкове здоров'я
-        self.health = 100
-
-        # За замовчуванням тварина не ховається
-        self.hidden = False
-
-        # Додаємо створену тварину до списку живих
-        Animal.alive.append(self)
+        self.health = health
+        self.hidden = False  # За замовчуванням тварина не ховається
+        Animal.alive.append(self)  # Додаємо створену тварину до списку живих
 
     def take_damage(self, damage: int) -> None:
         """
