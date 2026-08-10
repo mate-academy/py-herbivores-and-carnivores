@@ -12,18 +12,11 @@ class Animal:
 
         Animal.alive.append(self)
 
-    def __str__(self) -> str:
-        return (
-            f"Name: {self.name},"
-            f" Health: {self.health},"
-            f" Hidden: {self.hidden}"
-        )
-
     def __repr__(self) -> str:
         return (
-            f"{{Name: {self.name},"
-            f" Health: {self.health},"
-            f" Hidden: {self.hidden}}}"
+            f"{{Name: {self.name}, "
+            f"Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
         )
 
 
