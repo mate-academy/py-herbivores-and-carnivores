@@ -21,11 +21,13 @@ class Animal:
             Animal.alive.remove(self)
 
     def __str__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self._health}, Hidden: {self.hidden}}}"
+        return (
+            f"{{Name: {self.name}, "
+            f"Health: {self._health}, "
+            f"Hidden: {self.hidden}}}"
+        )
 
     def __repr__(self) -> str:
-        # Списки в Python використовують __repr__ елементів при друку списку.
-        # Тому ми дублюємо __str__ тут, щоб print(Animal.alive) виглядав правильно.
         return self.__str__()
 
 
@@ -36,7 +38,5 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, prey: Animal) -> None:
-        # Type hint тут Animal, щоб не обмежувати метод тільки травоїдними на етапі типізації,
-        # але логіка все одно перевіряє isinstance(prey, Herbivore) згідно з умовами.
         if isinstance(prey, Herbivore) and not prey.hidden:
             prey.health -= 50
