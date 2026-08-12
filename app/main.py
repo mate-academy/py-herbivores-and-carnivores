@@ -4,11 +4,14 @@ from __future__ import annotations
 class Animal:
     alive: list[Animal] = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name: str = name
-        self._health: int = 100
         self.hidden: bool = False
-        Animal.alive.append(self)
+        self._health: int = health
+
+        # Додаємо тварину до списку живих лише якщо її здоров'я більше 0
+        if self._health > 0:
+            Animal.alive.append(self)
 
     @property
     def health(self) -> int:
