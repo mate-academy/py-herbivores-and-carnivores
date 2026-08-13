@@ -42,7 +42,7 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(other: Animal) -> None:
-        if(
+        if (
             isinstance(other, Herbivore)
             and not other.hidden
             and other in Animal.alive
