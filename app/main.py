@@ -17,9 +17,7 @@ class Animal:
 
     def dead_check(self) -> None:
         if self.health <= 0:
-            for animal in self.alive:
-                if self is animal:
-                    Animal.alive.remove(animal)
+            Animal.alive.remove(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
