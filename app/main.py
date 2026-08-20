@@ -4,7 +4,7 @@ class Animal:
     def __init__(
         self,
         name: str,
-        health: int = 50
+        health: int = 100
     ) -> None:
         self.name = name
         self.health = health
@@ -34,4 +34,5 @@ class Carnivore(Animal):
 
             if herbivore.health <= 0:
                 herbivore.health = 0
-                Animal.alive.remove(herbivore)
+                if herbivore in Animal.alive:
+                    Animal.alive.remove(herbivore)
