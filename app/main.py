@@ -9,7 +9,7 @@ class Animal:
 
     def kill_if_0(self) -> None:
         if self.health <= 0:
-            self.alive.remove(self)
+            Animal.alive.remove(self)
 
     alive: list[Animal] = []
 
@@ -32,5 +32,4 @@ class Carnivore(Animal):
 
         if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
-
-        animal.kill_if_0()
+            animal.kill_if_0()
