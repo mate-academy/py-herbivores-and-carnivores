@@ -1,9 +1,9 @@
 class Animal:
     alive: list["Animal"] = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
@@ -25,9 +25,9 @@ class Carnivore(Animal):
         if (
             isinstance(herbivore, Herbivore)
             and not herbivore.hidden
-            and herbivore.health > 0
+            and herbivore in Animal.alive
         ):
             herbivore.health -= 50
 
-            if herbivore.health == 0:
+            if herbivore.health <= 0:
                 Animal.alive.remove(herbivore)
