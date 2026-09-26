@@ -4,7 +4,7 @@ from __future__ import annotations
 class Animal:
     alive = []
 
-    def __init__(self, name: str, health: int) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
         self.health = health
         self.hidden = False
