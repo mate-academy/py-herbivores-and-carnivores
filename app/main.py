@@ -1,15 +1,14 @@
 from __future__ import annotations
 
-from typing import ClassVar
 
 
 class Animal:
-    alive: ClassVar[list[Animal]] = []
+    alive = []
 
-    def __init__(self, name: str) -> None:
-        self.name: str = name
-        self.health: int = 100
-        self.hidden: bool = False
+    def __init__(self, name: str, health: int) -> None:
+        self.name = name
+        self.health = health
+        self.hidden = False
         Animal.alive.append(self)
 
     def __str__(self) -> str:
