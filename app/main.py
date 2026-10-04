@@ -39,4 +39,4 @@ class Carnivore(Animal):
         animal.health = max(0, animal.health - 50)
 
         if animal.health == 0:
-            Animal.alive.remove(animal) write your code here
+            Animal.alive.remove(animal)
