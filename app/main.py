@@ -1,7 +1,7 @@
 class Animal:
     alive = []
 
-    def __init__(self, name) -> None:
+    def __init__(self, name: any) -> None:
         self.name = name
         self.health = 100
         self.hidden = False
@@ -9,13 +9,14 @@ class Animal:
 
     def __str__(self) -> str:
         return (
-            f"{{Name: {self.name}, Health: {self.health}, " f"Hidden: {self.hidden}}}"
+            f"{{Name: {self.name}, Health: {self.health}, "
+            f"Hidden: {self.hidden}}}"
         )
 
     def __repr__(self) -> str:
         return str(self)
 
-    def decrease_health(self, amount) -> None:
+    def decrease_health(self, amount: any) -> None:
         self.health = max(0, self.health - amount)
 
         if self.health == 0 and self in Animal.alive:
@@ -28,6 +29,6 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, herbivore) -> None:
+    def bite(self, herbivore: any) -> None:
         if isinstance(herbivore, Herbivore) and not herbivore.hidden:
             herbivore.decrease_health(50)
