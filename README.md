@@ -1,61 +1,61 @@
-# Herbivores and carnivores
+# Травоїдні та хижі тварини
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+Перед початком ознайомтеся з [рекомендаціями](https://github.com/mate-academy/py-task-guideline/blob/main/README.md).
 
 
-Nature is well suited to reflect the principles of Object Oriented Programming. 
-All instances of the `Animal` class must have health, name and hidden attribute. 
-Health is 100 and hidden is false by default.
+Природа добре підходить для відображення принципів об'єктно-орієнтованого програмування.
+Усі екземпляри класу `Animal` повинні мати атрибути health, name і hidden.
+За замовчуванням health дорівнює 100, а hidden — false.
 
-All alive animals should be in the `__class__` attribute `Animal.alive`. 
-If the health of the animal reaches 0, the beast dies and it should 
-be removed from `Animal.alive`.
+Усі живі тварини повинні зберігатися в атрибуті класу `Animal.alive`.
+Якщо здоров'я тварини досягає 0, тварина помирає, і її потрібно
+видалити з `Animal.alive`.
 ```python
 lion = Carnivore("Simba")
 len(Animal.alive) == 1
 isinstance(Animal.alive[0], Carnivore) is True
 ```
 
-Create a `Herbivore` class. This class should inherit from Animal. 
-Herbivore has a method of `hide`, which changes 
-the hidden property of the beast to the opposite value and helps to hide 
-from carnivores.
+Створіть клас `Herbivore`. Цей клас повинен успадковуватися від `Animal`.
+Клас Herbivore має метод `hide`, який змінює
+властивість hidden тварини на протилежне значення та допомагає ховатися
+від хижаків.
 ```python
 rabbit = Herbivore("Susan")
 rabbit.hide()
 rabbit.hidden is True  
 ```
 
-Create a `Сarnivore` class. This class should inherit from Animal. 
-Carnivore has a `bite` method, which takes a 
-herbivore object and decreases the object's health by 50. The method 
-does not work if it is another сarnivore, or the herbivore is currently hiding.
+Створіть клас `Сarnivore`. Цей клас повинен успадковуватися від `Animal`.
+Клас Carnivore має метод `bite`, який приймає
+об'єкт травоїдної тварини та зменшує його health на 50. Метод
+не працює, якщо переданий об'єкт є іншим хижаком або травоїдна тварина наразі ховається.
 ```python
 lion = Carnivore("Lion King")
 rabbit = Herbivore("Susan")
 rabbit.health == 100
 lion.bite(rabbit)
-rabbit.health == 50  # bited
+rabbit.health == 50  # укушено
 
 rabbit.hide()
 lion.bite(rabbit)
-rabbit.health == 50  # lion cannot bite hidden rabbit
+rabbit.health == 50  # лев не може вкусити захованого кролика
 
 rabbit.hide()
 lion.bite(rabbit)
-rabbit.health == 0  # rabbit is dead
+rabbit.health == 0  # кролик помер
 
 rabbit in Animal.alive  # False
-# there is no dead animals in Animal.alive
+# у Animal.alive немає мертвих тварин
 ```
-Also implement feature that when you print `Animal.alive` it
-should look like this:
+Також реалізуйте можливість, щоб під час виведення `Animal.alive`
+результат мав такий вигляд:
 ```python
 pantera = Carnivore("Bagira")
 snake = Carnivore("Kaa")
 print(Animal.alive)
 # [{Name: Bagira, Health: 100, Hidden: False}, {Name: Kaa, Health: 100, Hidden: False}]
 ```
-Hint: Use magic method.
+Підказка: використайте магічний метод.
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+### Примітка: перед надсиланням розв'язання перевірте свій код за допомогою цього [чекліста](checklist.md).
