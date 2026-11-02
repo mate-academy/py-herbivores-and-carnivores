@@ -1,1 +1,26 @@
-# write your code here
+class Animal:
+    alive = []
+
+    def __init__(self, name: str) -> None:
+        self.name = name
+        self.health = 100
+        self.hidden = False
+        Animal.alive.append(self)
+
+
+class Herbivore(Animal):
+    def hide(self) -> None:
+        self.hidden = not self.hidden
+
+
+class Carnivore(Animal):
+    def bite(self, other: Animal) -> None:
+        # Can only bite Herbivores that are not currently hiding
+        if isinstance(other, Herbivore) and not other.hidden:
+            other.health = max(0, other.health - 50)
+            if other.health == 0:
+                if other in Animal.alive:
+                    Animal.alive.remove(other)
+
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
