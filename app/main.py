@@ -19,7 +19,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: bool | int) -> None:
+    def bite(self, other: Herbivore) -> None:
         if not isinstance(other, Herbivore):
             return
         if other.hidden:
