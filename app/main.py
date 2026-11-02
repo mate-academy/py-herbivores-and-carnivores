@@ -7,6 +7,9 @@ class Animal:
         self.hidden = False
         Animal.alive.append(self)
 
+    def __repr__(self) -> str:
+        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -14,13 +17,13 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: Animal) -> None:
+    @staticmethod
+    def bite(
+        other: Animal
+    ) -> None:
         # Can only bite Herbivores that are not currently hiding
         if isinstance(other, Herbivore) and not other.hidden:
             other.health = max(0, other.health - 50)
             if other.health == 0:
                 if other in Animal.alive:
                     Animal.alive.remove(other)
-
-    def __repr__(self) -> str:
-        return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
