@@ -1,11 +1,14 @@
-
 class Animal:
     alive = []
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{{Name: {self.name}, Health: {self.health}, Hidden: {self.hidden}}}"
 
-    def __init__(self, name, health=100):
+    def __init__(
+        self,
+        name: str,
+        health: int = 100,
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = False
@@ -13,12 +16,15 @@ class Animal:
 
 
 class Herbivore(Animal):
-    def hide(self):
+    def hide(self) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
-    def bite(self, animal):
+    def bite(
+        self,
+        animal: Herbivore,
+    ) -> None:
         if isinstance(animal, Herbivore) and not animal.hidden:
             animal.health -= 50
 
