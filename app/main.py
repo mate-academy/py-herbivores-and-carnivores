@@ -2,11 +2,13 @@
 class Animal:
     alive = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int = 100) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
-        Animal.alive.append(self)
+
+        if self.health > 0:
+            Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -32,4 +34,3 @@ class Carnivore(Animal):
 
         if herbivore.health == 0:
             Animal.alive.remove(herbivore)
-# write your code here
