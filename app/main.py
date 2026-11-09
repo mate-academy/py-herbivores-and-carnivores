@@ -33,3 +33,4 @@ class Carnivore(Animal):
                 if target in Animal.alive:
                     Animal.alive.remove(target)
 
+
