@@ -1,8 +1,8 @@
-from typing import Any
+from __future__ import annotations
 
 
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(
             self,
@@ -15,7 +15,7 @@ class Animal:
         Animal.alive.append(self)
 
     @property
-    def health(self) -> Any:
+    def health(self) -> int:
         return self._health
 
     @health.setter
@@ -24,7 +24,7 @@ class Animal:
         if self._health <= 0 and self in Animal.alive:
             Animal.alive.remove(self)
 
-    def __repr__(self) -> Any:
+    def __repr__(self) -> str:
         return (f"{{Name: {self.name}, "
                 f"Health: {self.health}, Hidden: "
                 f"{self.hidden}}}")
@@ -36,7 +36,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, other: Any) -> None:
+    def bite(self, other: Animal) -> None:
         if isinstance(other, Carnivore):
             return
         if isinstance(other, Herbivore) and other.hidden:
