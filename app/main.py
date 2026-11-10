@@ -1,3 +1,7 @@
+from __future__ import annotations
+from typing import ClassVar
+
+
 class AliveList(list):
     def __repr__(self) -> str:
         items = [
@@ -9,18 +13,15 @@ class AliveList(list):
 
 
 class Animal:
-    alive: AliveList = AliveList()
+    alive: ClassVar[list["Animal"]] = []
 
-    def __init__(
-        self,
-        name: str,
-        health: int = 100,
-        hidden: bool = False
-    ) -> None:
+    def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
         self.name = name
-        self._health = health
+        self._health = max(0, health)
         self.hidden = hidden
-        Animal.alive.append(self)
+
+        if self not in Animal.alive:
+            Animal.alive.append(self)
 
     @property
     def health(self) -> int:
@@ -32,6 +33,12 @@ class Animal:
         if self._health == 0 and self in Animal.alive:
             Animal.alive.remove(self)
 
+    def __repr__(self) -> str:
+        return (
+            f"Animal(name={self.name!r}, health={self.health}, "
+            f"hidden={self.hidden})"
+        )
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -40,5 +47,8 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     def bite(self, target: Animal) -> None:
-        if isinstance(target, Herbivore) and not target.hidden:
-            target.health -= 50
+        if not isinstance(target, Herbivore):
+            return
+        if target.hidden or target.health <= 0:
+            return
+        target.health -= 50
