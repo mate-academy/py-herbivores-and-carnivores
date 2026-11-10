@@ -13,7 +13,7 @@ class AliveList(list):
 
 
 class Animal:
-    alive: ClassVar[list["Animal"]] = []
+    alive: ClassVar[AliveList] = AliveList()
 
     def __init__(self, name: str, health: int = 100, hidden: bool = False) -> None:
         self.name = name
@@ -49,6 +49,6 @@ class Carnivore(Animal):
     def bite(self, target: Animal) -> None:
         if not isinstance(target, Herbivore):
             return
-        if target.hidden or target.health <= 0:
+        if target.hidden or target.health == 0:
             return
         target.health -= 50
