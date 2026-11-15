@@ -1,8 +1,14 @@
+from __future__ import annotations
+
+
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
     def __init__(
-        self, name: str, health: int = 100, hidden: bool = False
+        self,
+        name: str,
+        health: int = 100,
+        hidden: bool = False,
     ) -> None:
         self.name = name
         self.health = health
