@@ -3,15 +3,16 @@ class Animal:
 
     def __init__(
             self,
-            name: str
+            name: str,
+            health: int = 100
     ) -> None:
-        self.health = 100
+        self.health = health
         self.name = name
         self.hidden = False
         Animal.alive.append(self)
 
     def check_alive(self) -> None:
-        if self.health == 0 and self in Animal.alive:
+        if self.health <= 0 and self in Animal.alive:
             Animal.alive.remove(self)
 
     def decrease_health(
