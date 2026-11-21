@@ -33,7 +33,7 @@ class Carnivore(Animal):
         self,
         prey: Animal
     ) -> None:
-        if not isinstance(prey, Carnivore) and not prey.hidden:
+        if isinstance(prey, Herbivore) and not prey.hidden:
             prey.health -= 50
             if prey.health <= 0:
                 Animal.alive.remove(prey)
