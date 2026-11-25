@@ -1,5 +1,5 @@
 class Animal:
-    alive = []
+    alive = list["Animal"]
 
     def __init__(self, name: str,
                  health: int = 100,
@@ -9,9 +9,9 @@ class Animal:
         self.hidden = hidden
         Animal.alive.append(self)
 
-    @classmethod
-    def remove_animal(cls, animal: "Animal") -> None:
-        cls.alive.remove(animal)
+    @staticmethod
+    def remove_animal(animal: "Animal") -> None:
+        Animal.alive.remove(animal)
 
     def __str__(self) -> str:
         return (f"{{Name: {self.name}, "
@@ -28,7 +28,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, animal: "Animal") -> None:
+    def bite(self, animal: "Herbivore") -> None:
         if animal.hidden or isinstance(animal, Carnivore):
             return
         animal.health -= 50
