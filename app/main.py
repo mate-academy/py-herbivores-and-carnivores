@@ -11,7 +11,7 @@ class Animal:
         self.hidden = False
         Animal.alive.append(self)
 
-    alive: list[Animal] = []
+    alive: list["Animal"] = []
 
     def __repr__(
             self
